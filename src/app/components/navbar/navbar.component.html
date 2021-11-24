@@ -1,14 +1,15 @@
-<div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
-  <div class="px-2 mx-2 navbar-start">
-    <span class="text-lg font-bold">OverChain</span>
-  </div>
-  <div class="hidden px-2 mx-2 navbar-center lg:flex">
-    <div calss="flex items-stretch">
-      <app-navbar-item [routeName]="'Home'"> </app-navbar-item>
-      <app-navbar-item [routeName]="'Seller'"> </app-navbar-item>
-      <app-navbar-item [routeName]="'Buyers'"> </app-navbar-item>
-      <app-navbar-item [routeName]="'About Us'"> </app-navbar-item>
-      <app-navbar-item [routeName]="'Testimonials'"> </app-navbar-item>
+<div class="navbar mb-2 fixed w-full shadow-md bg-transparent text-neutral-content">
+    <div class="px-2 mx-2 navbar-start">
+        <span class="text-lg font-bold">OverChain</span>
     </div>
-  </div>
+    <div class="hidden px-2 mx-2 navbar-center lg:flex">
+        <div class="flex items-stretch">
+            <app-navbar-item [routeName]="'Home'"> </app-navbar-item>
+            <app-navbar-item [routeName]="'Seller'"> </app-navbar-item>
+            <app-navbar-item [routeName]="'Buyers'"> </app-navbar-item>
+            <app-navbar-item [routeName]="'About Us'"> </app-navbar-item>
+            <app-navbar-item [routeName]="'Testimonials'"> </app-navbar-item>
+            <app-navbar-item class="ml-4 rounded-lg border-2" [routeName]="'Contact us'"> </app-navbar-item>
+        </div>
+    </div>
 </div>
