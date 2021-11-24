@@ -8,6 +8,7 @@ import { NavbarItemComponent } from './components/navbar-item/navbar-item.compon
 import { HomeComponent } from './views/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TopComponent } from './views/home/components/top/top.component';
+import { FeatureComponent } from './views/home/components/feature/feature.component';
 const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
 
 @NgModule({
@@ -17,6 +18,7 @@ const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
     NavbarItemComponent,
     HomeComponent,
     TopComponent,
+    FeatureComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(AppRoutes)],
   providers: [],
