@@ -1,0 +1,18 @@
+<div class="w-full px-10 py-10 grid sm:grid-cols-1 md:grid-cols-2">
+    <div *ngIf="reversed">
+        <img class="w-4/5 h-auto" src="{{ image }}" alt="">
+    </div>
+    <div class="px-10 pt-20">
+
+        <p class="text-5xl font-semibold text-gray-900">
+            {{ title }}
+        </p>
+        <div class="h-10"></div>
+        <p class="text-lg text-gray-700">
+            {{ text }}
+        </p>
+    </div>
+    <div *ngIf="!reversed">
+        <img class="w-4/5 h-auto ml-20" src="{{ image }}" alt="">
+    </div>
+</div>

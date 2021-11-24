@@ -9,3 +9,8 @@
         </app-feature>
     </div>
 </div>
+
+<div class="bg-white px-10 py-10 w-full">
+    <app-aboutus *ngFor="let about of aboutUs" [image]='about.image' [title]='about.title' [text]='about.text' [reversed]='about.reversed'>
+    </app-aboutus>
+</div>

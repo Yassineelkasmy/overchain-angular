@@ -9,6 +9,7 @@ import { HomeComponent } from './views/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TopComponent } from './views/home/components/top/top.component';
 import { FeatureComponent } from './views/home/components/feature/feature.component';
+import { AboutusComponent } from './views/home/components/aboutus/aboutus.component';
 const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
 
 @NgModule({
@@ -19,6 +20,7 @@ const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
     HomeComponent,
     TopComponent,
     FeatureComponent,
+    AboutusComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(AppRoutes)],
   providers: [],
