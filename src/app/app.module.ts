@@ -11,8 +11,19 @@ import { TopComponent } from './views/home/components/top/top.component';
 import { FeatureComponent } from './views/home/components/feature/feature.component';
 import { AboutusComponent } from './views/home/components/aboutus/aboutus.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SubmissionComponent } from './views/submission/submission.component';
+import { StepsComponent } from './views/submission/steps/steps.component';
 
-const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
+const AppRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  {
+    path: 'submission',
+    component: SubmissionComponent,
+    children: [
+      {}
+    ]
+  },
+];
 
 @NgModule({
   declarations: [
@@ -23,6 +34,8 @@ const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
     TopComponent,
     FeatureComponent,
     AboutusComponent,
+    SubmissionComponent,
+    StepsComponent,
   ],
   imports: [
     BrowserModule,
