@@ -10,6 +10,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { TopComponent } from './views/home/components/top/top.component';
 import { FeatureComponent } from './views/home/components/feature/feature.component';
 import { AboutusComponent } from './views/home/components/aboutus/aboutus.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
 
 @NgModule({
@@ -22,7 +24,13 @@ const AppRoutes: Routes = [{ path: '', component: HomeComponent }];
     FeatureComponent,
     AboutusComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(AppRoutes)],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    RouterModule.forRoot(AppRoutes),
+
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
