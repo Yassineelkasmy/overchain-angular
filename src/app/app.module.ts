@@ -13,6 +13,8 @@ import { AboutusComponent } from './views/home/components/aboutus/aboutus.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubmissionComponent } from './views/submission/submission.component';
 import { StepsComponent } from './views/submission/steps/steps.component';
+import { RegisterComponent } from './views/submission/register/register.component';
+import { AccountVerifyComponent } from './views/submission/account-verify/account-verify.component';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +22,8 @@ const AppRoutes: Routes = [
     path: 'submission',
     component: SubmissionComponent,
     children: [
-      {}
+      { path: 'register' , component: RegisterComponent },
+      { path: 'accountverify' , component: AccountVerifyComponent },
     ]
   },
 ];
@@ -36,6 +39,8 @@ const AppRoutes: Routes = [
     AboutusComponent,
     SubmissionComponent,
     StepsComponent,
+    RegisterComponent,
+    AccountVerifyComponent,
   ],
   imports: [
     BrowserModule,

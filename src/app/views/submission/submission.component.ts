@@ -12,7 +12,9 @@ export class SubmissionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
     this.step = steps[ this.stepNum - 1 ];
+
   }
 
 
@@ -20,6 +22,12 @@ export class SubmissionComponent implements OnInit {
   @Input() stepNum : number = 1;
 
   step:Step = new Step();
+
+   nextStep() {
+    this.stepNum++;
+    this.step = steps[this.stepNum - 1];
+  }
+
 
 
 
