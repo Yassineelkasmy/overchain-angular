@@ -11,7 +11,6 @@ export class AboutusComponent implements OnInit {
 
   ngOnInit(): void {
     this.image = '../../../../../assets/images/' + this.image;
-
   }
 
   @Input() title:string = '';

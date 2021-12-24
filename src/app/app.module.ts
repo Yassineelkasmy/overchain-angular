@@ -15,6 +15,8 @@ import { SubmissionComponent } from './views/submission/submission.component';
 import { StepsComponent } from './views/submission/steps/steps.component';
 import { RegisterComponent } from './views/submission/register/register.component';
 import { AccountVerifyComponent } from './views/submission/account-verify/account-verify.component';
+import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
+import { FooterComponent } from './views/home/components/footer/footer.component';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +26,7 @@ const AppRoutes: Routes = [
     children: [
       { path: 'register' , component: RegisterComponent },
       { path: 'accountverify' , component: AccountVerifyComponent },
+      { path: 'createcontract', component: CreateContractComponent}
     ]
   },
 ];
@@ -41,6 +44,8 @@ const AppRoutes: Routes = [
     StepsComponent,
     RegisterComponent,
     AccountVerifyComponent,
+    CreateContractComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

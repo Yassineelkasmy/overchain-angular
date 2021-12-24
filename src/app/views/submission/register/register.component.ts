@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-
+import { StepsComponent } from '../steps/steps.component';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,4 +19,7 @@ export class RegisterComponent implements OnInit {
 
   @Output() onSubmit = new EventEmitter<boolean>(false);
 
+ /* primaryStep(){
+      StepsComponent:
+  }*/
 }
