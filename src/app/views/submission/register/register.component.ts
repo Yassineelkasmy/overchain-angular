@@ -38,17 +38,16 @@ export class RegisterComponent implements OnInit {
 
   @Output() onSubmit = new EventEmitter<boolean>(false);
 
-  isLogin: boolean = true;
+  isLogin: boolean = false;
 
   signUp(){
-    console.log(this.signUpForm.value);
     const email = this.signUpForm.get("email")?.value as string;
     const password = this.signUpForm.get("email")?.value as string;
     this.authService.SignUp(email,password);
   }
 
   googleAuth() {
-    //this.authService.GoogleAuth();
+    this.authService.GoogleAuth();
   }
 
 

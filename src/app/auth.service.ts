@@ -90,20 +90,20 @@ export class AuthService {
   return;
 }
 
-// AuthLogin(provider: AuthProvider) {
-//   return this.afAuth.signInWithPopup(provider)
-//   .then((result) => {
-//      this.ngZone.run(() => {
-//         this.router.navigate(['dashboard']);
-//       })
-//     this.SetUserData(result.user);
-//   }).catch((error) => {
-//     window.alert(error)
-//   })
-// }
+AuthLogin(provider: AuthProvider) {
+  return this.afAuth.signInWithPopup(provider)
+  .then((result) => {
+     this.ngZone.run(() => {
+        this.router.navigate(['dashboard']);
+      })
+    this.SetUserData(result.user);
+  }).catch((error) => {
+    window.alert(error)
+  })
+}
 
 GoogleAuth() {
-  //return this.AuthLogin(new GoogleAuthProvider());
+  return this.AuthLogin(new GoogleAuthProvider());
 }
 
   // Sign out
