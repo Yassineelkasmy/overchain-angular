@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AboutUs } from 'src/app/constants/AboutUs';
-import { Feature } from '../../constants/Feature';
+import { AboutUs } from 'src/app/models/AboutUs';
+import { Feature } from '../../models/Feature';
 
 @Component({
   selector: 'app-home',
