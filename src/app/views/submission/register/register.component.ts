@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { StepsComponent } from '../steps/steps.component';
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +8,9 @@ import { StepsComponent } from '../steps/steps.component';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    public authService: AuthService,
+  ) {
     this.signUpForm  = new FormGroup({
     "email" : new FormControl(null, [Validators.required, Validators.email]),
     "password": new FormControl(null,
@@ -36,10 +38,19 @@ export class RegisterComponent implements OnInit {
 
   @Output() onSubmit = new EventEmitter<boolean>(false);
 
-  isLogin: boolean = false;
+  isLogin: boolean = true;
 
   signUp(){
     console.log(this.signUpForm.value);
+    const email = this.signUpForm.get("email")?.value as string;
+    const password = this.signUpForm.get("email")?.value as string;
+    this.authService.SignUp(email,password);
   }
+
+  googleAuth() {
+    //this.authService.GoogleAuth();
+  }
+
+
 
 }

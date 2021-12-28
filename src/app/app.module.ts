@@ -21,6 +21,7 @@ import { AccountVerifyComponent } from './views/submission/account-verify/accoun
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 import { FooterComponent } from './views/home/components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -61,7 +62,7 @@ const AppRoutes: Routes = [
     AngularFireStorageModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

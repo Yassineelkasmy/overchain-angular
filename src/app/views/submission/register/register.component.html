@@ -4,48 +4,66 @@
     </p>
 
     <div class="h-10"></div>
-    <form [formGroup]="signUpForm" *ngIf="!isLogin">
-        <div>
-            <label class="label">
-        <span class="label-text">Email</span>
-          </label>
-            <input formControlName="email" type="email" placeholder="Your email address" class="input input-warning input-bordered" required>
-        </div>
-
-        <div>
-            <label class="label">
-      <span class="label-text">Password</span>
+    <div class="grid sm:grid-cols-1 md:grid-cols-2">
+        <form [formGroup]="signUpForm" *ngIf="!isLogin">
+            <div>
+                <label class="label">
+      <span class="label-text">Email</span>
         </label>
-            <input formControlName="password" type="password" class="input input-warning input-bordered" required>
-        </div>
+                <input formControlName="email" type="email" placeholder="Your email address" class="input input-warning input-bordered" required>
+            </div>
 
-        <div>
-            <label class="label">
-    <span class="label-text">Confirm</span>
+            <div>
+                <label class="label">
+    <span class="label-text">Password</span>
       </label>
-            <input formControlName="passwordConfirmation" type="password" class="input input-warning input-bordered" required>
-        </div>
-        <div class="h-5"></div>
-        <button (click)="signUp()" class="btn btn-large">Forward</button>
+                <input formControlName="password" type="password" class="input input-warning input-bordered" required>
+            </div>
 
-    </form>
-
-    <form *ngIf="isLogin">
-        <div>
-            <label class="label">
-    <span class="label-text">Email</span>
-      </label>
-            <input type="email" placeholder="Your email address" class="input input-warning input-bordered">
-        </div>
-
-        <div>
-            <label class="label">
-  <span class="label-text">Password</span>
+            <div>
+                <label class="label">
+  <span class="label-text">Confirm</span>
     </label>
-            <input type="email" class="input input-warning input-bordered">
+                <input formControlName="passwordConfirmation" type="password" class="input input-warning input-bordered" required>
+            </div>
+            <div class="h-5"></div>
+            <button (click)="signUp()" class="btn btn-large">Forward</button>
+
+        </form>
+
+        <form *ngIf="isLogin">
+            <div>
+                <label class="label">
+  <span class="label-text">Email</span>
+    </label>
+                <input type="email" placeholder="Your email address" class="input input-warning input-bordered">
+            </div>
+
+            <div>
+                <label class="label">
+<span class="label-text">Password</span>
+  </label>
+                <input type="email" class="input input-warning input-bordered">
+            </div>
+
+        </form>
+
+        <div class="flex flex-col">
+            <div (click)="googleAuth()" class="flex justify-center my-auto btn space-x-2  bg-white text-gray-900 hover:text-white">
+                <div class="w-7 h-auto">
+                    <img src="../../../../assets/images/google.png" alt="">
+                </div>
+                <div class="w-1"></div>
+                <span class="my-auto ">Continue with Google</span>
+
+            </div>
+
         </div>
 
-    </form>
+    </div>
 
+    <div>
+
+    </div>
     <div class="h-10"></div>
 </div>
