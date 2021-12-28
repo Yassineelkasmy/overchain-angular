@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,6 +20,7 @@ import { RegisterComponent } from './views/submission/register/register.componen
 import { AccountVerifyComponent } from './views/submission/account-verify/account-verify.component';
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 import { FooterComponent } from './views/home/components/footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -52,7 +56,10 @@ const AppRoutes: Routes = [
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(AppRoutes),
-
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

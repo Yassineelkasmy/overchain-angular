@@ -1,53 +1,51 @@
 <div class="px-10">
     <p>
-        Identify yourself with an account so you can follow on with your propety submission process
+        We need you to create an account so you can follow up with your properties submission later
     </p>
 
     <div class="h-10"></div>
-    <div class="form-control grid  grid-flow-row-dense  sm:grid-cols-1 md:grid-cols-2 gap-y-5">
+    <form [formGroup]="signUpForm" *ngIf="!isLogin">
         <div>
             <label class="label">
-        <span class="label-text">First name</span>
+        <span class="label-text">Email</span>
           </label>
-            <input type="text" placeholder="username" class="input input-warning input-bordered">
-        </div>
-        <div>
-            <label class="label">
-          <span class="label-text">Last name</span>
-        </label>
-            <input type="text" placeholder="username" class="input input-warning input-bordered">
+            <input formControlName="email" type="email" placeholder="Your email address" class="input input-warning input-bordered" required>
         </div>
 
         <div>
             <label class="label">
-      <span class="label-text">Email</span>
+      <span class="label-text">Password</span>
         </label>
+            <input formControlName="password" type="password" class="input input-warning input-bordered" required>
+        </div>
+
+        <div>
+            <label class="label">
+    <span class="label-text">Confirm</span>
+      </label>
+            <input formControlName="passwordConfirmation" type="password" class="input input-warning input-bordered" required>
+        </div>
+        <div class="h-5"></div>
+        <button (click)="signUp()" class="btn btn-large">Forward</button>
+
+    </form>
+
+    <form *ngIf="isLogin">
+        <div>
+            <label class="label">
+    <span class="label-text">Email</span>
+      </label>
             <input type="email" placeholder="Your email address" class="input input-warning input-bordered">
         </div>
 
         <div>
             <label class="label">
-      <span class="label-text">Phone</span>
-        </label>
-            <input type="tel" placeholder="+212 623342423" class="input input-warning input-bordered">
+  <span class="label-text">Password</span>
+    </label>
+            <input type="email" class="input input-warning input-bordered">
         </div>
 
-        <div>
-            <label class="label">
-          <span class="label-text">Address Line </span>
-        </label>
-            <input type="text" placeholder="username" class="input input-warning input-bordered">
-        </div>
+    </form>
 
-
-        <div>
-            <label class="label">
-        <span class="label-text"> Zip Code </span>
-      </label>
-            <input type="text" placeholder="username" class="input input-warning input-bordered">
-        </div>
-
-    </div>
     <div class="h-10"></div>
-    <button routerLink="/submission/accountverify"  class="btn btn-large">Forward</button>
-  </div>
+</div>

@@ -2,14 +2,14 @@ import { Step } from "../models/Step";
 
 export const steps:Step[] = [
   new Step(
-    "Register",
+    "Join Us",
     "submission/register",
     1,
   ),
   new Step(
-    "Verify it`s you",
+    "Verification",
 
-    "submission/register",
+    "submission/accountverify",
     2,
   ),
   new Step(
