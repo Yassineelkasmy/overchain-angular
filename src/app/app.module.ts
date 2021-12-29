@@ -22,7 +22,8 @@ import { CreateContractComponent } from './views/submission/create-contract/crea
 import { FooterComponent } from './views/home/components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './guards/guard/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { UnAuthGuard } from './guards/un-auth.guard';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,9 +31,9 @@ const AppRoutes: Routes = [
     path: 'submission',
     component: SubmissionComponent,
     children: [
-      { path: 'register' , component: RegisterComponent },
+      { path: 'register' , component: RegisterComponent, canActivate:[UnAuthGuard] },
       { path: 'accountverify' , component: AccountVerifyComponent, canActivate:[AuthGuard] },
-      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard]  }
+      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard],   }
     ]
   },
 ];

@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Step } from "../../models/Step";
-import { steps } from "../../constants/Steps";
 
 @Component({
   selector: 'app-submission',
@@ -13,21 +11,8 @@ export class SubmissionComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.step = steps[ this.stepNum - 1 ];
 
   }
-
-
-
-  @Input() stepNum : number = 1;
-
-  step:Step = new Step();
-
-   nextStep() {
-    this.stepNum++;
-    this.step = steps[this.stepNum - 1];
-  }
-
 
 
 

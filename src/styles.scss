@@ -3,3 +3,13 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), url(./assets/fonts/Roboto-Regular.ttf) format('ttf');
+}
+
+@layer components {
+    .error {
+        @apply ml-2 text-sm text-red-600
+    }
+}

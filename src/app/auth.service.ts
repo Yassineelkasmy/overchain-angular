@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { AuthProvider, GoogleAuthProvider } from "@angular/fire/auth";
+import { AuthProvider, GoogleAuthProvider, GithubAuthProvider } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
 import { User } from './models/User';
@@ -23,9 +23,11 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
+        this.currentUser = user as User;
         localStorage.setItem('user', JSON.stringify(this.userData));
 
       } else {
+        this.currentUser = undefined;
         localStorage.setItem('user', '');
 
       }
@@ -65,8 +67,6 @@ export class AuthService {
       return false;
     }
     else {
-      const user = JSON.parse(userString);
-      // We dont check if the email is verified for now
       return true;
     }
   }
@@ -103,7 +103,21 @@ AuthLogin(provider: AuthProvider) {
 }
 
 GoogleAuth() {
-  return this.AuthLogin(new GoogleAuthProvider());
+  return this.AuthLogin(new GoogleAuthProvider()).then(
+  ()=>{
+    this.authCallBack();
+  }
+  );
+}
+
+GithubAuth() {
+  return this.AuthLogin(new GithubAuthProvider()).then(()=>{
+    this.authCallBack();
+  });
+}
+
+authCallBack() {
+  window.location.reload();
 }
 
   // Sign out
@@ -112,7 +126,10 @@ GoogleAuth() {
       localStorage.removeItem('user');
       //this.router.navigate(['sign-in']);
     })
+
   }
+
+  currentUser? : User;
 
 
 
