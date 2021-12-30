@@ -7,11 +7,12 @@ export const environment = {
   firebase : {
     apiKey: "AIzaSyAlw-EQhTiALtV0a9yHk3TtrhbCTjtGPVg",
     authDomain: "overchain-72ddf.firebaseapp.com",
+    databaseURL: "https://overchain-72ddf-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "overchain-72ddf",
     storageBucket: "overchain-72ddf.appspot.com",
     messagingSenderId: "372312319901",
-    appId: "1:372312319901:web:bb0031e488063ec413f174",
-    measurementId: "G-2K9NY8FCNQ"
+    appId: "1:372312319901:web:f85452f9fe24519e13f174",
+    measurementId: "G-SBN7FNGBKB"
   }
 };
 

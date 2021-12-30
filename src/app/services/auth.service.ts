@@ -3,7 +3,7 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AuthProvider, GoogleAuthProvider, GithubAuthProvider } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
-import { User } from './models/User';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'

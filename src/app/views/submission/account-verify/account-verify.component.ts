@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FileUpload } from 'src/app/models/file-upload.model';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
   selector: 'app-account-verify',
@@ -19,8 +21,10 @@ export class AccountVerifyComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   verifyForm: FormGroup;
   isLoading:boolean = false;
+
 
   get firstName() {
     return this.verifyForm.get("firstName");
@@ -37,5 +41,8 @@ export class AccountVerifyComponent implements OnInit {
   get phone() {
     return this.verifyForm.get("phone");
   }
+
+
+
 
 }

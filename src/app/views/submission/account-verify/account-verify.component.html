@@ -40,34 +40,10 @@
 
             </div>
 
-            <div>
-                <label class="label">
-                <span class="label-text">ID / Passport Card (front)</span>
-                </label>
-                <input type="file" placeholder="username" class="input input-warning input-bordered">
+            <app-upload-field [folder]="'passport'" [label]="'ID Card (front)'">
+            </app-upload-field>
 
-            </div>
 
-            <div>
-                <label class="label">
-              <span class="label-text">ID / Passport Card (back)</span>
-              </label>
-                <input type="file" placeholder="username" class="input input-warning input-bordered">
-            </div>
-
-            <div>
-                <label class="label">
-                <span class="label-text">Taxes bill</span>
-                </label>
-                <input type="file" placeholder="username" class="input input-warning input-bordered">
-            </div>
-
-            <div>
-                <label class="label">
-              <span class="label-text">Additional Documents (optional)</span>
-              </label>
-                <input type="file" placeholder="username" class="input input-warning input-bordered" multiple>
-            </div>
 
         </form>
         <div *ngIf="isLoading" class="btn btn-lg loading h-28 w-28">
@@ -76,8 +52,7 @@
 
         <div class="h-10"></div>
 
-        <button routerLink="/submission/register" class="btn btn-large">Back</button>
-        <button routerLink="/submission/createcontract" class="btn btn-large">Forward</button>
+        <button class="btn btn-large">Back</button>
 
     </div>
 

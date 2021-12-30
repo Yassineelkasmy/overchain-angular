@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
@@ -8,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarItemComponent } from './components/navbar-item/navbar-item.component';
+import { UploadFieldComponent } from './components/upload-field/upload-field.component';
+
 import { HomeComponent } from './views/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TopComponent } from './views/home/components/top/top.component';
@@ -21,7 +24,7 @@ import { AccountVerifyComponent } from './views/submission/account-verify/accoun
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 import { FooterComponent } from './views/home/components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
 
@@ -42,6 +45,7 @@ const AppRoutes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
+    UploadFieldComponent,
     NavbarItemComponent,
     HomeComponent,
     TopComponent,
@@ -62,6 +66,7 @@ const AppRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AngularFireDatabaseModule,
     ReactiveFormsModule,
   ],
   providers: [AuthService],

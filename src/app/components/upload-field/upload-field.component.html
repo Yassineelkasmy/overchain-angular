@@ -1,0 +1,15 @@
+<div>
+    <label class="label">
+  <span class="label-text">{{ label }}</span>
+  </label>
+    <div class="flex space-x-1">
+        <input #fileInput (change)='selectFile($event)' type="file" class="input input-warning input-bordered">
+        <button *ngIf="!uploaded" class="btn" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+        <button *ngIf="uploaded" class="btn btn-error" (click)="deleteFileUpload()">Cancel</button>
+
+    </div>
+    <div *ngIf="currentFileUpload">
+        <progress class="progress progress-primary" value="{{ percentage }}" max="100"></progress>
+    </div>
+
+</div>
