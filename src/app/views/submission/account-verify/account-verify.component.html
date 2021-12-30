@@ -39,15 +39,16 @@
                 <div *ngIf="address?.invalid && address?.touched" class="error">Invalid address line</div>
 
             </div>
-
-            <app-upload-field [folder]="'passport'" [label]="'ID Card (front)'">
-            </app-upload-field>
-
-
-
         </form>
-        <div *ngIf="isLoading" class="btn btn-lg loading h-28 w-28">
 
+        <app-upload-field class="col-span-2" [folder]="'IDCARD-FRONT'" [label]="'ID Card (Front)'">
+        </app-upload-field>
+        <app-upload-field class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
+        </app-upload-field>
+        <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Taxes Bill'">
+        </app-upload-field>
+
+        <div *ngIf="isLoading" class="btn btn-lg loading h-28 w-28">
         </div>
 
         <div class="h-10"></div>
