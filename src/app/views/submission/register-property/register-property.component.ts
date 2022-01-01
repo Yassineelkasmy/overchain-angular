@@ -20,13 +20,27 @@ export class RegisterPropertyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   // google maps zoom level
-
-
+  maxOptionals = 7;
+  totalOptionals: number = 0;
+  optionals: OptionalUpload[] = [];
 
   verifyForm: FormGroup;
   isLoading:boolean = false;
 
+  addOptional() {
+    if(this.totalOptionals <= this.maxOptionals){
+    this.totalOptionals++;
+    this.optionals.push({
+      label:"Optional Document " + this.totalOptionals,
+      folder:"optional"+ this.totalOptionals,
+    })
+  }
+  }
+
+  removeOptional() {
+    this.totalOptionals--;
+    this.optionals.pop();
+  }
 
   get code() {
     return this.verifyForm.get("code");
@@ -41,12 +55,13 @@ export class RegisterPropertyComponent implements OnInit {
   }
 
 
-
   get address() {
     return this.verifyForm.get("address");
   }
 
+}
 
-
-
+interface OptionalUpload {
+  label:string,
+  folder:string,
 }

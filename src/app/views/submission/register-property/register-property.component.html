@@ -43,14 +43,25 @@
 
             </div>
 
-
+            <p class="col-span-2">
+                These are important documents that you must provide so we can prove that the property exists in real world , also owned by you. You can add up to 10 documents.
+            </p>
             <app-upload-field class="col-span-2" [folder]="'REGISTRATION-LICENSE'" [label]="'Property Registration License'">
             </app-upload-field>
             <app-upload-field class="col-span-2" [folder]="'FRONT-IMAGE'" [label]="'Front image'">
             </app-upload-field>
+
             <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Property Tax Document'">
             </app-upload-field>
 
+            <app-upload-field *ngFor="let opt of optionals" class="col-span-2" [folder]="opt.folder" [label]="opt.label">
+            </app-upload-field>
+
+
+            <div class="col-span-2 flex space-x-2">
+                <div (click)="addOptional()" *ngIf="totalOptionals < maxOptionals" class="btn btn-primary btn-circle">+</div>
+                <div (click)="removeOptional()" *ngIf="totalOptionals!=0" class="btn btn-error btn-circle">-</div>
+            </div>
 
 
         </form>
