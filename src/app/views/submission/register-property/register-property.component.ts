@@ -20,6 +20,10 @@ export class RegisterPropertyComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   // google maps zoom level
+
+
+
   verifyForm: FormGroup;
   isLoading:boolean = false;
 
@@ -36,8 +40,10 @@ export class RegisterPropertyComponent implements OnInit {
     return this.verifyForm.get("description");
   }
 
-  get phone() {
-    return this.verifyForm.get("phone");
+
+
+  get address() {
+    return this.verifyForm.get("address");
   }
 
 

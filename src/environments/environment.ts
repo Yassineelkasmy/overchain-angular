@@ -13,7 +13,7 @@ export const environment = {
     messagingSenderId: "372312319901",
     appId: "1:372312319901:web:f85452f9fe24519e13f174",
     measurementId: "G-SBN7FNGBKB"
-  }
+  },
 };
 
 /*

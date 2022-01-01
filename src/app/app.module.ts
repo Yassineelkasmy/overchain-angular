@@ -27,7 +27,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
-import { AgmCoreModule } from '@agm/core';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -69,9 +68,7 @@ const AppRoutes: Routes = [
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: ''
-    })
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

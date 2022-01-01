@@ -33,14 +33,25 @@
 
             </div>
 
+            <div class="col-span-2">
+
+                <label class="label">
+          <span class="label-text">Address Line </span>
+          </label>
+                <textarea formControlName="description" type="" placeholder="Your real last name" class="input input-warning input-bordered h-20 w-full" required> </textarea>
+                <div *ngIf="address?.invalid && address?.touched" class="error">Invalid last name</div>
+
+            </div>
 
 
-            <app-upload-field class="col-span-2" [folder]="'IDCARD-FRONT'" [label]="'ID Card (Front)'">
+            <app-upload-field class="col-span-2" [folder]="'REGISTRATION-LICENSE'" [label]="'Property Registration License'">
             </app-upload-field>
-            <app-upload-field class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
+            <app-upload-field class="col-span-2" [folder]="'FRONT-IMAGE'" [label]="'Front image'">
             </app-upload-field>
-            <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Taxes Bill'">
+            <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Property Tax Document'">
             </app-upload-field>
+
+
 
         </form>
 
