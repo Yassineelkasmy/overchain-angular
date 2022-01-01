@@ -1,0 +1,57 @@
+<div class="flex space-x-10">
+    <app-steps [stepNum]=3></app-steps>
+    <div>
+        <p>
+            Identify yourself with an account so you can follow on with your propety submission process
+        </p>
+
+        <div class="h-10"></div>
+        <form *ngIf="!isLoading" [formGroup]="verifyForm" class="form-control grid sm:grid-cols-1 md:grid-cols-2 gap-y-2">
+            <div>
+                <label class="label">
+              <span class="label-text">Property Code</span>
+              </label>
+                <input formControlName="code" type="text" placeholder="Your real first name" class="input input-warning input-bordered">
+                <div *ngIf="code?.invalid && code?.touched" class="error">Invalid first name</div>
+            </div>
+            <div>
+                <label class="label">
+              <span class="label-text">Property Title</span>
+              </label>
+                <input formControlName="title" type="text" placeholder="Your real last name" class="input input-warning input-bordered">
+                <div *ngIf="title?.invalid && title?.touched" class="error">Invalid last name</div>
+
+            </div>
+
+            <div>
+
+                <label class="label">
+            <span class="label-text">Property Description</span>
+            </label>
+                <input formControlName="description" type="text" placeholder="Your real last name" class="input input-warning input-bordered">
+                <div *ngIf="description?.invalid && description?.touched" class="error">Invalid last name</div>
+
+            </div>
+
+
+
+            <app-upload-field class="col-span-2" [folder]="'IDCARD-FRONT'" [label]="'ID Card (Front)'">
+            </app-upload-field>
+            <app-upload-field class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
+            </app-upload-field>
+            <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Taxes Bill'">
+            </app-upload-field>
+        </form>
+
+
+
+        <div *ngIf="isLoading" class="btn btn-lg loading h-28 w-28">
+        </div>
+
+        <div class="h-10"></div>
+
+        <button class="btn btn-large">Back</button>
+
+    </div>
+
+</div>

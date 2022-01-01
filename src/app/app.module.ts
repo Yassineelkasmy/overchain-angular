@@ -21,7 +21,7 @@ import { SubmissionComponent } from './views/submission/submission.component';
 import { StepsComponent } from './views/submission/steps/steps.component';
 import { RegisterComponent } from './views/submission/register/register.component';
 import { AccountVerifyComponent } from './views/submission/account-verify/account-verify.component';
-import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
+import { RegisterPropertyComponent } from './views/submission/register-property/register-property.component';
 import { FooterComponent } from './views/home/components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
@@ -36,7 +36,7 @@ const AppRoutes: Routes = [
     children: [
       { path: 'register' , component: RegisterComponent, canActivate:[UnAuthGuard] },
       { path: 'accountverify' , component: AccountVerifyComponent, canActivate:[AuthGuard] },
-      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard],   }
+      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard],   }
     ]
   },
 ];
@@ -55,7 +55,7 @@ const AppRoutes: Routes = [
     StepsComponent,
     RegisterComponent,
     AccountVerifyComponent,
-    CreateContractComponent,
+    RegisterPropertyComponent,
     FooterComponent,
   ],
   imports: [

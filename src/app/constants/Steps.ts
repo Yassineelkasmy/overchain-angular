@@ -13,8 +13,8 @@ export const steps:Step[] = [
     2,
   ),
   new Step(
-    "Register",
-    "submission/accountverify",
+    "Register a property",
+    "submission/register-property",
     3,
   ),
 ];

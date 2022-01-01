@@ -1,9 +1,9 @@
 <div>
     <label class="label">
-  <span class="label-text">{{ label }}</span>
-  </label>
+     <span class="label-text">{{ label }}</span>
+    </label>
     <div class="flex space-x-1">
-        <input #fileInput (change)='selectFile($event)' type="file" class="input input-warning input-bordered">
+        <input #fileInput (change)='selectFile($event)' type="file" class="input input-warning input-bordered" required>
         <button *ngIf="!uploaded" class="btn" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
         <button *ngIf="uploaded" class="btn btn-error" (click)="deleteFileUpload()">Cancel</button>
 
