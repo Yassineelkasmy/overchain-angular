@@ -17,5 +17,10 @@ export const steps:Step[] = [
     "submission/register-property",
     3,
   ),
+  new Step(
+    "Create Smart Contract",
+    "submission/register-property",
+    4,
+  ),
 ];
 

@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
+import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,7 +37,8 @@ const AppRoutes: Routes = [
     children: [
       { path: 'register' , component: RegisterComponent, canActivate:[UnAuthGuard] },
       { path: 'accountverify' , component: AccountVerifyComponent, canActivate:[AuthGuard] },
-      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard],   }
+      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard],   },
+      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard],   }
     ]
   },
 ];
@@ -57,6 +59,7 @@ const AppRoutes: Routes = [
     AccountVerifyComponent,
     RegisterPropertyComponent,
     FooterComponent,
+    CreateContractComponent,
   ],
   imports: [
     BrowserModule,
