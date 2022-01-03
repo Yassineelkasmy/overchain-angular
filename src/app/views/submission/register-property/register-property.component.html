@@ -1,0 +1,82 @@
+<div class="grid grid-cols-4 w-full gap-x-5">
+
+    <app-steps [stepNum]=3></app-steps>
+
+    <div class="col-span-3">
+        <p>
+            Identify yourself with an account so you can follow on with your propety submission process
+        </p>
+
+        <div class="h-10"></div>
+        <form *ngIf="!isLoading" [formGroup]="verifyForm" class="form-control grid sm:grid-cols-1 md:grid-cols-2 gap-y-2">
+            <div>
+                <label class="label">
+              <span class="label-text">Property Code</span>
+              </label>
+                <input formControlName="code" type="text" placeholder="Your real first name" class="input input-warning input-bordered">
+                <div *ngIf="code?.invalid && code?.touched" class="error">Invalid first name</div>
+            </div>
+            <div>
+                <label class="label">
+              <span class="label-text">Property Title</span>
+              </label>
+                <input formControlName="title" type="text" placeholder="Your real last name" class="input input-warning input-bordered">
+                <div *ngIf="title?.invalid && title?.touched" class="error">Invalid last name</div>
+
+            </div>
+
+            <div>
+
+                <label class="label">
+            <span class="label-text">Property Description</span>
+            </label>
+                <input formControlName="description" type="text" placeholder="Your real last name" class="input input-warning input-bordered">
+                <div *ngIf="description?.invalid && description?.touched" class="error">Invalid last name</div>
+
+            </div>
+
+            <div class="col-span-2">
+
+                <label class="label">
+          <span class="label-text">Address Line </span>
+          </label>
+                <textarea formControlName="description" type="" placeholder="Your real last name" class="input input-warning input-bordered h-20 w-full" required> </textarea>
+                <div *ngIf="address?.invalid && address?.touched" class="error">Invalid last name</div>
+
+            </div>
+
+            <p class="col-span-2">
+                These are important documents that you must provide so we can prove that the property exists in real world , also owned by you. You can add up to 10 documents.
+            </p>
+            <app-upload-field class="col-span-2" [folder]="'REGISTRATION-LICENSE'" [label]="'Property Registration License'">
+            </app-upload-field>
+            <app-upload-field class="col-span-2" [folder]="'FRONT-IMAGE'" [label]="'Front image'">
+            </app-upload-field>
+
+            <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Property Tax Document'">
+            </app-upload-field>
+
+            <app-upload-field *ngFor="let opt of optionals" class="col-span-2" [folder]="opt.folder" [label]="opt.label">
+            </app-upload-field>
+
+
+            <div class="col-span-2 flex space-x-2">
+                <div (click)="addOptional()" *ngIf="totalOptionals < maxOptionals" class="btn btn-primary btn-circle">+</div>
+                <div (click)="removeOptional()" *ngIf="totalOptionals!=0" class="btn btn-error btn-circle">-</div>
+            </div>
+
+
+        </form>
+
+
+
+        <div *ngIf="isLoading" class="btn btn-lg loading h-28 w-28">
+        </div>
+
+        <div class="h-10"></div>
+
+        <button class="btn btn-large">Back</button>
+
+    </div>
+
+</div>

@@ -6,7 +6,7 @@
         </p>
 
         <div class="h-10"></div>
-        <form *ngIf="!isLoading" [formGroup]="verifyForm" class="form-control grid  grid-flow-row-dense  sm:grid-cols-1 md:grid-cols-2 gap-y-2">
+        <form *ngIf="!isLoading" [formGroup]="verifyForm" class="form-control grid sm:grid-cols-1 md:grid-cols-2 gap-y-2">
             <div>
                 <label class="label">
                 <span class="label-text">First name</span>
@@ -39,14 +39,16 @@
                 <div *ngIf="address?.invalid && address?.touched" class="error">Invalid address line</div>
 
             </div>
+
+            <app-upload-field class="col-span-2" [folder]="'IDCARD-FRONT'" [label]="'ID Card (Front)'">
+            </app-upload-field>
+            <app-upload-field class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
+            </app-upload-field>
+            <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Taxes Bill'">
+            </app-upload-field>
         </form>
 
-        <app-upload-field class="col-span-2" [folder]="'IDCARD-FRONT'" [label]="'ID Card (Front)'">
-        </app-upload-field>
-        <app-upload-field class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
-        </app-upload-field>
-        <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Taxes Bill'">
-        </app-upload-field>
+
 
         <div *ngIf="isLoading" class="btn btn-lg loading h-28 w-28">
         </div>
