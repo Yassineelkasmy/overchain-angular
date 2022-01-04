@@ -33,7 +33,25 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "devextreme-angular",
+              "devextreme",
+              "@firebase",
+              "@angular/fire",
+              "devexpress-richedit",
+              "x-data-spreadsheet",
+              "walletconnect/web3-provider",
+              "web3",
+              "@walletconnect/encoding",
+              "@walletconnect/environment",
+              "@walletconnect/window-metadata",
+              "@walletconnect/socket-transport",
+              "query-string",
+              "@walletconnect/web3-provider",
+              "hash.js"
+            ]
           },
           "configurations": {
             "production": {

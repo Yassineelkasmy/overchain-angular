@@ -1,18 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Stats } from 'fs';
+import { StatsService } from 'src/app/services/stats.service';
 
 
-
-interface Coin {
-  id: string;
-  image: string;
-  name: string;
-  symbol: string;
-  current_price: number;
-  market_cap:number;
-  price_change_percentage_24h: number;
-  total_volume: number;
-}
 
 
 @Component({
@@ -25,33 +16,20 @@ interface Coin {
 
 export class CryptoPricesComponent implements OnInit {
 
-  api: string =
-    'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=2&page=1&sparkline=false';
-  coins: Coin[] = [];
-  titles: string[] = ['#', 'Coin', 'Price','Price Change','Market cap' , '24H Volume'];
 
-  constructor(private http: HttpClient) {}
+  constructor(public statsService : StatsService) {}
 
   ngOnInit() {
-
     /*this.http.get<any>('https://widgets.coingecko.com/coingecko-coin-price-chart-widget.js').subscribe(
       {
         next : (Response)=> {console.log(Response)},
         error : (e) => { console.log(e)}
       }
-    );*/
-
-
-    this.http.get<Coin[]>(this.api).subscribe(
-      {
-        next: (res) => {
-        this.coins = res;
-        },
-      error : (err) => {console.error(err)}
-    }
-    );
+    )*/;
+      this.statsService.getEthPrice().subscribe(
+        {
+          next : (resp) => console.log(resp['1'].current_price)
+        }
+      )
   }
-
-
-
 }

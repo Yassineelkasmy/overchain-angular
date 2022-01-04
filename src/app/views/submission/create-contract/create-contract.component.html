@@ -5,30 +5,56 @@
         <p>
             Customize your smart contract
         </p>
+
         <div class="h-10"></div>
         <form *ngIf="!isLoading" [formGroup]="contractForm" class="form-control grid sm:grid-cols-1 md:grid-cols-2 gap-y-2">
-            <div class="col-span-2">
+            <div *ngIf="!metamaskService.accounts" class="col-span-2">
                 <label class="label">
-            <span class="label-text">Your Wallet ID (Seller)</span>
-            </label>
-                <input formControlName="wallet" type="text" placeholder="Wallet ID that the buyer will transfer money to" class="w-full input input-warning input-bordered">
-                <div *ngIf="wallet?.invalid && wallet?.touched" class="error">Invalid first name</div>
+                  <span class="label-text">Connect your wallet</span>
+                </label>
+            <button class="btn btn-large btn-primary" (click)="connect()">Connect</button>
+
             </div>
+
+          <div class="col-span-2">
+                <label class="label">
+                  <span class="label-text">Your Wallet ID (Seller)</span>
+                </label>
+                <input formControlName="wallet" type="text" placeholder="your wallet address" class="w-full input input-warning input-bordered" [value]="metamaskService.accounts" [attr.disabled]="true">
+          </div>
+
+
             <div class="col-span-2">
                 <label class="label">
             <span class="label-text">Property Price ETHER</span>
             </label>
                 <label class="input-group input-group-md">
-              <input formControlName="priceETH" type="number" placeholder="" class="input input-warning input-bordered">
-                <span>ETH</span>
-            </label>
-                <div *ngIf="priceETH?.invalid && priceETH?.touched" class="error">Invalid last name</div>
+              <input formControlName="priceETH" type="number" min="0" placeholder="" class="input input-warning input-bordered">
+                <span>USD</span>
+              </label>
+               <!-- convert usd => eth -->
+              <div>  <span>ETH</span></div>
+              <div *ngIf="priceETH?.invalid && priceETH?.touched" class="error">Invalid price</div>
 
             </div>
 
 
+            <div class="col-span-2">
+                <label class="label">
+                  <span class="label-text">Minimum property price </span>
+                </label>
+                <label class="input-group input-group-md">
 
+                  <input formControlName="priceETH" type="number" min="0" placeholder="" class="input input-warning input-bordered">
+                <span>USD</span>
 
+                <!-- convert usd => eth -->
+            </label>
+            <div><span>ETH</span></div>
+
+              <div *ngIf="priceETH?.invalid && priceETH?.touched" class="error">Invalid price</div>
+
+            </div>
 
 
         </form>
