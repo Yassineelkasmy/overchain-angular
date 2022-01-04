@@ -18,7 +18,7 @@
 
           <div class="col-span-2">
                 <label class="label">
-                  <span class="label-text">Your Wallet ID (Seller)</span>
+                  <span class="label-text">Your Wallet Address</span>
                 </label>
                 <input formControlName="wallet" type="text" placeholder="your wallet address" class="w-full input input-warning input-bordered" [value]="metamaskService.accounts" [attr.disabled]="true">
           </div>
@@ -26,14 +26,14 @@
 
             <div class="col-span-2">
                 <label class="label">
-            <span class="label-text">Property Price ETHER</span>
+            <span class="label-text">Property Price</span>
             </label>
                 <label class="input-group input-group-md">
-              <input formControlName="priceETH" type="number" min="0" placeholder="" class="input input-warning input-bordered">
+              <input (change)="convertUsePrice()" formControlName="priceETH" type="number" min="0" class="input input-warning input-bordered">
                 <span>USD</span>
               </label>
                <!-- convert usd => eth -->
-              <div>  <span>ETH</span></div>
+              <div>  ETH <span *ngIf="convertedEthValue" [innerText]="convertedEthValue"></span></div>
               <div *ngIf="priceETH?.invalid && priceETH?.touched" class="error">Invalid price</div>
 
             </div>
@@ -45,14 +45,14 @@
                 </label>
                 <label class="input-group input-group-md">
 
-                  <input formControlName="priceETH" type="number" min="0" placeholder="" class="input input-warning input-bordered">
+                  <input (change)="convertMinUsePrice()" formControlName="minPriceEth" type="number" min="0" class="input input-warning input-bordered">
                 <span>USD</span>
 
                 <!-- convert usd => eth -->
             </label>
-            <div><span>ETH</span></div>
+            <div>  ETH <span *ngIf="convertedMinEthValue" [innerText]="convertedMinEthValue"></span></div>
 
-              <div *ngIf="priceETH?.invalid && priceETH?.touched" class="error">Invalid price</div>
+              <div *ngIf="minPriceEth?.invalid && minPriceEth?.touched" class="error">Invalid price</div>
 
             </div>
 
