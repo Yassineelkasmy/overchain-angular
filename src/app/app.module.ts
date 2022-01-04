@@ -27,17 +27,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
-<<<<<<< HEAD
-<<<<<<< HEAD
+import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
+import { CryptoPricesComponent } from './views/home/components/crypto-prices/crypto-prices.component';
 
 import { HttpClientModule } from '@angular/common/http';
-
-import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
-=======
->>>>>>> parent of e9894ef... Add create contract page
-
-=======
->>>>>>> parent of 8a925a0... cryptoTracker
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,7 +40,8 @@ const AppRoutes: Routes = [
     children: [
       { path: 'register' , component: RegisterComponent, canActivate:[UnAuthGuard] },
       { path: 'accountverify' , component: AccountVerifyComponent, canActivate:[AuthGuard] },
-      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard],   }
+      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard],   },
+      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard],   }
     ]
   },
 ];
@@ -68,16 +62,12 @@ const AppRoutes: Routes = [
     AccountVerifyComponent,
     RegisterPropertyComponent,
     FooterComponent,
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 8a925a0... cryptoTracker
-=======
->>>>>>> parent of e9894ef... Add create contract page
+    CreateContractComponent,
+    CryptoPricesComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(AppRoutes),
