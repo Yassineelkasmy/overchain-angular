@@ -27,11 +27,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
+<<<<<<< HEAD
 
 import { HttpClientModule } from '@angular/common/http';
 
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 
+=======
+>>>>>>> parent of 8a925a0... cryptoTracker
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -63,7 +66,10 @@ const AppRoutes: Routes = [
     AccountVerifyComponent,
     RegisterPropertyComponent,
     FooterComponent,
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 8a925a0... cryptoTracker
   ],
   imports: [
     BrowserModule,
