@@ -11,10 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit( ): void {
+  ngOnInit(): void {
   }
-
-
   features:Feature[] = [
     new Feature(
       'contract.png',
@@ -59,6 +57,8 @@ export class HomeComponent implements OnInit {
       'Ethereum provides a platform for creating and building smart contracts and distributed applications. A smart contract allows users to exchange just about anything of value: shares, money, real estate, and so on.',
       false,
     ),
+
+
 
 
   ]

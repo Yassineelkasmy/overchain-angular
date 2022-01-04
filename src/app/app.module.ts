@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -28,15 +28,17 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
 import { CryptoPricesComponent } from './views/home/components/crypto-prices/crypto-prices.component';
 =======
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 >>>>>>> e9894efa7690f242845104c3cd1c5e7e18debbb4
+=======
+>>>>>>> parent of 8a925a0... cryptoTracker
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'cryptos', component: CryptoPricesComponent },
   {
     path: 'submission',
     component: SubmissionComponent,
@@ -66,13 +68,15 @@ const AppRoutes: Routes = [
     RegisterPropertyComponent,
     FooterComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     CryptoPricesComponent,
 =======
     CreateContractComponent,
 >>>>>>> e9894efa7690f242845104c3cd1c5e7e18debbb4
+=======
+>>>>>>> parent of 8a925a0... cryptoTracker
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -86,7 +90,5 @@ const AppRoutes: Routes = [
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  schemas : [ CUSTOM_ELEMENTS_SCHEMA ]
-
 })
 export class AppModule {}
