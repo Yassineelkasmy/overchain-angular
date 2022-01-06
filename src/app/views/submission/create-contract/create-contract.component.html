@@ -24,7 +24,7 @@
           </div>
 
 
-            <div class="col-span-2">
+            <div>
                 <label class="label">
             <span class="label-text">Property Price</span>
             </label>
@@ -32,6 +32,7 @@
               <input (change)="convertUsePrice()" formControlName="priceETH" type="number" min="0" class="input input-warning input-bordered">
                 <span>USD</span>
               </label>
+              <div class="h-5"></div>
                <!-- convert usd => eth -->
               <div>  ETH <span *ngIf="convertedEthValue" [innerText]="convertedEthValue"></span></div>
               <div *ngIf="priceETH?.invalid && priceETH?.touched" class="error">Invalid price</div>
@@ -39,22 +40,32 @@
             </div>
 
 
-            <div class="col-span-2">
+            <div>
                 <label class="label">
                   <span class="label-text">Minimum property price </span>
                 </label>
                 <label class="input-group input-group-md">
 
-                  <input (change)="convertMinUsePrice()" formControlName="minPriceEth" type="number" min="0" class="input input-warning input-bordered">
+                <input (change)="convertMinUsePrice()" formControlName="minPriceEth" type="number" min="0" class="input input-warning input-bordered">
                 <span>USD</span>
 
                 <!-- convert usd => eth -->
             </label>
+            <div class="h-5"></div>
+
             <div>  ETH <span *ngIf="convertedMinEthValue" [innerText]="convertedMinEthValue"></span></div>
 
               <div *ngIf="minPriceEth?.invalid && minPriceEth?.touched" class="error">Invalid price</div>
 
             </div>
+
+            <div>
+              <label class="label">
+                <span class="label-text">Your Wallet Address</span>
+              </label>
+              <input formControlName="deadLine" type="datetime"  class="w-full input input-warning input-bordered">
+            </div>
+            
 
 
         </form>

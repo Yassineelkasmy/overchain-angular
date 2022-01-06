@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SmartContractType } from 'src/app/enums/SmartContractType';
 import { MetamaskService } from 'src/app/services/metamask.service';
 import { StatsService } from 'src/app/services/stats.service';
 
@@ -11,12 +12,16 @@ import { StatsService } from 'src/app/services/stats.service';
 export class CreateContractComponent implements OnInit {
 
 
- public ethConvertedValue  ?: any;
+  ethConvertedValue? : any;
 
- public convertedEthValue  ?: any;
+  convertedEthValue? : any;
 
- public convertedMinEthValue  ?: any;
+  convertedMinEthValue  ?: any;
 
+  smartContractType : SmartContractType = SmartContractType.Basic;
+  whiteList? : string[];
+  blackList? : string[];
+  
 
 
   constructor(
@@ -30,7 +35,8 @@ export class CreateContractComponent implements OnInit {
       "description": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
       "wallet": new FormControl(null, [Validators.minLength(10) ,Validators.maxLength(100), Validators.required]),
       "priceETH": new FormControl(null,Validators.required),
-      "minPriceEth" : new FormControl(null)
+      "minPriceEth" : new FormControl(null),
+      "deadLine" : new FormControl(null),
     });
   }
 
@@ -42,6 +48,8 @@ export class CreateContractComponent implements OnInit {
     )
   }
 
+ 
+
   connect(){
 
     this.metamaskService.connectAccount();
@@ -49,18 +57,12 @@ export class CreateContractComponent implements OnInit {
   }
 
   convertUsePrice(){
-    console.log(this.priceETH?.value)
-    console.log(this.ethConvertedValue)
      this.convertedEthValue = this.priceETH?.value / this.ethConvertedValue
-    console.log(this.convertedEthValue)
 
   }
 
   convertMinUsePrice(){
-    console.log(this.minPriceEth?.value)
-    console.log(this.ethConvertedValue)
      this.convertedMinEthValue = this.minPriceEth?.value / this.ethConvertedValue
-     console.log(this.convertedMinEthValue)
   }
 
   contractForm: FormGroup;
@@ -87,5 +89,15 @@ export class CreateContractComponent implements OnInit {
   get address() {
     return this.contractForm.get("address");
   }
+
+
+  get deadLine() {
+    return this.contractForm.get("deadLine");
+  }
+
+  changeSmartContractType(smartContractType : SmartContractType) {
+    this.smartContractType = smartContractType;
+  }
+
 
 }
