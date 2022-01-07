@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -9,7 +11,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AccountVerifyComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private authService:AuthService,
+    private router: Router,
+    
+    ) {
     this.verifyForm = new FormGroup({
       "firstName": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
       "lastName": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
@@ -42,6 +48,10 @@ export class AccountVerifyComponent implements OnInit {
   }
 
 
-
+  changeAccount() {
+    this.authService.SignOut();
+    this.router.navigate(["/submission/register"]);
+    
+  }
 
 }

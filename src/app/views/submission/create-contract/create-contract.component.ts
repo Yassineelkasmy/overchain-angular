@@ -19,8 +19,8 @@ export class CreateContractComponent implements OnInit {
   convertedMinEthValue  ?: any;
 
   smartContractType : SmartContractType = SmartContractType.WhiteListed;
-  whiteList? : string[];
-  blackList? : string[];
+  whiteList : string[] = [""];
+  blackList : string[] = [""];
 
  
 
@@ -110,7 +110,7 @@ export class CreateContractComponent implements OnInit {
     
       this.smartContractType = smartContractType;
 
-    }
+  }
    
   
 

@@ -1,6 +1,6 @@
-<div class="grid grid-cols-4 gap-x-5">
+<div class="flex space-x-10">
     <app-steps [stepNum]=4></app-steps>
-    <div class="col-span-3">
+    <div>
 
         <p>
             Customize your smart contract
@@ -66,19 +66,19 @@
             <div class="form-control">
               <label class="cursor-pointer label">
                 <span class="label-text text-base">Basic</span> 
-                <input type="radio" name="opt" checked="checked" class="ml-5 radio radio-primary" value="">
+                <input [value]="0" type="radio" name="opt" checked="checked" class="ml-5 radio radio-primary" value="">
               </label>
             </div>
             <div class="form-control">
               <label class="cursor-pointer label">
                 <span class="label-text text-base">White Listed</span> 
-                <input type="radio" name="opt" checked="checked" class="ml-5 radio radio-primary" value="">
+                <input [value]="1" type="radio" name="opt" checked="checked" class="ml-5 radio radio-primary" value="">
               </label>
             </div> 
             <div class="form-control">
               <label class="cursor-pointer label">
                 <span class="label-text text-base">Black Listed</span> 
-                <input type="radio" name="opt" checked="checked" class="ml-5 radio radio-primary" value="">
+                <input [value]="2" type="radio" name="opt" checked="checked" class="ml-5 radio radio-primary" value="">
               </label>
             </div> 
           </div>
