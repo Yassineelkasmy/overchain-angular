@@ -32,6 +32,8 @@ import { CryptoPricesComponent } from './views/home/components/crypto-prices/cry
 //import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { FileUploadService } from './services/file-upload.service';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -77,10 +79,9 @@ const AppRoutes: Routes = [
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    //DpDatePickerModule,
 
   ],
-  providers: [AuthService],
+  providers: [AuthService,FileUploadService ,AuthInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

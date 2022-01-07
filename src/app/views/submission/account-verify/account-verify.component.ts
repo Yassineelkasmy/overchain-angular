@@ -25,7 +25,9 @@ export class AccountVerifyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
+ 
 
   verifyForm: FormGroup;
   isLoading:boolean = false;
@@ -49,6 +51,7 @@ export class AccountVerifyComponent implements OnInit {
 
 
   changeAccount() {
+
     this.authService.SignOut();
     this.router.navigate(["/submission/register"]);
     

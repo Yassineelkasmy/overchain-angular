@@ -13,11 +13,12 @@ export class FileUploadService {
 
   constructor(
     private storage: AngularFireStorage,
-    private afAuth: AngularFireAuth, // Inject Firebase auth service
+    private afAuth: AngularFireAuth,
     ) {
       this.afAuth.authState.subscribe(user=> {
         if(user) {
           this.basePath = user.uid;
+          
         }
       })
 
