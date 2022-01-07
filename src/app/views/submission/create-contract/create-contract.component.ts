@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SmartContractType } from 'src/app/enums/SmartContractType';
 import { MetamaskService } from 'src/app/services/metamask.service';
@@ -18,10 +18,11 @@ export class CreateContractComponent implements OnInit {
 
   convertedMinEthValue  ?: any;
 
-  smartContractType : SmartContractType = SmartContractType.Basic;
+  smartContractType : SmartContractType = SmartContractType.WhiteListed;
   whiteList? : string[];
   blackList? : string[];
-  
+
+ 
 
 
   constructor(
@@ -37,6 +38,8 @@ export class CreateContractComponent implements OnInit {
       "priceETH": new FormControl(null,Validators.required),
       "minPriceEth" : new FormControl(null),
       "deadLine" : new FormControl(null),
+      "whiteListed": new FormControl(this.smartContractType == SmartContractType.WhiteListed),
+      "blackListed": new FormControl(this.smartContractType == SmartContractType.BlackListed),
     });
   }
 
@@ -95,9 +98,23 @@ export class CreateContractComponent implements OnInit {
     return this.contractForm.get("deadLine");
   }
 
-  changeSmartContractType(smartContractType : SmartContractType) {
-    this.smartContractType = smartContractType;
+  get whiteListed() {
+    return this.contractForm.get("whiteListed");
   }
+
+  get blackListed() {
+    return this.contractForm.get("blackListed");
+  }
+
+  changeSmartContractType(smartContractType: SmartContractType) {
+    
+      this.smartContractType = smartContractType;
+
+    }
+   
+  
+
+
 
 
 }

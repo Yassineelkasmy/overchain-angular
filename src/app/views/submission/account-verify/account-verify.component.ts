@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FileUpload } from 'src/app/models/file-upload.model';
-import { FileUploadService } from 'src/app/services/file-upload.service';
+
 
 @Component({
   selector: 'app-account-verify',

@@ -1,6 +1,5 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
-import { timeStamp } from 'console';
 import { FileUpload } from 'src/app/models/file-upload.model';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 
