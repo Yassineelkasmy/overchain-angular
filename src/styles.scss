@@ -3,6 +3,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import '~@angular/cdk/overlay-prebuilt.css';
 @font-face {
     font-family: 'Roboto';
     src: local('Roboto'), url(./assets/fonts/Roboto-Regular.ttf) format('ttf');

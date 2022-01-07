@@ -23,6 +23,7 @@
       "es2020",
       "dom"
     ],
+    
     "paths" : {
       "crypto": ["./node_modules/crypto-browserify"],
       "stream": ["./node_modules/stream-browserify"],
@@ -30,8 +31,12 @@
       "http": ["./node_modules/stream-http"],
       "https": ["./node_modules/https-browserify"],
       "os": ["./node_modules/os-browserify"],
-    }
+    },
+    //Modifications to make dayjs works nicely with angular-date picker
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
   },
+  
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
@@ -39,5 +44,6 @@
     "strictTemplates": true,
     "allowSyntheticDefaultImports": true
 
-  }
+  },
+
 }

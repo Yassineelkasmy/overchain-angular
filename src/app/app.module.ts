@@ -29,6 +29,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 import { CryptoPricesComponent } from './views/home/components/crypto-prices/crypto-prices.component';
+//import { DpDatePickerModule } from 'ng2-date-picker';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -76,6 +77,7 @@ const AppRoutes: Routes = [
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
+    //DpDatePickerModule,
 
   ],
   providers: [AuthService],
