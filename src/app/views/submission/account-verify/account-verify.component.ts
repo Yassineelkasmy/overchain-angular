@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { RegistrationService } from 'src/app/services/registration.service';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class AccountVerifyComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
+    private registrationService : RegistrationService,
     private router: Router,
     
     ) {
@@ -56,5 +58,7 @@ export class AccountVerifyComponent implements OnInit {
     this.router.navigate(["/submission/register"]);
     
   }
+
+  
 
 }

@@ -29,9 +29,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 import { CryptoPricesComponent } from './views/home/components/crypto-prices/crypto-prices.component';
-//import { DpDatePickerModule } from 'ng2-date-picker';
 
-import { HttpClientModule } from '@angular/common/http';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { FileUploadService } from './services/file-upload.service';
 
@@ -81,7 +81,11 @@ const AppRoutes: Routes = [
     ReactiveFormsModule,
 
   ],
-  providers: [AuthService,FileUploadService ,AuthInterceptor],
+  providers: [
+    AuthService,
+    FileUploadService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -11,9 +11,7 @@ export class RegistrationService {
     
   }
 
-  test() {
-    this.httpClient.get(usersService);
-  }
+
 
 
   
