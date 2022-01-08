@@ -16,7 +16,7 @@ export const environment = {
   },
 
   apis : {
-    retries: 2, 
+    retries: 5, 
     usersSerice: "http://localhost:3000",
      
   }

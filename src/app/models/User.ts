@@ -1,8 +1,9 @@
-export interface User {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-  photoURL: string | null;
-  emailVerified: boolean;
-  accessToken?: string;
+export interface User{
+    uid:string;
+    email:string;
+    firstName:string;
+    lastName:string;
+    phone:string;
+    address:string;
+    isVerified:boolean;
 }

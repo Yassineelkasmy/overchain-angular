@@ -3,7 +3,7 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AuthProvider, GoogleAuthProvider, GithubAuthProvider } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
-import { User } from '../models/User';
+import { AuthUser } from '../models/AuthUser';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-        this.currentUser = user as User;
+        this.currentUser = user as AuthUser;
         localStorage.setItem('user', JSON.stringify(this.userData));
 
       } else {
@@ -75,10 +75,10 @@ export class AuthService {
 
 
 
-  SetUserData(user : User | null) {
+  SetUserData(user : AuthUser | null) {
     if(user){
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = {
+    const userData: AuthUser = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
@@ -131,6 +131,10 @@ authCallBack() {
 
   }
 
-  currentUser? : User;
+  currentUser? : AuthUser;
+
+  getImmediateAccessToken() : string {
+    return (JSON.parse(localStorage.getItem("user")!)).stsTokenManager.accessToken;
+  }
 
 }

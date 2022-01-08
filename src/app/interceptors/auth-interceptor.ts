@@ -2,17 +2,17 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/c
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { Observable } from "rxjs";
-import { User } from "../models/User";
+import { AuthService } from "../services/auth.service";
+
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private afAuth: AngularFireAuth) {
-        this.afAuth.authState.subscribe(user => {
+    constructor(private afAuth: AngularFireAuth, private authService:AuthService) {
+        this.accessToken = this.authService.getImmediateAccessToken();
+        this.afAuth.authState.subscribe((user) => {
             if(user) {
-              //const currentUser = user as User;
-              user.getIdToken().then((token)=>this.accessToken = token);
-              
+                user.getIdToken().then((token)=> this.accessToken = token); 
             }
           })
     }
@@ -23,12 +23,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
         
         console.log(this.accessToken);
+        
         if (this.accessToken) {
             const cloned = req.clone({
                 headers: req.headers.set("Authorization",
                     "Bearer " + this.accessToken)
             });
-
+                
             return next.handle(cloned);
         }
         else {

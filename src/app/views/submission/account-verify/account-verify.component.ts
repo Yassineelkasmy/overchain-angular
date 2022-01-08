@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterRquest } from 'src/app/components/dto/register.request';
+import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { RegistrationService } from 'src/app/services/registration.service';
@@ -16,6 +18,7 @@ export class AccountVerifyComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
+    private afAuth: AngularFireAuth, 
     private uploadService: FileUploadService,
     public registrationService : RegistrationService,
     private router: Router,
@@ -30,10 +33,18 @@ export class AccountVerifyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.afAuth.authState.subscribe(
+      (user) => this.registrationService.getUser().subscribe(
+        (data) => {
+          const response  = data as Response;
+          console.log(response.body);
+        }
+      )
+    )
   }
  
 
+  user?: User;
   verifyForm: FormGroup;
   isLoading:boolean = false;
 
