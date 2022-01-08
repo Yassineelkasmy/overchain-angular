@@ -44,7 +44,7 @@
             </app-upload-field>
             <app-upload-field class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
             </app-upload-field>
-            <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Taxes Bill'">
+            <app-upload-field class="col-span-2" [folder]="'TAXES-BILL'" [label]="'Taxes Bill'">
             </app-upload-field>
         </form>
 
@@ -55,6 +55,7 @@
 
         <div class="h-10"></div>
         <div class="flex space-x-2">
+            <button (click)="register()" [disabled]="!canSubmit" class="btn btn-large btn-primary">Proceed</button>
             <label for="my-modal-2" class="btn modal-button" >Change Account</label> 
                     <input type="checkbox" id="my-modal-2" class="modal-toggle"> 
                     <div class="modal">
@@ -68,7 +69,7 @@
                         </div>
                     </div>
                     </div>
-            <button class="btn btn-large btn-primary">Proceed</button>
+         
         </div>
 
     </div>

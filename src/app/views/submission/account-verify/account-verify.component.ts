@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegisterRquest } from 'src/app/components/dto/register.request';
 import { AuthService } from 'src/app/services/auth.service';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
 
@@ -14,7 +16,8 @@ export class AccountVerifyComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
-    private registrationService : RegistrationService,
+    private uploadService: FileUploadService,
+    public registrationService : RegistrationService,
     private router: Router,
     
     ) {
@@ -58,6 +61,25 @@ export class AccountVerifyComponent implements OnInit {
     this.router.navigate(["/submission/register"]);
     
   }
+
+  get canSubmit() : boolean {
+
+    return this.verifyForm.valid && 
+    this.uploadService.minAccountVerificationFiles == this.uploadService.accountVerificationFilesCount;
+  }
+
+
+  register() {
+    let registerRquest : RegisterRquest = {
+      firstName: this.firstName?.value,
+      lastName: this.lastName?.value,
+      address: this.address?.value,
+      phone:this.phone?.value
+    } 
+    this.registrationService.registerNewUser(registerRquest);
+  }
+
+
 
   
 

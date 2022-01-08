@@ -52,6 +52,7 @@ export class UploadFieldComponent implements OnInit {
       },
       () => {
         this.uploaded = true;
+        this.uploadService.accountVerificationFilesCount++;
       }
 
     );
@@ -63,6 +64,7 @@ export class UploadFieldComponent implements OnInit {
     this.uploaded = false;
     this.currentFileUpload = undefined;
     this.myInputVariable!.nativeElement.value = '';
+    this.uploadService.accountVerificationFilesCount--;
 
   }
 
