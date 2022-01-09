@@ -12,7 +12,7 @@ import { FileUploadService } from 'src/app/services/file-upload.service';
 export class UploadFieldComponent implements OnInit {
 
   constructor(
-    private uploadService : FileUploadService
+    public uploadService : FileUploadService
   ) {
 
    }

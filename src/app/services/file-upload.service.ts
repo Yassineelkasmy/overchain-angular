@@ -107,7 +107,7 @@ export class FileUploadService {
   }
 
   private savePropertyFileData(fileUpload: FileUpload, folder : string) {
-    const userFilesData: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.basePath}`)
+    const propertyFilesData: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.basePath}`)
     .collection('properties').doc(this.propertyCode);
 
 
@@ -119,7 +119,7 @@ export class FileUploadService {
       Object.assign(obj, { [key]: value }) 
     ), {});
 
-    return userFilesData.set(dataObj, {merge:true});
+    return propertyFilesData.set(dataObj, {merge:true});
        
   }
 

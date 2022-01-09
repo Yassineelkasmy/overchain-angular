@@ -23,9 +23,10 @@ export class RegistrationService {
   registerNewUser(request: RegisterUserRquest): Observable<User> {
     
     return this.httpClient.post<User>(environment.apis.usersSerice,request);
-    
 
   }
+
+  
 
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OptionalUpload } from 'src/app/models/OptionalUpload';
 import { FileUploadService } from 'src/app/services/file-upload.service';
+import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
   selector: 'app-register-property',
@@ -10,7 +11,10 @@ import { FileUploadService } from 'src/app/services/file-upload.service';
 })
 export class RegisterPropertyComponent implements OnInit {
 
-  constructor(private uploadService:FileUploadService) {
+  constructor(
+    private uploadService:FileUploadService,
+    private registrationService: RegistrationService,
+    ) {
     this.verifyForm = new FormGroup({
       "code": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
       "title": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
@@ -76,6 +80,18 @@ export class RegisterPropertyComponent implements OnInit {
 
   updatePropertyCode() {
     this.uploadService.propertyCode = this.code?.value;
+  }
+
+  registerPorperty() {
+    let registerPorpertyRequest : RegistertPropertyRequest = {
+      code: this.code?.value,
+      title: this.title?.value,
+      address: this.address?.value,
+      description: this.description?.value,
+      optionals: this.optionals.length
+    }
+
+    
   }
 
 }
