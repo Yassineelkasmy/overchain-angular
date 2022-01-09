@@ -35,6 +35,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { FileUploadService } from './services/file-upload.service';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { RegistredUserGuard } from './guards/registred-user.guard';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,8 +45,8 @@ const AppRoutes: Routes = [
     children: [
       { path: 'register' , component: RegisterComponent, canActivate:[UnAuthGuard] },
       { path: 'accountverify' , component: AccountVerifyComponent, canActivate:[AuthGuard] },
-      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard],   },
-      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard],   }
+      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard, RegistredUserGuard],   },
+      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard, RegistredUserGuard],   }
     ]
   },
 ];
