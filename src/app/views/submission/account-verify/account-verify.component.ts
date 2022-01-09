@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterRquest } from 'src/app/components/dto/register.request';
 import { User } from 'src/app/models/User';
+import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { RegistrationService } from 'src/app/services/registration.service';
@@ -18,6 +19,7 @@ export class AccountVerifyComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
+    public accountService: AccountService,
     private afAuth: AngularFireAuth, 
     private uploadService: FileUploadService,
     public registrationService : RegistrationService,
@@ -33,18 +35,10 @@ export class AccountVerifyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.afAuth.authState.subscribe(
-      (user) => this.registrationService.getUser().subscribe(
-        (data) => {
-          const response  = data as Response;
-          console.log(response.body);
-        }
-      )
-    )
+    
   }
  
 
-  user?: User;
   verifyForm: FormGroup;
   isLoading:boolean = false;
 
@@ -87,8 +81,9 @@ export class AccountVerifyComponent implements OnInit {
       address: this.address?.value,
       phone:this.phone?.value
     } 
-    this.registrationService.registerNewUser(registerRquest);
-  }
+    this.registrationService.registerNewUser(registerRquest).subscribe(
+      (user) => this.accountService.setCurrentUser(user)
+    )  }
 
 
 
