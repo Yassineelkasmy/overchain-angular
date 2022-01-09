@@ -30,6 +30,7 @@ export class UploadFieldComponent implements OnInit {
   percentage?: number;
   uploaded:boolean = false;
 
+
   @ViewChild('fileInput')
   myInputVariable?: ElementRef;
 
@@ -38,12 +39,12 @@ export class UploadFieldComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  upload(): void {
+  uploadAccountFile(): void {
     const file = this.selectedFiles!.item(0);
     this.selectedFiles = undefined;
 
     this.currentFileUpload = new FileUpload(file!);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.folder).subscribe(
+    this.uploadService.pushAccountFileToStorage(this.currentFileUpload, this.folder).subscribe(
 
       percentage => {
         this.percentage = Math.round(percentage!);
@@ -54,12 +55,8 @@ export class UploadFieldComponent implements OnInit {
       },
       () => {
         this.uploaded = true;
-        if(this.type == UploadFieldType.AccountVerificationFile)
-          this.uploadService.accountVerificationFilesCount++;
-        if(this.type == UploadFieldType.PropertyVerificationFile)
-          this.uploadService.propertyVerificationFilesCount++;
-          console.log(this.uploadService.propertyVerificationFilesCount)
-          console.log(this.uploadService.minPropertyVerificationFiles)
+        this.uploadService.accountVerificationFilesCount++;
+
         
       }
 
@@ -67,16 +64,47 @@ export class UploadFieldComponent implements OnInit {
 
   }
 
-  deleteFileUpload(): void {
-    this.uploadService.deleteFile(this.currentFileUpload!, this.folder);
+  deleteAccountFileUpload(): void {
+    this.uploadService.deleteAccountFile(this.currentFileUpload!, this.folder);
+    this.uploaded = false;
+    this.currentFileUpload = undefined;
+    this.myInputVariable!.nativeElement.value = ''; 
+    this.uploadService.accountVerificationFilesCount--;
+  
+
+  }
+
+
+  uploadPropertyFile(): void {
+    const file = this.selectedFiles!.item(0);
+    this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file!);
+    this.uploadService.pushPropertyFileToStorage(this.currentFileUpload, this.folder).subscribe(
+
+      percentage => {
+        this.percentage = Math.round(percentage!);
+
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        this.uploaded = true;       
+        this.uploadService.propertyVerificationFilesCount++;
+        
+      }
+
+    );
+
+  }
+
+  deletePropertyFileUpload(): void {
+    this.uploadService.deletePropertyFile(this.currentFileUpload!, this.folder);
     this.uploaded = false;
     this.currentFileUpload = undefined;
     this.myInputVariable!.nativeElement.value = '';
-
-    if(this.type == UploadFieldType.AccountVerificationFile)
-      this.uploadService.accountVerificationFilesCount--;
-    if(this.type == UploadFieldType.PropertyVerificationFile)
-      this.uploadService.propertyVerificationFilesCount--;
+    this.uploadService.propertyVerificationFilesCount--;
 
   }
 

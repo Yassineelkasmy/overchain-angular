@@ -11,7 +11,7 @@
                 <label class="label">
               <span class="label-text">Property Code</span>
               </label>
-                <input formControlName="code" type="text" placeholder="Your real first name" class="input input-warning input-bordered">
+                <input (change)="updatePropertyCode()" formControlName="code" type="text" placeholder="Your real first name" class="input input-warning input-bordered">
                 <div *ngIf="code?.invalid && code?.touched" class="error">Invalid first name</div>
             </div>
             <div>
@@ -51,7 +51,7 @@
             <app-upload-field [type]="1" class="col-span-2" [folder]="'FRONT-IMAGE'" [label]="'Front image'">
             </app-upload-field>
 
-            <app-upload-field [type]="1" class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Property Tax Document'">
+            <app-upload-field [type]="1" class="col-span-2" [folder]="'TAXES-BILL'" [label]="'Property Tax Document'">
             </app-upload-field>
 
             <app-upload-field [type]="1" *ngFor="let opt of optionals" class="col-span-2" [folder]="opt.folder" [label]="opt.label">

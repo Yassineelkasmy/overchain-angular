@@ -73,6 +73,10 @@ export class RegisterPropertyComponent implements OnInit {
     return this.verifyForm.get("address");
   }
 
+  updatePropertyCode() {
+    this.uploadService.code = this.code?.value;
+  }
+
 }
 
 interface OptionalUpload {

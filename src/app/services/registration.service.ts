@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { RegisterRquest } from '../components/dto/register.request';
+import { RegisterUserRquest } from '../components/dto/register-user.request';
 import { User } from '../models/User';
 
 @Injectable({
@@ -16,18 +16,18 @@ export class RegistrationService {
 
 
 
-
-
-
   getUser() : Observable<User> {
     return this.httpClient.get<User>(environment.apis.usersSerice);
   }
 
-  registerNewUser(request: RegisterRquest): Observable<User> {
+  registerNewUser(request: RegisterUserRquest): Observable<User> {
     
     return this.httpClient.post<User>(environment.apis.usersSerice,request);
     
+
   }
+
+
 
 
   

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { RegisterRquest } from 'src/app/components/dto/register.request';
+import { RegisterUserRquest } from 'src/app/components/dto/register-user.request';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
@@ -73,7 +73,7 @@ export class AccountVerifyComponent implements OnInit {
 
 
   register() {
-    let registerRquest : RegisterRquest = {
+    let registerRquest : RegisterUserRquest = {
       firstName: this.firstName?.value,
       lastName: this.lastName?.value,
       address: this.address?.value,
