@@ -32,7 +32,7 @@ export class FileUploadService {
   propertyVerificationFilesCount  = 0;
   minPropertyVerificationFiles  = 3;
 
-  public code?:string;
+  public propertyCode?:string;
   
   pushAccountFileToStorage(fileUpload: FileUpload, folder:string): Observable<number | undefined> {
     const filePath = `${this.basePath}/${folder}/${fileUpload.file.name}`;
@@ -80,7 +80,7 @@ export class FileUploadService {
   // Property Upload Methods
 
   pushPropertyFileToStorage(fileUpload: FileUpload, folder:string): Observable<number | undefined> {
-    const filePath = `${this.basePath}/properties/${this.code}/${folder}/${fileUpload.file.name}`;
+    const filePath = `${this.basePath}/properties/${this.propertyCode}/${folder}/${fileUpload.file.name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, fileUpload.file);
 
@@ -102,12 +102,13 @@ export class FileUploadService {
   }
 
   private deletePropertyFileStorage(name: string, folder: string): void {
-    const storageRef = this.storage.ref(this.basePath + "/properties/"+ this.code + "/" + folder);
+    const storageRef = this.storage.ref(this.basePath + "/properties/"+ this.propertyCode + "/" + folder);
     storageRef.child(name).delete();
   }
 
   private savePropertyFileData(fileUpload: FileUpload, folder : string) {
-    const userFilesData: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.basePath}`);
+    const userFilesData: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.basePath}`)
+    .collection('properties').doc(this.propertyCode);
 
 
     var dataMap : Map<string, string> = new Map(); 
@@ -121,9 +122,6 @@ export class FileUploadService {
     return userFilesData.set(dataObj, {merge:true});
        
   }
-
-
-
 
 
 

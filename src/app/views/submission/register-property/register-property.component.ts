@@ -74,7 +74,7 @@ export class RegisterPropertyComponent implements OnInit {
   }
 
   updatePropertyCode() {
-    this.uploadService.code = this.code?.value;
+    this.uploadService.propertyCode = this.code?.value;
   }
 
 }
