@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { RegisterUserRquest } from '../components/dto/register-user.request';
+import { RegisterPropertyRequest } from '../dto/register-porperty.request';
+import { RegisterUserRquest } from '../dto/register-user.request';
+import { Property } from '../models/Property';
 import { User } from '../models/User';
 
 @Injectable({
@@ -15,7 +17,7 @@ export class RegistrationService {
   }
 
 
-
+  submittedProperty?: Property
   getUser() : Observable<User> {
     return this.httpClient.get<User>(environment.apis.usersSerice);
   }
@@ -26,7 +28,10 @@ export class RegistrationService {
 
   }
 
-  
+  registerNewProperty(request: RegisterPropertyRequest) : Observable<Property> {
+
+    return this.httpClient.post<Property>(environment.apis.usersSerice + "/properties", request);
+  }
 
 
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegisterPropertyRequest } from 'src/app/dto/register-porperty.request';
 import { OptionalUpload } from 'src/app/models/OptionalUpload';
+import { Property } from 'src/app/models/Property';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
@@ -13,7 +15,7 @@ export class RegisterPropertyComponent implements OnInit {
 
   constructor(
     private uploadService:FileUploadService,
-    private registrationService: RegistrationService,
+    public registrationService: RegistrationService,
     ) {
     this.verifyForm = new FormGroup({
       "code": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
@@ -32,7 +34,7 @@ export class RegisterPropertyComponent implements OnInit {
 
   verifyForm: FormGroup;
   isLoading:boolean = false;
-
+  
   addOptional() {
     if(this.totalOptionals <= this.maxOptionals){
     this.totalOptionals++;
@@ -50,10 +52,7 @@ export class RegisterPropertyComponent implements OnInit {
     this.uploadService.minPropertyVerificationFiles == this.uploadService.propertyVerificationFilesCount;
   }
 
-  registerProperty() {
-
-  }
-
+  
 
   removeOptional() {
     this.totalOptionals--;
@@ -83,16 +82,18 @@ export class RegisterPropertyComponent implements OnInit {
   }
 
   registerPorperty() {
-    let registerPorpertyRequest : RegistertPropertyRequest = {
+    let registerPorpertyRequest : RegisterPropertyRequest = {
       code: this.code?.value,
       title: this.title?.value,
       address: this.address?.value,
       description: this.description?.value,
       optionals: this.optionals.length
     }
-
-    
+    this.registrationService.registerNewProperty(registerPorpertyRequest)
+    .subscribe((property) => this.registrationService.submittedProperty = property )
   }
+
+
 
 }
 
