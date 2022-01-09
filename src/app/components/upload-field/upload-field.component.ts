@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
+import { UploadFieldType } from 'src/app/enums/UploadFieldType';
 import { FileUpload } from 'src/app/models/file-upload.model';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 
@@ -21,6 +22,7 @@ export class UploadFieldComponent implements OnInit {
 
   @Input() folder: string = '';
   @Input() label: string = '';
+  @Input() type?: UploadFieldType;
 
 
   selectedFiles?: FileList;
@@ -52,7 +54,13 @@ export class UploadFieldComponent implements OnInit {
       },
       () => {
         this.uploaded = true;
-        this.uploadService.accountVerificationFilesCount++;
+        if(this.type == UploadFieldType.AccountVerificationFile)
+          this.uploadService.accountVerificationFilesCount++;
+        if(this.type == UploadFieldType.PropertyVerificationFile)
+          this.uploadService.propertyVerificationFilesCount++;
+          console.log(this.uploadService.propertyVerificationFilesCount)
+          console.log(this.uploadService.minPropertyVerificationFiles)
+        
       }
 
     );
@@ -64,7 +72,11 @@ export class UploadFieldComponent implements OnInit {
     this.uploaded = false;
     this.currentFileUpload = undefined;
     this.myInputVariable!.nativeElement.value = '';
-    this.uploadService.accountVerificationFilesCount--;
+
+    if(this.type == UploadFieldType.AccountVerificationFile)
+      this.uploadService.accountVerificationFilesCount--;
+    if(this.type == UploadFieldType.PropertyVerificationFile)
+      this.uploadService.propertyVerificationFilesCount--;
 
   }
 

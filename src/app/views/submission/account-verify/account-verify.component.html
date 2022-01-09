@@ -40,11 +40,11 @@
 
             </div>
 
-            <app-upload-field class="col-span-2" [folder]="'IDCARD-FRONT'" [label]="'ID Card (Front)'">
+            <app-upload-field [type]="0" class="col-span-2" [folder]="'IDCARD-FRONT'" [label]="'ID Card (Front)'">
             </app-upload-field>
-            <app-upload-field class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
+            <app-upload-field [type]="0" class="col-span-2" [folder]="'IDCARD-BACK'" [label]="'ID Card (Back)'">
             </app-upload-field>
-            <app-upload-field class="col-span-2" [folder]="'TAXES-BILL'" [label]="'Taxes Bill'">
+            <app-upload-field [type]="0" class="col-span-2" [folder]="'TAXES-BILL'" [label]="'Taxes Bill'">
             </app-upload-field>
         </form>
 
@@ -75,7 +75,29 @@
     </div>
 
     <div *ngIf="accountService.currentUser">
+        <app-user-profile 
+     [currentAuthUser]="accountService.currentAuthUser" [currenUser]="accountService.currentUser" >
         {{ accountService.currentUser.address }}
+    </app-user-profile>
+    <div class="h-10"></div>
+    <div class="flex space-x-2">
+        <button [routerLink]="'/submission/registerproperty'" class="btn btn-large btn-primary">Continue</button >
+        <label for="my-modal-2" class="btn modal-button" >Change Account</label> 
+                <input type="checkbox" id="my-modal-2" class="modal-toggle"> 
+                <div class="modal">
+                <div class="modal-box">
+                    <p>Every property registration requires an account for the owner, if you change the current account
+                        you will have to create and verify a new one with different identity
+                    </p> 
+                    <div class="modal-action">
+                    <label (click)="changeAccount()" for="my-modal-2" class="btn btn-primary">Sign out</label> 
+                    <label for="my-modal-2" class="btn">Cancel</label>
+                    </div>
+                </div>
+                </div>
+     
+    </div>
+
     </div>
 
 

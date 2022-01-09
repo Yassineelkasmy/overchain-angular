@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RegisterRquest } from 'src/app/components/dto/register.request';
-import { User } from 'src/app/models/User';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
@@ -23,7 +21,7 @@ export class AccountVerifyComponent implements OnInit {
     private afAuth: AngularFireAuth, 
     private uploadService: FileUploadService,
     public registrationService : RegistrationService,
-    private router: Router,
+   
     
     ) {
     this.verifyForm = new FormGroup({
@@ -63,7 +61,7 @@ export class AccountVerifyComponent implements OnInit {
   changeAccount() {
 
     this.authService.SignOut();
-    this.router.navigate(["/submission/register"]);
+   
     
   }
 

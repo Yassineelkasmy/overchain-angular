@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthUser } from '../models/AuthUser';
 import { User } from '../models/User';
-import { AuthService } from './auth.service';
 import { RegistrationService } from './registration.service';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { RegistrationService } from './registration.service';
 export class AccountService {
 
   constructor(
-    private authService: AuthService,
+    private afAuth: AngularFireAuth,
     private registrationService: RegistrationService,
   ) {
 
@@ -17,9 +18,14 @@ export class AccountService {
         (user) => this.setCurrentUser(user)
       )
 
+      this.afAuth.authState.subscribe(
+        (authUser) => this.currentAuthUser = authUser
+      )
+
    }
 
    currentUser?: User;
+   currentAuthUser?: AuthUser | null;
 
    setCurrentUser(user:User) {
      this.currentUser = user;

@@ -30,7 +30,7 @@ export class FileUploadService {
   accountVerificationFilesCount  = 0;
   minAccountVerificationFiles  = 3;
   propertyVerificationFilesCount  = 0;
-  minPropertyVerificationFiles  = 0;
+  minPropertyVerificationFiles  = 3;
   
   pushFileToStorage(fileUpload: FileUpload, folder:string): Observable<number | undefined> {
     const filePath = `${this.basePath}/${folder}/${fileUpload.file.name}`;

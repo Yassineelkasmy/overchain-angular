@@ -28,7 +28,7 @@
                 <label class="label">
             <span class="label-text">Property Description</span>
             </label>
-                <input formControlName="description" type="text" placeholder="Your real last name" class="input input-warning input-bordered">
+                <textarea formControlName="description" type="text" placeholder="Your real last name" class="input input-warning input-bordered h-20 w-full" required> </textarea> 
                 <div *ngIf="description?.invalid && description?.touched" class="error">Invalid last name</div>
 
             </div>
@@ -38,7 +38,7 @@
                 <label class="label">
           <span class="label-text">Address Line </span>
           </label>
-                <textarea formControlName="description" type="" placeholder="Your real last name" class="input input-warning input-bordered h-20 w-full" required> </textarea>
+                <textarea formControlName="address" type="text" placeholder="Your real last name" class="input input-warning input-bordered h-20 w-full" required> </textarea>
                 <div *ngIf="address?.invalid && address?.touched" class="error">Invalid last name</div>
 
             </div>
@@ -46,15 +46,15 @@
             <p class="col-span-2">
                 These are important documents that you must provide so we can prove that the property exists in real world , also owned by you. You can add up to 10 documents.
             </p>
-            <app-upload-field class="col-span-2" [folder]="'REGISTRATION-LICENSE'" [label]="'Property Registration License'">
+            <app-upload-field [type]="1" class="col-span-2" [folder]="'REGISTRATION-LICENSE'" [label]="'Property Registration License'">
             </app-upload-field>
-            <app-upload-field class="col-span-2" [folder]="'FRONT-IMAGE'" [label]="'Front image'">
-            </app-upload-field>
-
-            <app-upload-field class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Property Tax Document'">
+            <app-upload-field [type]="1" class="col-span-2" [folder]="'FRONT-IMAGE'" [label]="'Front image'">
             </app-upload-field>
 
-            <app-upload-field *ngFor="let opt of optionals" class="col-span-2" [folder]="opt.folder" [label]="opt.label">
+            <app-upload-field [type]="1" class="col-span-2" [folder]="'TAXES-BIll'" [label]="'Property Tax Document'">
+            </app-upload-field>
+
+            <app-upload-field [type]="1" *ngFor="let opt of optionals" class="col-span-2" [folder]="opt.folder" [label]="opt.label">
             </app-upload-field>
 
 
@@ -73,8 +73,11 @@
 
         <div class="h-10"></div>
 
-        <button class="btn btn-large">Back</button>
-
+        <div class="flex space-x-2">
+            <button (click)="registerProperty()" [disabled]="!canSubmit" class="btn btn-large btn-primary">Proceed</button>
+            <button [routerLink]="'/submission/register'" class="btn btn-large">Go back</button>
+         
+        </div>
     </div>
 
 </div>

@@ -34,6 +34,7 @@ import { CryptoPricesComponent } from './views/home/components/crypto-prices/cry
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { FileUploadService } from './services/file-upload.service';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -67,6 +68,7 @@ const AppRoutes: Routes = [
     FooterComponent,
     CreateContractComponent,
     CryptoPricesComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
