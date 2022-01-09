@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OptionalUpload } from 'src/app/models/OptionalUpload';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
@@ -79,7 +80,3 @@ export class RegisterPropertyComponent implements OnInit {
 
 }
 
-interface OptionalUpload {
-  label:string,
-  folder:string,
-}
