@@ -31,13 +31,9 @@ export class CreateContractComponent implements OnInit {
 
     ) {
     this.contractForm = new FormGroup({
-      "code": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
-      "title": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
-      "description": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
       "wallet": new FormControl(null, [Validators.minLength(10) ,Validators.maxLength(100), Validators.required]),
-      "priceETH": new FormControl(null,Validators.required),
-      "minPriceEth" : new FormControl(null),
-      "listedWallet": new FormControl(null),
+      "price": new FormControl(null,Validators.required),
+      "listedWallet": new FormControl(null, Validators.required),
       "type" : new FormControl(0),
     });
   }
@@ -54,16 +50,29 @@ export class CreateContractComponent implements OnInit {
 
   connect(){
 
-    this.metamaskService.connectAccount();
+    this.metamaskService.connectAccount().then(
+      ()=> this.wallet?.setValue(this.metamaskService.accounts[0])
+    );
 
   }
 
   convertUsePrice(){
-     this.convertedEthValue = this.priceETH?.value / this.ethConvertedValue
+     this.convertedEthValue = this.price?.value / this.ethConvertedValue
   }
 
   changeSmartContractType() {
     this.smartContractType = this.type?.value;
+    this.listedWallet?.reset();
+  }
+
+  removeWalletFromList(walletAddr:string) {
+    if(this.smartContractType == SmartContractType.WhiteListed)
+    this.whiteList = this.whiteList.filter((addr)=> addr != walletAddr);
+
+    if(this.smartContractType == SmartContractType.BlackListed)
+    this.blackList = this.blackList.filter((addr)=> addr != walletAddr);
+    
+    this.listedWallet?.reset();
   }
 
   addWalletToList(){
@@ -72,8 +81,6 @@ export class CreateContractComponent implements OnInit {
     this.whiteList.push(walletAddress);
     if(this.smartContractType == SmartContractType.BlackListed)
     this.blackList.push(walletAddress);
-
-    this.listedWallet?.reset();
   }
 
 
@@ -86,20 +93,8 @@ export class CreateContractComponent implements OnInit {
     return this.contractForm.get("wallet");
   }
 
-  get priceETH() {
-    return this.contractForm.get("priceETH");
-  }
-
-  get minPriceEth() {
-    return this.contractForm.get("minPriceEth");
-  }
-
-  get description() {
-    return this.contractForm.get("description");
-  }
-
-  get address() {
-    return this.contractForm.get("address");
+  get price() {
+    return this.contractForm.get("price");
   }
 
   get type() {
@@ -110,8 +105,17 @@ export class CreateContractComponent implements OnInit {
     return this.contractForm.get("listedWallet");
   }
 
-
+  get canSubmit() : boolean | undefined {
+    if(this.smartContractType == SmartContractType.Basic)
+    return (this.wallet?.valid && this.price?.valid)
+    if(this.smartContractType == SmartContractType.WhiteListed)
+    return (this.wallet?.valid && this.price?.valid && this.whiteList.length>0)
+    else return (this.wallet?.valid && this.price?.valid && this.blackList.length>0)
+  }
  
+  test() {
+    console.log(this.contractForm.value)
+  }
    
   
 

@@ -29,13 +29,13 @@
             <span class="label-text">Property Price</span>
             </label>
                 <label class="input-group input-group-md">
-              <input (change)="convertUsePrice()" formControlName="priceETH" type="number" min="0" class="input input-warning input-bordered">
+              <input (change)="convertUsePrice()" formControlName="price" type="number" min="0" class="input input-warning input-bordered">
                 <span>USD</span>
               </label>
               <div class="h-5"></div>
                <!-- convert usd => eth -->
               <div>  ETH <span *ngIf="convertedEthValue" [innerText]="convertedEthValue"></span></div>
-              <div *ngIf="priceETH?.invalid && priceETH?.touched" class="error">Invalid price</div>
+              <div *ngIf="price?.invalid && price?.touched" class="error">Invalid price</div>
 
             </div>
 
@@ -82,7 +82,7 @@
               <p class="text-lg font-semibold mx-5 px-5">
                 {{ addr }}
               </p>
-              <div  class="btn btn-error btn-circle btn-xs">-</div>
+              <div (click)="removeWalletFromList(addr)" class="btn btn-error btn-circle btn-xs">-</div>
               
               
             </div>  
@@ -109,7 +109,7 @@
               <p class="text-lg font-semibold mx-5 px-5">
                 {{addr}}
               </p>
-              <div  class="btn btn-error btn-circle btn-xs">-</div>
+              <div (click)="removeWalletFromList(addr)" class="btn btn-error btn-circle btn-xs">-</div>
               
               
             </div>  
@@ -126,6 +126,7 @@
 
         <div class="h-10"></div>
 
+        <button [disabled]="!canSubmit" (click)="test()" class="btn btn- btn-primary mr-4">Submit Contract</button>
         <button class="btn btn-large">Back</button>
 
 
