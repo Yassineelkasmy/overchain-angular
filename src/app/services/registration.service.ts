@@ -18,6 +18,7 @@ export class RegistrationService {
 
 
   submittedProperty?: Property
+  selectedProperty?: Property;
   getUser() : Observable<User> {
     return this.httpClient.get<User>(environment.apis.usersSerice);
   }
@@ -31,6 +32,10 @@ export class RegistrationService {
   registerNewProperty(request: RegisterPropertyRequest) : Observable<Property> {
 
     return this.httpClient.post<Property>(environment.apis.usersSerice + "/properties", request);
+  }
+
+  getUserProperties() : Observable<Property[]> {
+    return this.httpClient.get<Property[]>(environment.apis.usersSerice + "/properties")
   }
 
 

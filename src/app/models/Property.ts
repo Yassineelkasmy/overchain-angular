@@ -5,4 +5,6 @@ export interface Property{
     description:string;
     address:string;
     isVerified:boolean;
+    hasContract:boolean,
+
 }

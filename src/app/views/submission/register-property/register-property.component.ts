@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterPropertyRequest } from 'src/app/dto/register-porperty.request';
 import { OptionalUpload } from 'src/app/models/OptionalUpload';
 import { Property } from 'src/app/models/Property';
+import { AccountService } from 'src/app/services/account.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
@@ -16,6 +18,8 @@ export class RegisterPropertyComponent implements OnInit {
   constructor(
     private uploadService:FileUploadService,
     public registrationService: RegistrationService,
+    public accountService: AccountService,
+    private router: Router,
     ) {
     this.verifyForm = new FormGroup({
       "code": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
@@ -34,6 +38,8 @@ export class RegisterPropertyComponent implements OnInit {
 
   verifyForm: FormGroup;
   isLoading:boolean = false;
+  
+  newPorperty:boolean = false;
   
   addOptional() {
     if(this.totalOptionals <= this.maxOptionals){
@@ -79,6 +85,11 @@ export class RegisterPropertyComponent implements OnInit {
 
   updatePropertyCode() {
     this.uploadService.propertyCode = this.code?.value;
+  }
+
+  selectProperty(property:Property) {
+    this.registrationService.selectedProperty = property;
+    this.router.navigate(["/submission/createcontract"]);
   }
 
   registerPorperty() {
