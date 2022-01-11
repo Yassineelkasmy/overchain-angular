@@ -16,11 +16,11 @@ export class CreateContractComponent implements OnInit {
 
   convertedEthValue? : any;
 
-  convertedMinEthValue  ?: any;
 
-  smartContractType : SmartContractType = SmartContractType.WhiteListed;
-  whiteList : string[] = [""];
-  blackList : string[] = [""];
+
+  smartContractType : SmartContractType = SmartContractType.Basic;
+  whiteList : string[] = [];
+  blackList : string[] = [];
 
  
 
@@ -37,9 +37,8 @@ export class CreateContractComponent implements OnInit {
       "wallet": new FormControl(null, [Validators.minLength(10) ,Validators.maxLength(100), Validators.required]),
       "priceETH": new FormControl(null,Validators.required),
       "minPriceEth" : new FormControl(null),
-      "deadLine" : new FormControl(null),
-      "whiteListed": new FormControl(this.smartContractType == SmartContractType.WhiteListed),
-      "blackListed": new FormControl(this.smartContractType == SmartContractType.BlackListed),
+      "listedWallet": new FormControl(null),
+      "type" : new FormControl(0),
     });
   }
 
@@ -61,12 +60,23 @@ export class CreateContractComponent implements OnInit {
 
   convertUsePrice(){
      this.convertedEthValue = this.priceETH?.value / this.ethConvertedValue
-
   }
 
-  convertMinUsePrice(){
-     this.convertedMinEthValue = this.minPriceEth?.value / this.ethConvertedValue
+  changeSmartContractType() {
+    this.smartContractType = this.type?.value;
   }
+
+  addWalletToList(){
+    const walletAddress = this.listedWallet?.value;
+    if(this.smartContractType == SmartContractType.WhiteListed)
+    this.whiteList.push(walletAddress);
+    if(this.smartContractType == SmartContractType.BlackListed)
+    this.blackList.push(walletAddress);
+
+    this.listedWallet?.reset();
+  }
+
+
 
   contractForm: FormGroup;
   isLoading:boolean = false;
@@ -88,29 +98,20 @@ export class CreateContractComponent implements OnInit {
     return this.contractForm.get("description");
   }
 
-
   get address() {
     return this.contractForm.get("address");
   }
 
-
-  get deadLine() {
-    return this.contractForm.get("deadLine");
+  get type() {
+    return this.contractForm.get("type");
   }
 
-  get whiteListed() {
-    return this.contractForm.get("whiteListed");
+  get listedWallet() {
+    return this.contractForm.get("listedWallet");
   }
 
-  get blackListed() {
-    return this.contractForm.get("blackListed");
-  }
 
-  changeSmartContractType(smartContractType: SmartContractType) {
-    
-      this.smartContractType = smartContractType;
-
-  }
+ 
    
   
 
