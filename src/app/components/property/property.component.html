@@ -1,0 +1,46 @@
+<div class="rounded-box gap-y-2 bg-white p-5 w-full flex flex-col">
+    <p class="font-bold">
+        Code:
+    </p>
+    <p>
+        {{property?.code}}
+    </p>
+    <p class="font-bold">
+        Title:
+    </p>
+    <p>
+        {{property?.title}}
+    </p>
+    <p class="font-bold">
+        Description:
+    </p>
+    <p>
+        {{property?.description}}
+    </p>
+    <p class="font-bold">
+        Address:
+    </p>
+    <p >
+        {{property?.address}}
+    </p>
+    <p class="font-bold">
+        Status:
+    </p>
+    <p  class="text-green-600" *ngIf="property?.isVerified">
+        Verified
+    </p>
+    <p class="text-red-600" *ngIf="!property?.isVerified">
+        Under Verification
+    </p>
+    <p *ngIf="property?.contractId" class="font-bold">
+        Contract Id:
+    </p>
+    <p *ngIf="property?.contractId">
+        {{property?.contractId}}
+    </p>
+    
+    
+    <button *ngIf="!property?.contractId" (click)="selectCurrentProperty()" class="col-span-2 btn btn-primary"> Create Contract</button>
+    <button *ngIf="property?.contractId" (click)="selectCurrentProperty()" class="col-span-2 btn"> Consult Conctract</button>
+   
+</div>            

@@ -126,8 +126,8 @@
 
         <div class="h-10"></div>
 
-        <button [disabled]="!canSubmit" (click)="test()" class="btn btn- btn-primary mr-4">Submit Contract</button>
-        <button class="btn btn-large">Back</button>
+        <button [disabled]="!canSubmit" (click)="submitContract()" class="btn btn- btn-primary mr-4">Submit Contract</button>
+        <button [routerLink]="'/submission/registerproperty'" class="btn btn-large">Back</button>
 
 
     </div>

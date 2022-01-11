@@ -1,56 +1,22 @@
 <div class="flex space-x-10">
     <app-steps [stepNum]=3></app-steps>
 
-    <div *ngIf="!newPorperty && accountService.userProperties.length>0">
+    <div *ngIf="!newPorperty && accountService.userProperties.length>0 && !registrationService.submittedProperty">
         <p class="text-lg">
             You already have posted some porperties that <span class="font-bold">have no contracts submitted</span>
             , you can choose one them to continue with
         </p>
         <div class="h-10"></div>
-        <div class="grid grid-cols-2">
-                <div *ngFor="let prop of accountService.userProperties" class="grid grid-cols-2 rounded-box bg-white p-5">
-                    <p class="font-bold">
-                        Property Code:
-                    </p>
-                    <p>
-                        {{prop.code}}
-                    </p>
-                    <p class="font-bold">
-                        Property Title:
-                    </p>
-                    <p>
-                        {{prop.title}}
-                    </p>
-                    <p class="font-bold">
-                        Property Description:
-                    </p>
-                    <p>
-                        {{prop.description}}
-                    </p>
-                    <p class="font-bold">
-                        Property Address:
-                    </p>
-                    <p>
-                        {{prop.address}}
-                    </p>
-                    <p class="font-bold">
-                        Status:
-                    </p>
-                    <p class="text-green-600" *ngIf="prop.isVerified">
-                        Verified
-                    </p>
-                    <p class="text-red-600" *ngIf="!prop.isVerified">
-                        Under Verification
-                    </p>
-                    <div class="h-5 col-span-2"></div>
-                    <button (click)="selectProperty(prop)" class="btn btn-primary"> Create Contract</button>
-                </div>            
+        <div class="grid grid-cols-2 gap-5">
+                <app-property (propertySelected)="selectProperty($event)" *ngFor="let prop of accountService.userProperties" [property]="prop" class="grid grid-cols-2 rounded-box bg-white p-5">
+                    
+                </app-property>            
         </div>
         <div class="h-10"></div>
         <button (click)="newPorperty=true" class="btn"> Register New Property</button>
     </div>
 
-    <div *ngIf="(!registrationService.submittedProperty && accountService.userProperties.length == 0) || newPorperty">
+    <div *ngIf="(!registrationService.submittedProperty && accountService.userProperties.length == 0 && !registrationService.submittedProperty) || newPorperty">
         <p>
             Identify yourself with an account so you can follow on with your propety submission process
         </p>
@@ -171,7 +137,7 @@
             </p>
         </div>
         <div class="h-10"></div>
-        <button (click)="selectProperty(registrationService.submittedProperty)" class="btn btn-primary">Create Contract</button>
+        <button (click)="selectProperty(registrationService.submittedProperty)" class="btn btn-primary">Create corresponding contract</button>
         
     </div>
 

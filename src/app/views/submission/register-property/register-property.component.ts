@@ -101,7 +101,10 @@ export class RegisterPropertyComponent implements OnInit {
       optionals: this.optionals.length
     }
     this.registrationService.registerNewProperty(registerPorpertyRequest)
-    .subscribe((property) => this.registrationService.submittedProperty = property )
+    .subscribe((property) => {
+      this.registrationService.submittedProperty = property
+      this.newPorperty = false;
+    } )
   }
 
 

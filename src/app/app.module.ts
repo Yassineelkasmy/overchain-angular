@@ -36,6 +36,7 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { FileUploadService } from './services/file-upload.service';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { RegistredUserGuard } from './guards/registred-user.guard';
+import { PropertyComponent } from './components/property/property.component';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -70,6 +71,7 @@ const AppRoutes: Routes = [
     CreateContractComponent,
     CryptoPricesComponent,
     UserProfileComponent,
+    PropertyComponent,
   ],
   imports: [
     BrowserModule,

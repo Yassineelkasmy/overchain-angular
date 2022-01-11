@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { data } from 'autoprefixer';
+import { SubmitContractRequest } from 'src/app/dto/submit-contract.request';
 import { SmartContractType } from 'src/app/enums/SmartContractType';
 import { MetamaskService } from 'src/app/services/metamask.service';
+import { RegistrationService } from 'src/app/services/registration.service';
 import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
@@ -28,6 +31,7 @@ export class CreateContractComponent implements OnInit {
   constructor(
     public metamaskService : MetamaskService,
     public statsService : StatsService,
+    public registrationService: RegistrationService
 
     ) {
     this.contractForm = new FormGroup({
@@ -113,8 +117,18 @@ export class CreateContractComponent implements OnInit {
     else return (this.wallet?.valid && this.price?.valid && this.blackList.length>0)
   }
  
-  test() {
-    console.log(this.contractForm.value)
+  submitContract() {
+    let submitContractRequest: SubmitContractRequest = {
+      wallet: this.wallet?.value,
+      price: this.price?.value,
+      propertyCode: this.registrationService.selectedProperty?.code!,
+      whiteListWallets: this.whiteList,
+      blackListWallets: this.blackList,
+
+    }
+
+    this.registrationService.submitConrtact(submitContractRequest, this.smartContractType)
+    .subscribe((data)=> console.log(data))
   }
    
   
