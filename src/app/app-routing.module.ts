@@ -12,6 +12,7 @@ import { RegisterPropertyComponent } from './views/submission/register-property/
 import { RegisterComponent } from './views/submission/register/register.component';
 import { SubmissionComponent } from './views/submission/submission.component';
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
+import { UsersComponent } from './views/admin/dashboard/users/users.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,7 +30,14 @@ const routes: Routes = [
     path:'admin', component:AdminComponent,
     children: [
       { path:'login' , component: AdminloginComponent },
-      { path:'dashboard' , component:DashboardComponent , canActivate: [AuthGuard]}
+      {
+        path:'dashboard',
+        component:DashboardComponent ,
+        canActivate: [AuthGuard],
+        children: [
+          {path: "users", component: UsersComponent}
+        ]
+      }
     ]
 
   },

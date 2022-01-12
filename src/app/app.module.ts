@@ -37,6 +37,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { AdminComponent } from './views/admin/admin.component';
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
+import { UsersComponent } from './views/admin/dashboard/users/users.component';
+import { UserItemComponent } from './components/user-item/user-item.component';
 
 
 @NgModule({
@@ -63,6 +65,8 @@ import { DashboardComponent } from './views/admin/dashboard/dashboard.component'
     AdminloginComponent,
     AdminComponent,
     DashboardComponent,
+    UsersComponent,
+    UserItemComponent,
   ],
   imports: [
     BrowserModule,
