@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegistredUserGuard } from './guards/registred-user.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
@@ -21,6 +23,13 @@ const routes: Routes = [
       { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard, RegistredUserGuard],   },
       { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard, RegistredUserGuard],   }
     ]
+  },
+  {
+    path:'admin', component:AdminComponent,
+    children: [
+      { path:'login' , component: AdminloginComponent }
+    ]
+
   },
 ];;
 

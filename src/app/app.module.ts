@@ -24,8 +24,6 @@ import { RegisterPropertyComponent } from './views/submission/register-property/
 import { FooterComponent } from './views/home/components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
-import { AuthGuard } from './guards/auth.guard';
-import { UnAuthGuard } from './guards/un-auth.guard';
 import { CreateContractComponent } from './views/submission/create-contract/create-contract.component';
 import { CryptoPricesComponent } from './views/home/components/crypto-prices/crypto-prices.component';
 
@@ -37,6 +35,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { RegistredUserGuard } from './guards/registred-user.guard';
 import { PropertyComponent } from './components/property/property.component';
 import { LoginComponent } from './components/login/login.component';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -60,6 +60,8 @@ import { LoginComponent } from './components/login/login.component';
     UserProfileComponent,
     PropertyComponent,
     LoginComponent,
+    AdminloginComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,6 @@ import { LoginComponent } from './components/login/login.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-
   ],
   providers: [
     AuthService,
