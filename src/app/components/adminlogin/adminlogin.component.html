@@ -6,7 +6,7 @@
     </div>
     <input formControlName="username" type="text" placeholder="Username" class="input input-warning input-bordered">
     <input formControlName="password" type="password" placeholder="Password" class="input input-warning input-bordered">
-    <button class="btn btn-primary ">Login</button>
+    <button (click)='login()' [disabled]="!canSubmit" class="btn btn-primary ">Login</button>
 
 
 </form>

@@ -32,11 +32,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { FileUploadService } from './services/file-upload.service';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { RegistredUserGuard } from './guards/registred-user.guard';
 import { PropertyComponent } from './components/property/property.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './views/admin/admin.component';
+import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -62,6 +62,7 @@ import { AdminComponent } from './components/admin/admin.component';
     LoginComponent,
     AdminloginComponent,
     AdminComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

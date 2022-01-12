@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-adminlogin',
@@ -8,7 +10,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AdminloginComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    public accountService: AccountService,
+    public authService: AuthService,
+  ) {
 
     this.loginForm = new FormGroup(
       {
@@ -30,6 +35,18 @@ export class AdminloginComponent implements OnInit {
 
   get password() {
     return this.loginForm.get("password");
+  }
+
+
+  get canSubmit() : boolean {
+    return this.loginForm.valid;
+  }
+
+  login() {
+    this.authService.SignIn(
+      this.username?.value,
+      this.password?.value
+    );
   }
 
 }

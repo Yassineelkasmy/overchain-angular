@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './views/admin/admin.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegistredUserGuard } from './guards/registred-user.guard';
@@ -11,6 +11,7 @@ import { CreateContractComponent } from './views/submission/create-contract/crea
 import { RegisterPropertyComponent } from './views/submission/register-property/register-property.component';
 import { RegisterComponent } from './views/submission/register/register.component';
 import { SubmissionComponent } from './views/submission/submission.component';
+import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   {
     path:'admin', component:AdminComponent,
     children: [
-      { path:'login' , component: AdminloginComponent }
+      { path:'login' , component: AdminloginComponent },
+      { path:'dashboard' , component:DashboardComponent , canActivate: [AuthGuard]}
     ]
 
   },
