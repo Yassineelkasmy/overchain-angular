@@ -12,7 +12,6 @@ import { NavbarItemComponent } from './components/navbar-item/navbar-item.compon
 import { UploadFieldComponent } from './components/upload-field/upload-field.component';
 
 import { HomeComponent } from './views/home/home.component';
-import { RouterModule, Routes } from '@angular/router';
 import { TopComponent } from './views/home/components/top/top.component';
 import { FeatureComponent } from './views/home/components/feature/feature.component';
 import { AboutusComponent } from './views/home/components/aboutus/aboutus.component';
@@ -37,20 +36,8 @@ import { FileUploadService } from './services/file-upload.service';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { RegistredUserGuard } from './guards/registred-user.guard';
 import { PropertyComponent } from './components/property/property.component';
+import { LoginComponent } from './components/login/login.component';
 
-const AppRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  {
-    path: 'submission',
-    component: SubmissionComponent,
-    children: [
-      { path: 'register' , component: RegisterComponent, canActivate:[UnAuthGuard] },
-      { path: 'accountverify' , component: AccountVerifyComponent, canActivate:[AuthGuard] },
-      { path: 'registerproperty', component: RegisterPropertyComponent, canActivate: [AuthGuard, RegistredUserGuard],   },
-      { path: 'createcontract', component: CreateContractComponent, canActivate: [AuthGuard, RegistredUserGuard],   }
-    ]
-  },
-];
 
 @NgModule({
   declarations: [
@@ -72,13 +59,13 @@ const AppRoutes: Routes = [
     CryptoPricesComponent,
     UserProfileComponent,
     PropertyComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RouterModule.forRoot(AppRoutes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,

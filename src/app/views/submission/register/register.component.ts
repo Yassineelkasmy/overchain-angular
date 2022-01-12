@@ -9,25 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit {
 
   constructor(
-    public authService: AuthService,
   ) {
   }
 
 
   ngOnInit(): void {
-  }
-
-
-
-
-
-
-  googleAuth() {
-    this.authService.GoogleAuth();
-  }
-
-  githubAuth() {
-    this.authService.GithubAuth();
   }
 
 

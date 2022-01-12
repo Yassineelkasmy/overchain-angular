@@ -1,42 +1,4 @@
 <div class="flex space-x-10">
     <app-steps [stepNum]=1></app-steps>
-    <div>
-        <p>
-            We need you to create an account so you can follow up with your properties submission later
-        </p>
-
-        <div class="h-10"></div>
-
-        <div class="px-20 flex flex-col space-y-4 my-auto">
-            <div (click)="googleAuth()" class="flex justify-center btn space-x-2  bg-white text-gray-900 hover:text-white">
-                <div class="w-7 h-auto">
-                    <img src="../../../../assets/images/google.png" alt="">
-                </div>
-                <div class="w-1"></div>
-                <span class="my-auto ">Continue with Google</span>
-            </div>
-            <div (click)="githubAuth()" class="flex justify-center btn space-x-2  bg-white text-gray-900 hover:text-white hover:bg-gray-400">
-                <div class="w-7 h-auto">
-                    <img src="../../../../assets/images/github.png" alt="">
-                </div>
-                <div class="w-1"></div>
-                <span class="my-auto ">Continue with Github</span>
-
-            </div>
-
-            <div class="flex justify-center btn space-x-2  bg-white text-gray-900 hover:text-white hover:bg-blue-400">
-                <div class="w-7 h-auto">
-                    <img src="../../../../assets/images/twitter.png" alt="">
-                </div>
-                <div class="w-1"></div>
-                <span class="my-auto ">Continue with Github</span>
-
-            </div>
-
-
-        </div>
-    </div>
-
-
+    <app-login></app-login>
 </div>
-<div class="h-10"></div>
