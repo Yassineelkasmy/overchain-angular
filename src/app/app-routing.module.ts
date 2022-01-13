@@ -13,6 +13,7 @@ import { RegisterComponent } from './views/submission/register/register.componen
 import { SubmissionComponent } from './views/submission/submission.component';
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 import { UsersComponent } from './views/admin/dashboard/users/users.component';
+import { PropertiesComponent } from './views/admin/dashboard/properties/properties.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
         component:DashboardComponent ,
         canActivate: [AuthGuard],
         children: [
-          {path: "users", component: UsersComponent}
+          {path: "users", component: UsersComponent},
+          {path: "properties", component: PropertiesComponent},
         ]
       }
     ]

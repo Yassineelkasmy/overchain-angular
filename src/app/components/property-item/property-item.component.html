@@ -1,0 +1,54 @@
+<div class="px-4 text-white bg-gray-900 mx-5 my-10 rounded-box py-5 w-full">
+    <div class="mx-auto grid grid-cols-2 gap-4 w-full">
+        <div>
+            <p class='font-semibold'>
+                Code:
+            </p>
+            <p>
+                {{ property?.code }}
+            </p>
+        </div>
+        <div>
+            <p class='font-semibold'>
+                Title:
+            </p>
+            <p>
+                {{ property?.title }}
+            </p>
+        </div>
+        <div>
+            <p class='font-semibold'>
+                Description:
+            </p>
+            <p>
+                {{ property?.description }}
+            </p>
+        </div>
+
+        <div>
+            <p class='font-semibold'>
+                Address:
+            </p>
+            <p>
+                {{ property?.address }}
+            </p>
+        </div>
+
+        <div *ngIf="property?.contractId">
+            <p class='font-semibold'>
+                Contract Id:
+            </p>
+            <p>
+                {{ property?.contractId }}
+            </p>
+        </div>
+
+    </div>
+    <div class="h-10"></div>
+    <div class="flex justify-between">
+        <p *ngIf="!property?.verified" class="text-red-600 my-auto"> Unverified </p>
+        <p *ngIf="property?.verified" class="text-green-600 my-auto"> Verified </p>
+
+    </div>
+
+</div>

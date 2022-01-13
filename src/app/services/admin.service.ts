@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { VerifyUserRequest } from '../dto/verify-user.request';
+import { Property } from '../models/Property';
 import { User } from '../models/User';
 
 @Injectable({
@@ -20,6 +21,10 @@ export class AdminService {
 
   getUsers() : Observable<User[]> {
     return this.httpClient.get<User[]>(this.basePath + "/users");
+  }
+
+  getProperties() : Observable<Property[]> {
+    return this.httpClient.get<Property[]>(this.basePath + "/properties");
   }
 
   downloadUserFolder(uid : string) {

@@ -20,16 +20,16 @@
     <p class="font-bold">
         Address:
     </p>
-    <p >
+    <p>
         {{property?.address}}
     </p>
     <p class="font-bold">
         Status:
     </p>
-    <p  class="text-green-600" *ngIf="property?.isVerified">
+    <p class="text-green-600" *ngIf="property?.verified">
         Verified
     </p>
-    <p class="text-red-600" *ngIf="!property?.isVerified">
+    <p class="text-red-600" *ngIf="!property?.verified">
         Under Verification
     </p>
     <p *ngIf="property?.contractId" class="font-bold">
@@ -38,9 +38,9 @@
     <p *ngIf="property?.contractId">
         {{property?.contractId}}
     </p>
-    
-    
+
+
     <button *ngIf="!property?.contractId" (click)="selectCurrentProperty()" class="col-span-2 btn btn-primary"> Create Contract</button>
     <button *ngIf="property?.contractId" (click)="selectCurrentProperty()" class="col-span-2 btn"> Consult Conctract</button>
-   
-</div>            
+
+</div>

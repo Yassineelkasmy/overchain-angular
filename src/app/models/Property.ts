@@ -4,7 +4,7 @@ export interface Property{
     title:string;
     description:string;
     address:string;
-    isVerified:boolean;
+    verified:boolean;
     contractId:string,
 
 }

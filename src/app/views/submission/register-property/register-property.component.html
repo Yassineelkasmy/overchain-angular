@@ -3,14 +3,13 @@
 
     <div *ngIf="!newPorperty && accountService.userProperties.length>0 && !registrationService.submittedProperty">
         <p class="text-lg">
-            You already have posted some porperties that <span class="font-bold">have no contracts submitted</span>
-            , you can choose one them to continue with
+            You already have posted some porperties that <span class="font-bold">have no contracts submitted</span> , you can choose one them to continue with
         </p>
         <div class="h-10"></div>
         <div class="grid grid-cols-2 gap-5">
-                <app-property (propertySelected)="selectProperty($event)" *ngFor="let prop of accountService.userProperties" [property]="prop" class="grid grid-cols-2 rounded-box bg-white p-5">
-                    
-                </app-property>            
+            <app-property (propertySelected)="selectProperty($event)" *ngFor="let prop of accountService.userProperties" [property]="prop" class="grid grid-cols-2 rounded-box bg-white p-5">
+
+            </app-property>
         </div>
         <div class="h-10"></div>
         <button (click)="newPorperty=true" class="btn"> Register New Property</button>
@@ -44,7 +43,7 @@
                 <label class="label">
             <span class="label-text">Property Description</span>
             </label>
-                <textarea formControlName="description" type="text" placeholder="Your real last name" class="input input-warning input-bordered h-20 w-full" required> </textarea> 
+                <textarea formControlName="description" type="text" placeholder="Your real last name" class="input input-warning input-bordered h-20 w-full" required> </textarea>
                 <div *ngIf="description?.invalid && description?.touched" class="error">Invalid last name</div>
 
             </div>
@@ -92,7 +91,7 @@
         <div class="flex space-x-2">
             <button (click)="registerPorperty()" [disabled]="!canSubmit" class="btn btn-large btn-primary">Submit Property</button>
             <button [routerLink]="'/submission/register'" class="btn btn-large">Go back</button>
-         
+
         </div>
     </div>
 
@@ -129,16 +128,16 @@
             <p class="font-bold">
                 Status:
             </p>
-            <p class="text-green-600" *ngIf="registrationService.submittedProperty.isVerified">
+            <p class="text-green-600" *ngIf="registrationService.submittedProperty.verified">
                 Verified
             </p>
-            <p class="text-red-600" *ngIf="!registrationService.submittedProperty.isVerified">
+            <p class="text-red-600" *ngIf="!registrationService.submittedProperty.verified">
                 Under Verification
             </p>
         </div>
         <div class="h-10"></div>
         <button (click)="selectProperty(registrationService.submittedProperty)" class="btn btn-primary">Create corresponding contract</button>
-        
+
     </div>
 
 </div>
