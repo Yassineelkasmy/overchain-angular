@@ -1,5 +1,5 @@
 <div class="w-full flex justify-between p-4 bg-gray-900">
-    <label for="my-drawer" class="btn btn-primary drawer-button">open menu</label>
+    <label for="my-drawer" class="btn btn-primary drawer-button">:::</label>
     <p class="font-semibold text-white uppercase my-auto">{{ accountService.currentAuthUser?.email }}</p>
 </div>
 
@@ -13,13 +13,13 @@
         <label for="my-drawer" class="drawer-overlay h-full"></label>
         <ul class="menu p-4 overflow-y-auto w-56 bg-base-100 text-base-content">
             <li>
-                <a>Users</a>
+                <a routerLink="/admin/dashboard/users">Users</a>
             </li>
             <li>
-                <a>Properties</a>
+                <a routerLink="/admin/dashboard/properties">Properties</a>
             </li>
             <li>
-                <a>Contracts</a>
+                <a routerLink="/admin/dashboard/contracts">Contracts</a>
             </li>
             <li>
                 <a>Log out</a>
