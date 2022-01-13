@@ -14,6 +14,7 @@ import { SubmissionComponent } from './views/submission/submission.component';
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 import { UsersComponent } from './views/admin/dashboard/users/users.component';
 import { PropertiesComponent } from './views/admin/dashboard/properties/properties.component';
+import { ContractsComponent } from './views/admin/dashboard/contracts/contracts.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
         children: [
           {path: "users", component: UsersComponent},
           {path: "properties", component: PropertiesComponent},
+          {path: "contracts", component: ContractsComponent},
         ]
       }
     ]

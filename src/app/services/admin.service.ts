@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { VerifyPropertyRequest } from '../dto/verify-property.request';
 import { VerifyUserRequest } from '../dto/verify-user.request';
+import { Contract } from '../models/Contract';
 import { Property } from '../models/Property';
 import { User } from '../models/User';
 
@@ -26,6 +27,10 @@ export class AdminService {
 
   getProperties() : Observable<Property[]> {
     return this.httpClient.get<Property[]>(this.basePath + "/properties");
+  }
+
+  getContracts() : Observable<Contract[]> {
+    return this.httpClient.get<Contract[]>(this.basePath + "/contracts");
   }
 
   downloadUserFolder(uid : string) {
