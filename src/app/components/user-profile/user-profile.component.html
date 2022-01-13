@@ -9,52 +9,52 @@
             <p>
                 {{currentAuthUser?.displayName}}
             </p>
-            
+
         </div>
-        
-        
+
+
     </div>
     <div class="h-5"></div>
-        <div class="grid grid-cols-2 space-y-2">
-                <p>
-                    First Name:
-                </p>
-                <p>
-                    {{currenUser?.firstName}}
-                </p>
-                <p>
-                    Last Name:
-                </p>
-                <p>
-                    {{currenUser?.lastName}}
-                </p>
-                <p>
-                    Phone:
-                </p>
-                <p>
-                    {{currenUser?.phone}}
-                </p>
-                <p>
-                    Address:
-                </p>
-                <p>
-                    {{currenUser?.address}}
-                </p>
-        </div>
+    <div class="grid grid-cols-2 space-y-2">
+        <p>
+            First Name:
+        </p>
+        <p>
+            {{currenUser?.firstName}}
+        </p>
+        <p>
+            Last Name:
+        </p>
+        <p>
+            {{currenUser?.lastName}}
+        </p>
+        <p>
+            Phone:
+        </p>
+        <p>
+            {{currenUser?.phone}}
+        </p>
+        <p>
+            Address:
+        </p>
+        <p>
+            {{currenUser?.address}}
+        </p>
+    </div>
 
-        <div class="h-10"> </div>
+    <div class="h-10"> </div>
 
-            <p>
-                Account Status :
-            </p>
-            <p *ngIf="currenUser?.isVerified" class="text-green-600 text-lg">
-                    Verified
-            </p>
+    <p>
+        Account Status :
+    </p>
+    <p *ngIf="currenUser?.verified" class="text-green-600 text-lg">
+        Verified
+    </p>
 
-            <p *ngIf="!currenUser?.isVerified" class="text-red-600 text-lg">
-                    Unverified  (Account is under verification)
-                  
-            </p>
+    <p *ngIf="!currenUser?.verified" class="text-red-600 text-lg">
+        Unverified (Account is under verification)
 
-    
+    </p>
+
+
 </div>

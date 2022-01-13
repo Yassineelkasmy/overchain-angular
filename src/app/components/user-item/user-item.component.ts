@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { VerifyUserRequest } from 'src/app/dto/verify-user.request';
 import { User } from 'src/app/models/User';
 import { AdminService } from 'src/app/services/admin.service';
 import { environment } from 'src/environments/environment';
@@ -15,11 +16,26 @@ export class UserItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.userInput;
+    console.log(this.user?.verified)
   }
 
   userFolderUrl?: string;
 
-  @Input() user?:User;
+  @Input() userInput?:User;
+  user?:User;
+
+  verifyUser() {
+    let verifyRequest : VerifyUserRequest = {
+      userId: this.user?.uid!,
+    }
+    this.adminService.verifyUser(verifyRequest).subscribe(
+      (user) => {
+        this.user = user
+        console.log(this.user?.verified)
+      }
+    )
+  }
 
 
 

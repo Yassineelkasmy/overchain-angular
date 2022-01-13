@@ -5,5 +5,5 @@ export interface User{
     lastName:string;
     phone:string;
     address:string;
-    isVerified:boolean;
+    verified:boolean;
 }

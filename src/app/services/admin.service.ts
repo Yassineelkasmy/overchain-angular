@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { VerifyUserRequest } from '../dto/verify-user.request';
 import { User } from '../models/User';
 
 @Injectable({
@@ -39,6 +40,10 @@ export class AdminService {
         downloadLink.click();
     }
     );
+  }
+
+  verifyUser(request: VerifyUserRequest) : Observable<User>{
+    return this.httpClient.post<User>(this.basePath+"/verifyuser", request);
   }
 
 
