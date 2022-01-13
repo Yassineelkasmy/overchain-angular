@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { VerifyPropertyRequest } from 'src/app/dto/verify-property.request';
 import { Property } from 'src/app/models/Property';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-property-item',
@@ -8,7 +10,7 @@ import { Property } from 'src/app/models/Property';
 })
 export class PropertyItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(public adminService:AdminService) { }
 
   ngOnInit(): void {
     this.property = this.propertyInput;
@@ -17,4 +19,13 @@ export class PropertyItemComponent implements OnInit {
   @Input() propertyInput?:Property;
   property?:Property;
 
+
+  verifyProperty() {
+    let verifyPropertyRequest : VerifyPropertyRequest = {
+      propertyId:this.property?.id!
+    }
+    this.adminService.verifyProperty(verifyPropertyRequest).subscribe(
+      (property) => this.property = property
+    )
+  }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { VerifyPropertyRequest } from '../dto/verify-property.request';
 import { VerifyUserRequest } from '../dto/verify-user.request';
 import { Property } from '../models/Property';
 import { User } from '../models/User';
@@ -47,8 +48,36 @@ export class AdminService {
     );
   }
 
+  downloadPropertyFolder(code : string , uid:string) {
+    let downloadPropertyFolderRequest  = {
+      userId:uid
+    }
+
+    const filename = code + ".zip";
+    const userFolderUrl = this.basePath + "/propertyfolder/" + code + ".zip";
+
+    return this.httpClient.post(userFolderUrl, downloadPropertyFolderRequest,{responseType: 'blob' as 'json'}).subscribe(
+      (response: any) =>{
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
+        if (filename)
+        downloadLink.setAttribute('download', filename);
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
+    );
+  }
+
+
   verifyUser(request: VerifyUserRequest) : Observable<User>{
     return this.httpClient.post<User>(this.basePath+"/verifyuser", request);
+  }
+
+  verifyProperty(request: VerifyPropertyRequest) : Observable<Property>{
+    return this.httpClient.post<Property>(this.basePath+"/verifyproperty", request);
   }
 
 

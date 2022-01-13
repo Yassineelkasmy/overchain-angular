@@ -48,7 +48,11 @@
     <div class="flex justify-between">
         <p *ngIf="!property?.verified" class="text-red-600 my-auto"> Unverified </p>
         <p *ngIf="property?.verified" class="text-green-600 my-auto"> Verified </p>
-
+        <button (click)="adminService.downloadPropertyFolder(property?.code!, property?.userId!)" class="btn btn-primary"> Download property files </button >
+      <button *ngIf="!property?.verified" (click)="verifyProperty()" class="space-x-2 btn btn-success">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 stroke-current">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg> <span>Verify</span></button>
     </div>
 
 </div>

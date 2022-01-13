@@ -1,4 +1,5 @@
 export interface Property{
+    id:string;
     userId:string;
     code:string;
     title:string;
