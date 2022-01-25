@@ -6,7 +6,7 @@ export interface Contract {
     propertyId :string;
     sellerWallet :string;
     priceETH :number;
-    isVerified :boolean;
+    verified :boolean;
     type : SmartContractType;
     whiteListWallets :string[];
     blackListWallets :string[];
