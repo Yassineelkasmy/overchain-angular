@@ -21,16 +21,9 @@ export class AdminService {
 
   basePath = environment.apis.usersSerice + "/admin";
 
+  //Users
   getUsers() : Observable<User[]> {
     return this.httpClient.get<User[]>(this.basePath + "/users");
-  }
-
-  getProperties() : Observable<Property[]> {
-    return this.httpClient.get<Property[]>(this.basePath + "/properties");
-  }
-
-  getContracts() : Observable<Contract[]> {
-    return this.httpClient.get<Contract[]>(this.basePath + "/contracts");
   }
 
   downloadUserFolder(uid : string) {
@@ -51,6 +44,16 @@ export class AdminService {
         downloadLink.click();
     }
     );
+  }
+
+  verifyUser(request: VerifyUserRequest) : Observable<User>{
+    return this.httpClient.post<User>(this.basePath+"/verifyuser", request);
+  }
+
+
+  //Properties
+  getProperties() : Observable<Property[]> {
+    return this.httpClient.get<Property[]>(this.basePath + "/properties");
   }
 
   downloadPropertyFolder(code : string , uid:string) {
@@ -76,14 +79,14 @@ export class AdminService {
     );
   }
 
-
-  verifyUser(request: VerifyUserRequest) : Observable<User>{
-    return this.httpClient.post<User>(this.basePath+"/verifyuser", request);
-  }
-
   verifyProperty(request: VerifyPropertyRequest) : Observable<Property>{
     return this.httpClient.post<Property>(this.basePath+"/verifyproperty", request);
   }
 
+
+  //Contracts
+  getContracts() : Observable<Contract[]> {
+    return this.httpClient.get<Contract[]>(this.basePath + "/contracts");
+  }
 
 }
