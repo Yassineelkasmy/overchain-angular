@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { VerifyContractRequest } from '../dto/verify-contract.request';
 import { VerifyPropertyRequest } from '../dto/verify-property.request';
 import { VerifyUserRequest } from '../dto/verify-user.request';
 import { Contract } from '../models/Contract';
@@ -87,6 +88,10 @@ export class AdminService {
   //Contracts
   getContracts() : Observable<Contract[]> {
     return this.httpClient.get<Contract[]>(this.basePath + "/contracts");
+  }
+
+  verifyContract(request: VerifyContractRequest) : Observable<Contract> {
+    return this.httpClient.post<Contract>(this.basePath + "/verifycontract" , request);
   }
 
 }

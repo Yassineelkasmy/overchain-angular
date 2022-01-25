@@ -42,6 +42,7 @@ import { UserItemComponent } from './components/user-item/user-item.component';
 import { PropertiesComponent } from './views/admin/dashboard/properties/properties.component';
 import { PropertyItemComponent } from './components/property-item/property-item.component';
 import { ContractsComponent } from './views/admin/dashboard/contracts/contracts.component';
+import { ContractItemComponent } from './components/contract-item/contract-item.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { ContractsComponent } from './views/admin/dashboard/contracts/contracts.
     PropertiesComponent,
     PropertyItemComponent,
     ContractsComponent,
+    ContractItemComponent,
   ],
   imports: [
     BrowserModule,
