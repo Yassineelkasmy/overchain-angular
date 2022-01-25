@@ -2,6 +2,14 @@
     <div class="mx-auto grid grid-cols-2 gap-4 w-full">
         <div>
             <p class='font-semibold'>
+                Contract Identifier:
+            </p>
+            <p>
+                {{ contract?.id }}
+            </p>
+        </div>
+        <div>
+            <p class='font-semibold'>
                 Property:
             </p>
             <p>
@@ -46,9 +54,13 @@
     </div>
     <div class="h-10"></div>
     <div class="flex justify-between">
-        <p *ngIf="!contract?.verified" class="text-red-600 my-auto"> Unverified </p>
-        <p *ngIf="contract?.verified" class="text-green-600 my-auto"> Verified </p>
-      <button *ngIf="!contract?.verified" (click)="verifyContract()" class="space-x-2 btn btn-success">
+        <p *ngIf="!contract?.isVerified" class="text-red-600 my-auto"> Unverified </p>
+        <p *ngIf="contract?.isVerified" class="text-green-600 my-auto"> Verified </p>
+      <button *ngIf="!contract?.isVerified" (click)="verifyContract()" class="space-x-2 btn btn-success">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 stroke-current">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg> <span>Verify</span></button>
+      <button *ngIf="!contract?.isDeployed && contract?.isVerified" [routerLink]="'/admin/dashboard/contract-deploy/'+contract?.id" class="space-x-2 btn btn-primary">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 stroke-current">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg> <span>Deploy</span></button>

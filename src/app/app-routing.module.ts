@@ -15,6 +15,7 @@ import { DashboardComponent } from './views/admin/dashboard/dashboard.component'
 import { UsersComponent } from './views/admin/dashboard/users/users.component';
 import { PropertiesComponent } from './views/admin/dashboard/properties/properties.component';
 import { ContractsComponent } from './views/admin/dashboard/contracts/contracts.component';
+import { ContractDeployComponent } from './views/admin/dashboard/contract-deploy/contract-deploy.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
           {path: "users", component: UsersComponent},
           {path: "properties", component: PropertiesComponent},
           {path: "contracts", component: ContractsComponent},
+          {path: "contract-deploy/:id", component: ContractDeployComponent},
         ]
       }
     ]

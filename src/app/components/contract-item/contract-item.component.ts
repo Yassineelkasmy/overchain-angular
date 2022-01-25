@@ -24,6 +24,8 @@ export class ContractItemComponent implements OnInit {
     this.adminService.verifyContract(verifyContractRequest).subscribe(
       (contract) => this.contract = contract
     )
+    console.log(this.contract)
+  
   }
 
 

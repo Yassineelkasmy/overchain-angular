@@ -94,4 +94,9 @@ export class AdminService {
     return this.httpClient.post<Contract>(this.basePath + "/verifycontract" , request);
   }
 
+  getContract(contractId:string) {
+    return this.httpClient.get<Contract>(this.basePath + "/contracts/" + contractId);
+
+  }
+
 }
