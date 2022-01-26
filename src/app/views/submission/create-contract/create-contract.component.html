@@ -44,35 +44,35 @@
           <div class="flex space-x-10 col-span-2">
             <div class="form-control">
               <label class="cursor-pointer label">
-                <span class="label-text text-base">Basic</span> 
+                <span class="label-text text-base">Basic</span>
                 <input (change)="changeSmartContractType()" formControlName="type" [value]="0" type="radio" name="type" class="ml-5 radio radio-primary">
               </label>
             </div>
             <div class="form-control">
               <label class="cursor-pointer label">
-                <span class="label-text text-base">White Listed</span> 
+                <span class="label-text text-base">White Listed</span>
                 <input (change)="changeSmartContractType()" formControlName="type" [value]="1" type="radio" name="type" class="ml-5 radio radio-primary">
               </label>
-            </div> 
+            </div>
             <div class="form-control">
               <label class="cursor-pointer label">
-                <span class="label-text text-base">Black Listed</span> 
+                <span class="label-text text-base">Black Listed</span>
                 <input (change)="changeSmartContractType()" formControlName="type" [value]="2" type="radio" name="type" class="ml-5 radio radio-primary">
               </label>
-            </div> 
+            </div>
           </div>
           <div *ngIf="smartContractType==1" class="col-span-2">
             <div class="flex space-x-4">
               <p class="mt-5 font-bold text-lg">
                 White list wallet addresses:
               </p>
-              <label for="addWhiteWallet" class="btn btn-primary btn-circle mt-2 modal-button" >+</label> 
-                <input type="checkbox" id="addWhiteWallet" class="modal-toggle"> 
+              <label for="addWhiteWallet" class="btn btn-primary btn-circle mt-2 modal-button" >+</label>
+                <input type="checkbox" id="addWhiteWallet" class="modal-toggle">
                 <div class="modal">
                 <div class="modal-box">
                   <input type="text" formControlName="listedWallet" placeholder="Wallet adress" class="w-full input input-warning input-bordered">
                 <div class="modal-action">
-                <label for="addWhiteWallet" (click)="addWalletToList()" class="btn btn-primary">Add Wallet</label> 
+                <label for="addWhiteWallet" (click)="addWalletToList()" class="btn btn-primary">Add Wallet</label>
                 <label for="addWhiteWallet" class="btn">Cancel</label>
                 </div>
                 </div>
@@ -83,9 +83,9 @@
                 {{ addr }}
               </p>
               <div (click)="removeWalletFromList(addr)" class="btn btn-error btn-circle btn-xs">-</div>
-              
-              
-            </div>  
+
+
+            </div>
           </div>
 
           <div *ngIf="smartContractType==2" class="col-span-2">
@@ -93,13 +93,13 @@
               <p class="mt-5 font-bold text-lg">
                 Black list wallet addresses:
               </p>
-              <label for="addBlackWallet" class="btn btn-primary btn-circle mt-2 modal-button" >+</label> 
-                <input type="checkbox" id="addBlackWallet" class="modal-toggle"> 
+              <label for="addBlackWallet" class="btn btn-primary btn-circle mt-2 modal-button" >+</label>
+                <input type="checkbox" id="addBlackWallet" class="modal-toggle">
                 <div class="modal">
                 <div class="modal-box">
                   <input type="text" formControlName="listedWallet" placeholder="Wallet adress" class="w-full input input-warning input-bordered">
                 <div class="modal-action">
-                <label for="addBlackWallet" (click)="addWalletToList()" class="btn btn-primary">Add Wallet</label> 
+                <label for="addBlackWallet" (click)="addWalletToList()" class="btn btn-primary">Add Wallet</label>
                 <label for="addBlackWallet" class="btn">Cancel</label>
                 </div>
                 </div>
@@ -110,15 +110,15 @@
                 {{addr}}
               </p>
               <div (click)="removeWalletFromList(addr)" class="btn btn-error btn-circle btn-xs">-</div>
-              
-              
-            </div>  
+
+
+            </div>
           </div>
 
 
         </form>
 
-        
+
 
 
         <div *ngIf="isLoading" class="btn btn-lg loading h-28 w-28">

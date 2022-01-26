@@ -25,7 +25,7 @@ export class CreateContractComponent implements OnInit {
   whiteList : string[] = [];
   blackList : string[] = [];
 
- 
+
 
 
   constructor(
@@ -50,7 +50,7 @@ export class CreateContractComponent implements OnInit {
     )
   }
 
- 
+
 
   connect(){
 
@@ -75,7 +75,7 @@ export class CreateContractComponent implements OnInit {
 
     if(this.smartContractType == SmartContractType.BlackListed)
     this.blackList = this.blackList.filter((addr)=> addr != walletAddr);
-    
+
     this.listedWallet?.reset();
   }
 
@@ -116,7 +116,7 @@ export class CreateContractComponent implements OnInit {
     return (this.wallet?.valid && this.price?.valid && this.whiteList.length>0)
     else return (this.wallet?.valid && this.price?.valid && this.blackList.length>0)
   }
- 
+
   submitContract() {
     let submitContractRequest: SubmitContractRequest = {
       wallet: this.wallet?.value,
@@ -130,8 +130,8 @@ export class CreateContractComponent implements OnInit {
     this.registrationService.submitConrtact(submitContractRequest, this.smartContractType)
     .subscribe((data)=> console.log(data))
   }
-   
-  
+
+
 
 
 

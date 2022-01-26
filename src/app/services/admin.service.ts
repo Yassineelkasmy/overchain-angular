@@ -35,7 +35,7 @@ export class AdminService {
     return this.httpClient.get(userFolderUrl, {responseType: 'blob' as 'json'}).subscribe(
       (response: any) =>{
         let dataType = response.type;
-        let binaryData = [];
+        let binaryData : any [] = [];
         binaryData.push(response);
         let downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
@@ -68,7 +68,7 @@ export class AdminService {
     return this.httpClient.post(userFolderUrl, downloadPropertyFolderRequest,{responseType: 'blob' as 'json'}).subscribe(
       (response: any) =>{
         let dataType = response.type;
-        let binaryData = [];
+        let binaryData : any [] = [];
         binaryData.push(response);
         let downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
