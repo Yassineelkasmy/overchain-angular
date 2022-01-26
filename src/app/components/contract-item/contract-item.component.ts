@@ -5,6 +5,7 @@ import { Contract } from 'src/app/models/Contract';
 import { AdminService } from 'src/app/services/admin.service';
 import { AdminContractService } from 'src/app/services/Admin-Contract-service/Admin-contract.service';
 import { StatsService } from 'src/app/services/stats.service';
+import { DeployContractRequest } from 'src/app/dto/deploy-contract.request';
 
 @Component({
   selector: 'app-contract-item',
@@ -48,15 +49,14 @@ export class ContractItemComponent implements OnInit {
         console.log(contract.type);
         console.log(contract)
 
-        this.convertUsePrice(contract.priceETH)
+        this.convertUsePrice(contract.price)
 
         console.log(this.convertedEthValue)
         console.log(contract.sellerWallet)
         console.log(contract.propertyId);
 
 
-        this.adminContractService.deployBaseContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId);
-
+        this.adminContractService.deployBaseContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id);
 
 
 
@@ -64,7 +64,7 @@ export class ContractItemComponent implements OnInit {
     //   console.log(contract.type);
     //     console.log(contract)
 
-    //     this.convertUsePrice(contract.priceETH)
+    //     this.convertUsePrice(contract.price)
 
     //     console.log(this.convertedEthValue)
     //     console.log(contract.sellerWallet)
@@ -76,14 +76,14 @@ export class ContractItemComponent implements OnInit {
     // if(contract.type === SmartContractType.BlackListed){
     //   console.log(contract.type);
     //   console.log(contract)
-    //   this.convertUsePrice(contract.priceETH)
+    //   this.convertUsePrice(contract.price)
     //   console.log(this.convertedEthValue)
     // }
     // if((contract.type === SmartContractType.WhiteListed)){
     //   console.log(contract.type);
     //   console.log(contract)
 
-    //   this.convertUsePrice(contract.priceETH)
+    //   this.convertUsePrice(contract.price)
 
     //   console.log(this.convertedEthValue)
     // }

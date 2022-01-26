@@ -35,10 +35,10 @@
 
         <div>
             <p class='font-semibold'>
-                Price ETH:
+                Price (USD):
             </p>
             <p>
-                {{ contract?.priceETH }}
+                {{ contract?.price }}
             </p>
         </div>
 
@@ -48,6 +48,15 @@
             </p>
             <p>
                 {{ contract?.type }}
+            </p>
+        </div>
+
+        <div *ngIf="contract?.contractAddress && contract?.isDeployed && contract?.isVerified ">
+            <p class='font-semibold'>
+                Contract Address:
+            </p>
+            <p>
+                {{ contract?.contractAddress }}
             </p>
         </div>
 
@@ -68,10 +77,10 @@
 
 
 
-      <!-- <button *ngIf="contract?.isDeployed && contract?.isVerified"  class="space-x-2 btn btn-primary">
+      <button *ngIf="contract?.isDeployed && contract?.isVerified"  class="space-x-2 btn btn-primary">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 stroke-current">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      </svg> <span >Contract deployed</span></button> -->
+      </svg> <span >Contract deployed</span></button>
 
 
 

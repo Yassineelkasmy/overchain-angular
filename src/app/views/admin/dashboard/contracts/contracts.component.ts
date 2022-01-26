@@ -19,7 +19,9 @@ export class ContractsComponent implements OnInit {
 
   getContracts() {
     this.adminService.getContracts().subscribe(
-      (contracts) => this.contracts = contracts
+      (contracts) => {this.contracts = contracts;
+      console.log(this.contracts)}
+
     )
   }
 

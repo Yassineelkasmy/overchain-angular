@@ -10,6 +10,8 @@
  import { BaseContractByteCode , BaseContractAbi } from '../../../contracts-files/Base-contract/BaseContract.js';
  import { WhiteListByteCode , WhiteListContractAbi } from '../../../contracts-files/WhiteList-contract/WhiteListContract.js';
  import { BlackListByteCode , BlackListContractAbi } from '../../../contracts-files/BlackList-contract/BlackListContract.js';
+import { AdminService } from '../admin.service';
+import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
 
  @Injectable({
    providedIn: 'root'
@@ -22,11 +24,9 @@
    accounts : any;
    web3Modal: any;
 
-   //public metamask : ContractService
-   constructor(){
-     //metamask.connectAccount()
-
-
+   constructor(
+    public adminService: AdminService
+   ){
      const providerOptions = {
        walletconnect: {
          package: WalletConnectProvider, // required
@@ -52,9 +52,11 @@
    }
 
    contract: any;
-   contractAddress !: String;
+   contractAddress !: string;
 
-   public async deployBaseContract(_proertyOwner:string,_price:number,_propertyCode:string): Promise<void>{
+   public async deployBaseContract(_proertyOwner:string,_price:number,_propertyCode:string,contractId :string): Promise<void>{
+
+
 
      this.provider = await this.web3Modal.connect();
      this.web3js = new Web3(this.provider);
@@ -76,7 +78,17 @@
        }).then(
          (Resp)=>{
            this.contractAddress = Resp.options.address;
-           console.log("address "+Resp.options.address)
+           let deployContractRequest : DeployContractRequest = {
+              contractId: contractId,
+              contractAddress : this.contractAddress
+            }
+            console.log(deployContractRequest)
+          console.log(this.adminService.deployContract(deployContractRequest).subscribe(
+            {
+              next : (Resp)=> {console.log(Resp);window.location.reload();},
+              error : (e) => console.log(e)
+            }
+          ));
           }
          );
 

@@ -4,8 +4,9 @@ export interface Contract {
     id :string;
     userId :string;
     propertyId :string;
+    contractAddress: string;
     sellerWallet :string;
-    priceETH :number;
+    price :number;
     isVerified :boolean;
     isDeployed:boolean;
     type : SmartContractType;
