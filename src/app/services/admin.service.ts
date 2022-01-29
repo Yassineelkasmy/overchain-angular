@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DeployContractRequest } from '../dto/deploy-contract.request';
+import { DeployedContracts } from '../dto/DeployedContracts';
 import { VerifyContractRequest } from '../dto/verify-contract.request';
 import { VerifyPropertyRequest } from '../dto/verify-property.request';
 import { VerifyUserRequest } from '../dto/verify-user.request';
 import { Contract } from '../models/Contract';
 import { Property } from '../models/Property';
 import { User } from '../models/User';
+import { StatsService } from './stats.service';
 
 @Injectable({
   providedIn: 'root'
@@ -98,11 +100,15 @@ export class AdminService {
 
   getContract(contractId:string) {
     return this.httpClient.get<Contract>(this.basePath + "/contracts/" + contractId);
-
   }
 
   deployContract(request: DeployContractRequest) : Observable<Contract> {
     return this.httpClient.post<Contract>(this.basePath + "/deploycontract" , request);
+  }
+
+  getDeployedContracts() : Observable<DeployedContracts[]>{
+                                                    //   Public API !
+    return this.httpClient.get<DeployedContracts[]>("http://localhost:3000/onSale/properties");
   }
 
 }

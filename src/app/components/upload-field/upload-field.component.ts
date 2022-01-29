@@ -57,7 +57,7 @@ export class UploadFieldComponent implements OnInit {
         this.uploaded = true;
         this.uploadService.accountVerificationFilesCount++;
 
-        
+
       }
 
     );
@@ -68,9 +68,9 @@ export class UploadFieldComponent implements OnInit {
     this.uploadService.deleteAccountFile(this.currentFileUpload!, this.folder);
     this.uploaded = false;
     this.currentFileUpload = undefined;
-    this.myInputVariable!.nativeElement.value = ''; 
+    this.myInputVariable!.nativeElement.value = '';
     this.uploadService.accountVerificationFilesCount--;
-  
+
 
   }
 
@@ -90,9 +90,9 @@ export class UploadFieldComponent implements OnInit {
         console.log(error);
       },
       () => {
-        this.uploaded = true;       
+        this.uploaded = true;
         this.uploadService.propertyVerificationFilesCount++;
-        
+
       }
 
     );

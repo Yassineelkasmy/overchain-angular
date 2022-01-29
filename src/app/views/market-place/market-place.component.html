@@ -1,0 +1,85 @@
+
+<app-navbar></app-navbar>
+
+<div class=" text-purple-700 text-center px-64 py-36 w-full bg-gray-50">
+
+  <h1 class="text-5xl font-extrabold"> OUR TRUSTED DEPLOYED CONTRACTS</h1>
+
+  <p class=" py-12 text-2xl">
+      ``
+        We make sure that all the contracts that have been deployed are 100% trusted and verified by our team
+  </p>
+
+  <p class=" text-2xl">
+      That's why, Overchain is the best option to buy your next property comfortably and trustfully
+      ``
+  </p>
+
+</div>
+
+<div class="flex flex-col w-screen min-h-screen p-28 bg-gray-100 text-gray-900">
+
+	<!-- Component Start -->
+	<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mt-6">
+		<span class="text-sm font-semibold">1-16 of 148 Products</span>
+	</div>
+	<div class="grid 2xl:grid-cols-3 xl:grid-cols-3  sm:grid-cols-1 grid-cols-1 gap-x-6 gap-y-12 w-full mt-6">
+		<!-- Product Tile Start -->
+		<div *ngFor="let deployedContract of deployedContracts">
+      <span class="text-xs font-medium text-gray-600">Property infos</span>
+
+      <div class="card min-h-full shadow-2xl lg:card-side bg-primary text-primary-content">
+        <div class="card-body">
+
+          <h3 class="pt-2 pl-2 text-2xl">Property code : </h3>
+          <p class="pt-2 pl-2">{{deployedContract.propertyCode}}</p>
+
+          <h3 class="pt-2 pl-2 text-2xl">Title : </h3>
+          <p class="pt-2 pl-2">{{deployedContract.title}}</p>
+          <h3 class="pt-2 pl-2 text-2xl">Property Description : </h3>
+          <p class="pt-2 pl-2">{{deployedContract.description}}</p>
+
+          <h3 class="pt-2 pl-2 text-2xl">Address : </h3>
+          <a class="pt-2 pl-2" href="https://www.google.com/maps/place/{{deployedContract.propertyAddress}}">{{deployedContract.propertyAddress}}</a>
+
+          <h3 class="pt-2 pl-2 text-2xl">Contract address : </h3>
+          <p class="pt-2 pl-2">{{deployedContract.contractAddress}}</p>
+
+          <div class="absolute bottom-2 right-2 card-actions ">
+            <button class="btn btn-primary">
+                  Buy now
+                  <svg class="inline-block w-5 h-5 ml-2 stroke-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/></g></svg>
+            </button>
+
+            <label [routerLink]="['/contract',deployedContract.contractAddress]" class="btn btn-primary">
+              More info about contract
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 ml-2 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </div>
+
+			<div class="flex items-center justify-between mt-3">
+				<div>
+
+					<a class="flex items-center" routerLink="/">
+						<span class="text-xs font-medium text-gray-600">Certified by</span>
+						<span class="text-xs font-medium ml-1 text-indigo-500">Overchain</span>
+					</a>
+				</div>
+				<span class="flex items-center h-8 bg-purple-200 text-purple-700 text-sm px-3 rounded"> <svg class="inline-block w-5 h-5 mr-1 stroke-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.2em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></g></svg>
+          {{deployedContract.price}}
+        </span>
+				<span class="flex items-center h-8 bg-purple-200 text-purple-700 text-sm space-x-4 px-3 rounded"><svg class="inline-block w-5 h-5 mr-1 stroke-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 417"><path fill="#343434" d="M127.961 0l-2.795 9.5v275.668l2.795 2.79l127.962-75.638z"/><path fill="#8C8C8C" d="M127.962 0L0 212.32l127.962 75.639V154.158z"/><path fill="#3C3C3B" d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.6L256 236.587z"/><path fill="#8C8C8C" d="M127.962 416.905v-104.72L0 236.585z"/><path fill="#141414" d="M127.961 287.958l127.96-75.637l-127.96-58.162z"/><path fill="#393939" d="M0 212.32l127.96 75.638v-133.8z"/></svg>
+          {{deployedContract?.priceToEth}}
+        </span>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+

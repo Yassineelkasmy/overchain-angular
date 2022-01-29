@@ -16,7 +16,7 @@ import { User } from '../models/User';
 export class RegistrationService {
 
   constructor(private httpClient: HttpClient) {
-    
+
   }
 
   baseEndpoint = environment.apis.usersSerice + "/users";
@@ -29,7 +29,7 @@ export class RegistrationService {
   }
 
   registerNewUser(request: RegisterUserRquest): Observable<User> {
-    
+
     return this.httpClient.post<User>(this.baseEndpoint,request);
 
   }
@@ -47,18 +47,18 @@ export class RegistrationService {
     switch (type) {
       case SmartContractType.Basic:
         return this.httpClient.post<Contract>(this.contractsEndPoint+"/createbasic",request);
-        
+
       case SmartContractType.WhiteListed:
         return this.httpClient.post<Contract>(this.contractsEndPoint+"/createwhitelisted",request);
-      
+
       case SmartContractType.BlackListed:
         return this.httpClient.post<Contract>(this.contractsEndPoint+"/createblacklisted",request);
-      
+
     }
   }
 
 
 
 
-  
+
 }

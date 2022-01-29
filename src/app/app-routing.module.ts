@@ -16,6 +16,8 @@ import { UsersComponent } from './views/admin/dashboard/users/users.component';
 import { PropertiesComponent } from './views/admin/dashboard/properties/properties.component';
 import { ContractsComponent } from './views/admin/dashboard/contracts/contracts.component';
 import { ContractDeployComponent } from './views/admin/dashboard/contract-deploy/contract-deploy.component';
+import { MarketPlaceComponent } from './views/market-place/market-place.component';
+import { OneContractComponent } from './views/one-contract/one-contract.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,11 +45,14 @@ const routes: Routes = [
           {path: "contracts", component: ContractsComponent},
           {path: "contract-deploy/:id", component: ContractDeployComponent},
         ]
-      }
+      },
+
     ]
 
   },
-];;
+  { path : 'marketPlace', component: MarketPlaceComponent },
+  { path : 'contract/:address' , component : OneContractComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

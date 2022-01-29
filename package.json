@@ -30,6 +30,7 @@
     "firebase": "^9.6.1",
     "https-browserify": "^1.0.0",
     "ng2-date-picker": "^13.1.0",
+    "ngx-dropzone": "^3.0.0",
     "os-browserify": "^0.3.0",
     "postcss": "^8.3.11",
     "rxfire": "^6.0.3",

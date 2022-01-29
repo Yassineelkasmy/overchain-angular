@@ -44,6 +44,9 @@ import { PropertyItemComponent } from './components/property-item/property-item.
 import { ContractsComponent } from './views/admin/dashboard/contracts/contracts.component';
 import { ContractItemComponent } from './components/contract-item/contract-item.component';
 import { ContractDeployComponent } from './views/admin/dashboard/contract-deploy/contract-deploy.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { MarketPlaceComponent } from './views/market-place/market-place.component';
+import { OneContractComponent } from './views/one-contract/one-contract.component';
 
 
 @NgModule({
@@ -77,6 +80,8 @@ import { ContractDeployComponent } from './views/admin/dashboard/contract-deploy
     ContractsComponent,
     ContractItemComponent,
     ContractDeployComponent,
+    MarketPlaceComponent,
+    OneContractComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +93,7 @@ import { ContractDeployComponent } from './views/admin/dashboard/contract-deploy
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
+    NgxDropzoneModule
   ],
   providers: [
     AuthService,
