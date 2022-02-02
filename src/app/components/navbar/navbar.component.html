@@ -1,15 +1,12 @@
-<div class="navbar mb-2 fixed w-full shadow-md bg-purple-700 text-neutral-content">
+<div class="navbar shadow-lg  mb-2 fixed  w-full bg-gradient-to-r backdrop-blur-lg from-purple-500 to-purple-700  hover:to-yellow-500 text-neutral-content ">
     <div class="px-2 mx-2 navbar-start">
-        <span class="text-lg font-bold">OverChain</span>
+      <a routerLink="/">  <span class="text-lg font-bold">OverChain</span> </a>
     </div>
-    <div class="hidden px-2 mx-2 navbar-center lg:flex">
+    <div class="hidden px-2 lg:flex">
         <div class="flex items-stretch">
-            <app-navbar-item [routeName]="'Home'"> </app-navbar-item>
-            <app-navbar-item [routeName]="'Seller'"> </app-navbar-item>
-            <app-navbar-item [routeName]="'Buyers'"> </app-navbar-item>
-            <app-navbar-item [routeName]="'About Us'"> </app-navbar-item>
-            <app-navbar-item [routeName]="'Testimonials'"> </app-navbar-item>
-            <app-navbar-item class="ml-4 rounded-lg border-2" [routeName]="'Contact us'"> </app-navbar-item>
+          <app-navbar-item routerLink="/" [routeName]="'Home'">  </app-navbar-item>
+          <app-navbar-item routerLink="/submission/register" [routeName]="'Sell'">  </app-navbar-item>
+          <app-navbar-item routerLink="/Marketplace" class="ml-4 rounded-lg" [routeName]="'Marketplace'"> </app-navbar-item>
         </div>
     </div>
 </div>

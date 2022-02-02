@@ -62,10 +62,6 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
      this.web3js = new Web3(this.provider);
      this.accounts = await this.web3js.eth.getAccounts();
 
-     console.log("contract BaseContractByteCode:"+BaseContractByteCode)
-
-       //const contract =new this.web3js.eth.Contract(BaseContractAbi,{from : this.accounts[0], data: BaseContractByteCode,arguments: ["0xa90f5C39af034703d610772431eEC6d449705972", "10000000000000000000", "10000000000000000000"]});
-       //console.log(contract)
 
        this.contract =await new this.web3js.eth.Contract(BaseContractAbi);
        this.contract.deploy({
@@ -96,7 +92,7 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
 
 
 
-      async deployWhiteListContract(_proertyOwner:string, _price:number,_propertyCode:string,_whiteADresses:string[]):Promise<void> {
+      async deployWhiteListContract(_proertyOwner:string, _price:number,_propertyCode:string,_whiteAddresses:string[]):Promise<void> {
 
         this.provider = await this.web3Modal.connect();
         this.web3js = new Web3(this.provider);
@@ -104,10 +100,11 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
 
         console.log("contract WhiteListByteCode:"+WhiteListByteCode)
 
+
         this.contract =await new this.web3js.eth.Contract(WhiteListContractAbi);
         this.contract.deploy({
           data: WhiteListByteCode,
-          arguments: [_proertyOwner, Web3.utils.toWei(String(_price),"ether"),_propertyCode,_whiteADresses]
+          arguments: [_proertyOwner, Web3.utils.toWei(String(_price),"ether"),_propertyCode,_whiteAddresses]
         })
         .send({
           from: this.accounts[0],
@@ -115,7 +112,7 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
         }).then(
           (Resp)=>{
             this.contractAddress = Resp.options.address;
-            console.log("address"+Resp.options.address)
+            console.log("address"+Resp.options.address);
           }
           );
 

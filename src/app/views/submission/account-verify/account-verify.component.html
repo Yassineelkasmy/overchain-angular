@@ -1,4 +1,4 @@
-<div class="flex space-x-10">
+<div class="flex space-x-56">
     <app-steps [stepNum]=2></app-steps>
     <div *ngIf="accountService.currentUser == null">
         <p>
@@ -56,46 +56,46 @@
         <div class="h-10"></div>
         <div class="flex space-x-2">
             <button (click)="register()" [disabled]="!canSubmit" class="btn btn-large btn-primary">Proceed</button>
-            <label for="my-modal-2" class="btn modal-button" >Change Account</label> 
-                    <input type="checkbox" id="my-modal-2" class="modal-toggle"> 
+            <label for="my-modal-2" class="btn modal-button" >Change Account</label>
+                    <input type="checkbox" id="my-modal-2" class="modal-toggle">
                     <div class="modal">
                     <div class="modal-box">
                         <p>Every property registration requires an account for the owner, if you change the current account
                             you will have to create and verify a new one with different identity
-                        </p> 
+                        </p>
                         <div class="modal-action">
-                        <label (click)="changeAccount()" for="my-modal-2" class="btn btn-primary">Sign out</label> 
+                        <label (click)="changeAccount()" for="my-modal-2" class="btn btn-primary">Sign out</label>
                         <label for="my-modal-2" class="btn">Cancel</label>
                         </div>
                     </div>
                     </div>
-         
+
         </div>
 
     </div>
 
     <div *ngIf="accountService.currentUser">
-        <app-user-profile 
+        <app-user-profile
      [currentAuthUser]="accountService.currentAuthUser" [currenUser]="accountService.currentUser" >
         {{ accountService.currentUser.address }}
     </app-user-profile>
     <div class="h-10"></div>
     <div class="flex space-x-2">
         <button [routerLink]="'/submission/registerproperty'" class="btn btn-large btn-primary">Continue</button >
-        <label for="my-modal-2" class="btn modal-button" >Change Account</label> 
-                <input type="checkbox" id="my-modal-2" class="modal-toggle"> 
+        <label for="my-modal-2" class="btn modal-button" >Change Account</label>
+                <input type="checkbox" id="my-modal-2" class="modal-toggle">
                 <div class="modal">
                 <div class="modal-box">
                     <p>Every property registration requires an account for the owner, if you change the current account
                         you will have to create and verify a new one with different identity
-                    </p> 
+                    </p>
                     <div class="modal-action">
-                    <label (click)="changeAccount()" for="my-modal-2" class="btn btn-primary">Sign out</label> 
+                    <label (click)="changeAccount()" for="my-modal-2" class="btn btn-primary">Sign out</label>
                     <label for="my-modal-2" class="btn">Cancel</label>
                     </div>
                 </div>
                 </div>
-     
+
     </div>
 
     </div>

@@ -5,12 +5,12 @@
 
   <h1 class="text-5xl font-extrabold"> OUR TRUSTED DEPLOYED CONTRACTS</h1>
 
-  <p class=" py-12 text-2xl">
+  <p class=" py-12  font-sans text-2xl">
       ``
         We make sure that all the contracts that have been deployed are 100% trusted and verified by our team
   </p>
 
-  <p class=" text-2xl">
+  <p class=" font-sans text-2xl">
       That's why, Overchain is the best option to buy your next property comfortably and trustfully
       ``
   </p>
@@ -20,11 +20,23 @@
 <div class="flex flex-col w-screen min-h-screen p-28 bg-gray-100 text-gray-900">
 
 	<!-- Component Start -->
+
+  <div class="form-control">
+    <label class="label">
+      <span class="label-text">Search by contract address</span>
+    </label>
+    <div class="flex space-x-2">
+      <input type="text" placeholder="0x00000000000000000... " class="w-80 input input-primary input-bordered">
+      <button class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M21 21l-4.486-4.494M19 10.5a8.5 8.5 0 1 1-17 0a8.5 8.5 0 0 1 17 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g></svg></button>
+    </div>
+  </div>
+
+
 	<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mt-6">
-		<span class="text-sm font-semibold">1-16 of 148 Products</span>
+		<span class="text-sm font-semibold">Deployed contracts</span>
 	</div>
 	<div class="grid 2xl:grid-cols-3 xl:grid-cols-3  sm:grid-cols-1 grid-cols-1 gap-x-6 gap-y-12 w-full mt-6">
-		<!-- Product Tile Start -->
+		<!-- Contracts Start -->
 		<div *ngFor="let deployedContract of deployedContracts">
       <span class="text-xs font-medium text-gray-600">Property infos</span>
 
@@ -46,12 +58,8 @@
           <p class="pt-2 pl-2">{{deployedContract.contractAddress}}</p>
 
           <div class="absolute bottom-2 right-2 card-actions ">
-            <button class="btn btn-primary">
-                  Buy now
-                  <svg class="inline-block w-5 h-5 ml-2 stroke-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/></g></svg>
-            </button>
 
-            <label [routerLink]="['/contract',deployedContract.contractAddress]" class="btn btn-primary">
+            <label [routerLink]="['/contract',deployedContract.type,deployedContract.contractAddress]" class="btn btn-primary">
               More info about contract
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 ml-2 stroke-current">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

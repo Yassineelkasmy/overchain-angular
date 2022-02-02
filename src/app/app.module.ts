@@ -47,6 +47,7 @@ import { ContractDeployComponent } from './views/admin/dashboard/contract-deploy
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MarketPlaceComponent } from './views/market-place/market-place.component';
 import { OneContractComponent } from './views/one-contract/one-contract.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -93,7 +94,6 @@ import { OneContractComponent } from './views/one-contract/one-contract.componen
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    NgxDropzoneModule
   ],
   providers: [
     AuthService,

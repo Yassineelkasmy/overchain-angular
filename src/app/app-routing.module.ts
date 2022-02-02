@@ -50,8 +50,8 @@ const routes: Routes = [
     ]
 
   },
-  { path : 'marketPlace', component: MarketPlaceComponent },
-  { path : 'contract/:address' , component : OneContractComponent}
+  { path : 'Marketplace', component: MarketPlaceComponent },
+  { path : 'contract/:type/:address' , component : OneContractComponent}
 ];
 
 @NgModule({

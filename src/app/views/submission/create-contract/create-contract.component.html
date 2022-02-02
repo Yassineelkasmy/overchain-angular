@@ -1,4 +1,4 @@
-<div class="flex space-x-10">
+<div class="flex space-x-56">
     <app-steps [stepNum]=4></app-steps>
     <div>
 
@@ -20,14 +20,14 @@
                 <label class="label">
                   <span class="label-text">Your Wallet Address</span>
                 </label>
-                <input formControlName="wallet" type="text" placeholder="your wallet address" class="w-full input input-warning input-bordered" [value]="metamaskService.accounts" [attr.disabled]="true">
+                <input formControlName="wallet" type="text" placeholder="your wallet address" class="w-full input input-primary input-bordered" [value]="metamaskService.accounts" [attr.disabled]="true">
           </div>
 
 
             <div>
                 <label class="label">
-            <span class="label-text">Property Price</span>
-            </label>
+                <span class="label-text">Property Price</span>
+                </label>
                 <label class="input-group input-group-md">
               <input (change)="convertUsePrice()" formControlName="price" type="number" min="0" class="input input-warning input-bordered">
                 <span>USD</span>
@@ -35,7 +35,7 @@
               <div class="h-5"></div>
                <!-- convert usd => eth -->
 
-               <span class="flex items-center h-8 bg-purple-300 text-purple-700 text-sm px-3 rounded"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 417"><path fill="#343434" d="M127.961 0l-2.795 9.5v275.668l2.795 2.79l127.962-75.638z"/><path fill="#8C8C8C" d="M127.962 0L0 212.32l127.962 75.639V154.158z"/><path fill="#3C3C3B" d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.6L256 236.587z"/><path fill="#8C8C8C" d="M127.962 416.905v-104.72L0 236.585z"/><path fill="#141414" d="M127.961 287.958l127.96-75.637l-127.96-58.162z"/><path fill="#393939" d="M0 212.32l127.96 75.638v-133.8z"/></svg>
+               <span class="flex items-center h-8 bg-purple-300 text-purple-600 text-sm px-3 rounded"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 417"><path fill="#343434" d="M127.961 0l-2.795 9.5v275.668l2.795 2.79l127.962-75.638z"/><path fill="#8C8C8C" d="M127.962 0L0 212.32l127.962 75.639V154.158z"/><path fill="#3C3C3B" d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.6L256 236.587z"/><path fill="#8C8C8C" d="M127.962 416.905v-104.72L0 236.585z"/><path fill="#141414" d="M127.961 287.958l127.96-75.637l-127.96-58.162z"/><path fill="#393939" d="M0 212.32l127.96 75.638v-133.8z"/></svg>
                 <span class="text-lg  pl-2" *ngIf="convertedEthValue" [innerText]="convertedEthValue"></span>
               </span>
 

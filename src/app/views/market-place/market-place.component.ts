@@ -19,7 +19,7 @@ export class MarketPlaceComponent implements OnInit {
 
   public ethPrice !: number;
 
-  public deployedContracts ?: DeployedContracts [];
+  public deployedContracts !: DeployedContracts [];
 
   ngOnInit(): void {
 
@@ -61,6 +61,33 @@ export class MarketPlaceComponent implements OnInit {
   //     }
   //   );
   // }
+  searchText;
+
+
+  public searchEmployees(key:string) : void {
+    console.log(key);
+
+    const result:DeployedContracts[] = [];
+
+    for(const searchedContracts of this.deployedContracts){
+      if(
+        searchedContracts.contractAddress.toLocaleLowerCase().indexOf(key.toLocaleLowerCase())!==-1
+       /* employee.email.toLocaleLowerCase().indexOf(key.toLocaleLowerCase())!==-1 ||
+        employee.phone.toLocaleLowerCase().indexOf(key.toLocaleLowerCase())!==-1 ||   We Can search by...
+        employee.name.toLocaleLowerCase().indexOf(key.toLocaleLowerCase())!==-1 ||
+        */
+        )
+          result.push(searchedContracts);
+
+    }
+    this.deployedContracts = result;
+    if(result.length ===0 && key.length===0 ){
+      this.getDeployedContracts();
+    }
+    console.log("result : "+result);
+    console.log("employees array : "+this.deployedContracts)
+
+  }
 
 
 }
