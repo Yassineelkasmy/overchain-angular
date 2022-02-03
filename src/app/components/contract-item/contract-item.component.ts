@@ -46,19 +46,39 @@ export class ContractItemComponent implements OnInit {
 
   deployContract(contract : Contract){
 
-        console.log(contract.type);
-        console.log(contract)
+        // console.log(contract)
 
         this.convertUsePrice(contract.price)
 
-        console.log(this.convertedEthValue)
-        console.log(contract.sellerWallet)
-        console.log(contract.propertyId);
+        // console.log(this.convertedEthValue)
+        // console.log(contract.sellerWallet)
+        // console.log(contract.propertyId);
 
 
-        this.adminContractService.deployBaseContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id);
+        //this.adminContractService.deployBaseContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id);
 
+        switch(contract.type.toString()) {
+          case  'BASIC': {
+              console.log(contract.type);
+              this.adminContractService.deployBaseContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id);
 
+              break;
+            }
+
+            case 'WHITELISTED' :{
+              this.adminContractService.deployWhiteListContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id,contract.whiteListWallets);
+
+             break;
+          }
+
+          case 'BLACKLISTED' :{
+              this.adminContractService.deployBlackListContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id,contract.blackListWallets);
+            console.log(contract.type);
+
+           break;
+          }
+
+       }
 
     // if(contract.type === SmartContractType.Basic){
     //   console.log(contract.type);

@@ -92,7 +92,7 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
 
 
 
-      async deployWhiteListContract(_proertyOwner:string, _price:number,_propertyCode:string,_whiteAddresses:string[]):Promise<void> {
+      async deployWhiteListContract(_proertyOwner:string, _price:number,_propertyCode:string,contractId:string,_whiteAddresses:string[]):Promise<void> {
 
         this.provider = await this.web3Modal.connect();
         this.web3js = new Web3(this.provider);
@@ -100,11 +100,12 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
 
         console.log("contract WhiteListByteCode:"+WhiteListByteCode)
 
+        console.log(_whiteAddresses);
 
         this.contract =await new this.web3js.eth.Contract(WhiteListContractAbi);
         this.contract.deploy({
           data: WhiteListByteCode,
-          arguments: [_proertyOwner, Web3.utils.toWei(String(_price),"ether"),_propertyCode,_whiteAddresses]
+          arguments: [_proertyOwner, Web3.utils.toWei(String(_price),"ether"), _propertyCode,_whiteAddresses]
         })
         .send({
           from: this.accounts[0],
@@ -112,7 +113,19 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
         }).then(
           (Resp)=>{
             this.contractAddress = Resp.options.address;
-            console.log("address"+Resp.options.address);
+            console.log("address"+Resp.options.address)
+            let deployContractRequest : DeployContractRequest = {
+                contractId: contractId,
+                contractAddress : this.contractAddress
+              }
+
+              console.log(deployContractRequest)
+          console.log(this.adminService.deployContract(deployContractRequest).subscribe(
+            {
+              next : (Resp)=> {console.log(Resp);window.location.reload();},
+              error : (e) => console.log(e)
+            }
+          ));
           }
           );
 
@@ -120,12 +133,15 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
 
 
 
-      async deployBlackListContract(_proertyOwner:string,_price:number,_propertyCode:string,_blackAddresses:string[]):Promise<void> {
+      async deployBlackListContract(_proertyOwner:string,_price:number,_propertyCode:string,contractId:string,_blackAddresses:string[]):Promise<void> {
         this.provider = await this.web3Modal.connect();
         this.web3js = new Web3(this.provider);
         this.accounts = await this.web3js.eth.getAccounts();
 
         console.log("contract BlackListByteCode:"+BlackListByteCode)
+
+        console.log(_blackAddresses);
+
 
         this.contract =await new this.web3js.eth.Contract(BlackListContractAbi);
         this.contract.deploy({
@@ -139,7 +155,19 @@ import { DeployContractRequest } from 'src/app/dto/deploy-contract.request.js';
           (Resp)=>{
             this.contractAddress = Resp.options.address;
             console.log("address"+Resp.options.address)
+            let deployContractRequest : DeployContractRequest = {
+                contractId: contractId,
+                contractAddress : this.contractAddress
+              }
+
+              console.log(deployContractRequest)
+          console.log(this.adminService.deployContract(deployContractRequest).subscribe(
+            {
+              next : (Resp)=> {console.log(Resp);window.location.reload();},
+              error : (e) => console.log(e)
             }
+          ));
+          }
           );
 
       }

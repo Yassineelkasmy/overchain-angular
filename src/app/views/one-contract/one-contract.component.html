@@ -12,7 +12,7 @@
   </p>
 
   <!-- Desactivated contract  -->
-  <div class="space-y-3">
+  <div *ngIf="!baseContract?.activated" class="space-y-3">
     <p class=" py-12 font-sans text-2xl">
         The owner of this contract has already deactivated it
     </p>
