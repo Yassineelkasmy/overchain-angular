@@ -81,71 +81,150 @@
 
           <hr>
 
-              <div *ngIf="baseContract?.type == 1">
+            <div class="space-y-3" *ngIf="baseContract?.type == 1 && !baseContract?.bought">
                 <label>
-                  <span class="py-2 text-2xl font-mono">Verify an adress if it's already WHITE LISTED </span>
+                  <span class=" text-2xl font-mono">Verify an adress if it's already WHITE LISTED </span>
                 </label>
                 <div class="relative">
-                  <input id="whiteWalletAddress" name="whiteWalletAddress" #whiteWalletAddress type="text" placeholder="0x0000000000000..." class="w-96 pr-16 input input-primary input-bordered">
-                  <button (click)="verifyAddressWhiteList(whiteWalletAddress.value)" class="absolute top-0 right-0 rounded-l-none btn btn-accent"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
+                  <input id="whiteWalletAddress" name="whiteWalletAddress" #whiteWalletAddress type="text" placeholder="0 x 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" class="w-4/6 mb-3 pr-16 input input-primary input-bordered">
+                  <button (click)="verifyAddressWhiteList(whiteWalletAddress.value)" class="absolute ml-3 rounded-l-none btn btn-active	 btn-success"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
+                </div>
+                <div>
+                  <span class="text-red-500 font-mono" *ngIf="addressVerified==true">
+                    this address is white listed
+                    <svg class="inline-block" width="1.4em" hight="1.4em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><g><path style="fill:#85BF4F;" d="M371.331,206.765l-132.763,132.76c-9.467,9.47-24.827,9.47-34.296,0l-63.595-63.592c-9.469-9.47-9.469-24.828,0-34.3c9.471-9.466,24.834-9.466,34.297,0l46.448,46.446l115.611-115.612c9.468-9.468,24.828-9.468,34.298,0C380.797,181.934,380.797,197.295,371.331,206.765L371.331,206.765z M255.997,10.768C190.62,49.372,122.234,78.586,48.452,98.8v110.042c0,206.456,178.555,292.387,207.545,292.387c28.994,0,207.554-85.931,207.554-292.387V98.8C393.962,79.732,321.16,49.242,255.997,10.768z"/><path style="fill:#FFCD85;" d="M238.568,339.525l132.763-132.76c9.466-9.47,9.466-24.832,0-34.298c-9.469,9.472-9.469,24.83,0,34.3l63.595,63.592C213.74,348.995,229.1,348.995,238.568,339.525z"/></g><g><path style="fill:#000003;" d="M466.395,88.411C395.95,69.109,325.091,39.054,261.478,1.496c-3.379-1.995-7.572-1.995-10.95,0C185.08,40.133,118.05,68.562,45.605,88.411c-4.68,1.281-7.924,5.535-7.924,10.388v110.046c0,113.323,52.279,188.335,96.137,231.306c47.216,46.265,102.216,71.85,122.185,71.85c19.967,0,74.967-25.585,122.183-71.85c43.857-42.97,96.133-117.983,96.133-231.306V98.798C474.319,93.946,471.075,89.692,466.395,88.411z M452.779,208.844c0,105.843-48.761,175.838-89.669,215.92c-46.431,45.495-96.074,65.695-107.107,65.695c-11.033,0-60.679-20.2-107.111-65.695c-40.907-40.083-89.67-110.077-89.67-215.92V106.974C128.5,87.304,193.018,59.853,256.005,23.25c61.414,35.632,129.151,64.448,196.774,83.72V208.844z"/><path style="fill:#000003;" d="M160.538,105.769c-2.18-5.535-8.433-8.254-13.969-6.073c-19.24,7.581-38.988,14.559-58.695,20.741c-4.491,1.41-7.547,5.57-7.547,10.276v41.591c0,5.948,4.823,10.77,10.77,10.77c5.947,0,10.77-4.822,10.77-10.77v-33.72c17.679-5.72,35.339-12.047,52.598-18.848C160,117.557,162.719,111.304,160.538,105.769z"/><path style="fill:#000003;" d="M180.997,107.812c1.445,0,2.912-0.291,4.319-0.905l0.198-0.086c5.449-2.388,7.903-8.731,5.515-14.178c-2.39-5.449-8.769-7.914-14.212-5.528l-0.174,0.075c-5.452,2.381-7.914,8.719-5.533,14.169C172.877,105.405,176.842,107.812,180.997,107.812z"/><path style="fill:#000003;" d="M384.322,347.283c-4.977-3.253-11.651-1.854-14.908,3.125c-8.875,13.584-19.287,26.592-30.951,38.659c-9.592,9.922-19.986,19.17-30.893,27.485c-4.729,3.606-5.639,10.364-2.034,15.095c2.121,2.779,5.328,4.241,8.572,4.241c2.278,0,4.573-0.719,6.523-2.207c11.765-8.971,22.975-18.944,33.317-29.642c12.611-13.044,23.881-27.124,33.499-41.849C390.702,357.21,389.301,350.536,384.322,347.283z"/><path style="fill:#000003;" d="M282.558,433.443l-0.618,0.364c-5.147,2.981-6.906,9.569-3.926,14.716c1.997,3.45,5.612,5.376,9.331,5.376c1.83,0,3.688-0.467,5.385-1.452l0.713-0.419c5.133-3.006,6.857-9.603,3.851-14.736C294.286,432.161,287.688,430.44,282.558,433.443z"/><path style="fill:#000003;" d="M182.589,234.019c-6.613-6.614-15.408-10.254-24.762-10.254s-18.15,3.641-24.766,10.254c-13.653,13.656-13.653,35.876,0,49.531l63.596,63.594c6.614,6.612,15.409,10.253,24.764,10.253c9.355,0,18.15-3.641,24.765-10.255L378.947,214.38c13.652-13.659,13.652-35.876-0.002-49.527c-6.614-6.614-15.409-10.254-24.765-10.254c-9.355,0-18.15,3.641-24.765,10.254L221.42,272.848L182.589,234.019z M344.647,180.085c2.545-2.545,5.932-3.946,9.534-3.946c3.604,0,6.988,1.401,9.535,3.946c5.255,5.255,5.255,13.809-0.002,19.066l-132.759,132.76c-2.545,2.545-5.932,3.946-9.534,3.946c-3.602,0-6.989-1.401-9.535-3.946l-63.594-63.592c-5.257-5.257-5.257-13.811-0.002-19.066c2.546-2.545,5.933-3.948,9.536-3.948c3.603,0,6.988,1.401,9.533,3.946l46.445,46.446c2.02,2.019,4.759,3.153,7.615,3.153c2.856,0,5.595-1.134,7.614-3.153L344.647,180.085z"/></g></svg>
+                  </span>
+
+                  <span class="text-green-600 font-mono" *ngIf="addressVerified==false">
+                    this address is not on the white list
+                    <svg class="inline-block" width="1.4em" hight="1.4em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.002 512.002" style="enable-background:new 0 0 512.002 512.002;" xml:space="preserve"><g><path style="fill:#DD2645;" d="M303.127,337.424l-47.125-47.127l-47.177,47.176c-9.429,9.429-24.866,9.431-34.297,0c-9.432-9.429-9.432-24.866,0-34.297L221.705,256l-47.127-47.127c-9.435-9.434-9.435-24.866-0.002-34.297c9.431-9.431,24.864-9.433,34.299,0l47.125,47.127l47.176-47.177c9.435-9.431,24.868-9.431,34.298,0c9.435,9.432,9.432,24.866,0,34.298L290.299,256l47.127,47.127c9.435,9.433,9.435,24.868,0.002,34.299C327.996,346.856,312.561,346.856,303.127,337.424L303.127,337.424z M255.998,10.768C190.619,49.371,122.235,78.587,48.453,98.8v110.043c0,206.457,178.555,292.388,207.546,292.388c28.995,0,207.555-85.931,207.555-292.388V98.801C393.964,79.732,321.161,49.244,255.998,10.768z"/><path style="fill:#FFCD85;" d="M256.002,290.298l47.125,47.127c9.435,9.432,24.869,9.432,34.3,0.002c9.432-9.431,9.432-24.866-0.002-34.299L290.3,256l47.177-47.176c9.432-9.432,9.435-24.866,0-34.298c-9.43-9.431-24.864-9.431-34.298,0l-47.176,47.177l-47.125-47.127c-9.436-9.433-24.868-9.431-34.299,0c-9.432,9.431-9.432,24.864,0.002,34.297L221.706,256l-47.178,47.176c-9.432,9.431-9.432,24.868,0,34.297c9.431,9.431,24.868,9.429,34.297,0L256.002,290.298z"/></g><g><path style="fill:#000003;" d="M466.397,88.411C395.95,69.11,325.089,39.055,261.477,1.496c-3.379-1.996-7.572-1.995-10.951,0C185.083,40.133,118.052,68.563,45.605,88.411c-4.68,1.282-7.924,5.535-7.924,10.388v110.047c0,113.323,52.279,188.335,96.136,231.306c47.217,46.264,102.215,71.849,122.184,71.849c19.967,0,74.967-25.586,122.183-71.849c43.857-42.971,96.136-117.983,96.136-231.306V98.798C474.321,93.945,471.077,89.692,466.397,88.411z M452.781,208.845c0,105.842-48.761,175.838-89.67,215.92c-46.431,45.495-96.075,65.695-107.108,65.695c-11.033,0-60.679-20.2-107.109-65.695c-40.907-40.082-89.67-110.079-89.67-215.92v-101.87c69.282-19.672,133.799-47.122,196.782-83.724c61.412,35.631,129.15,64.446,196.777,83.72V208.845z"/><path style="fill:#000003;" d="M180.959,107.836c1.422,0,2.867-0.283,4.257-0.882l0.202-0.089l-4.232-9.904l4.263,9.891c5.463-2.354,7.982-8.69,5.628-14.154c-2.355-5.462-8.688-7.981-14.154-5.628l-0.234,0.102c-5.463,2.354-7.983,8.69-5.63,14.154C172.818,105.398,176.788,107.836,180.959,107.836z"/><path style="fill:#000003;" d="M160.537,105.772c-2.18-5.535-8.435-8.251-13.969-6.073c-19.217,7.571-38.964,14.549-58.694,20.74c-4.49,1.41-7.545,5.57-7.545,10.276v41.589c0,5.948,4.823,10.77,10.77,10.77s10.77-4.822,10.77-10.77v-33.718c17.696-5.726,35.355-12.054,52.596-18.845C159.999,117.56,162.716,111.306,160.537,105.772z"/><path style="fill:#000003;" d="M282.542,433.457l-0.656,0.384c-5.131,3.009-6.849,9.609-3.838,14.74c2.004,3.417,5.604,5.321,9.3,5.321c1.851,0,3.728-0.478,5.44-1.482l0.675-0.395c5.128-3.016,6.839-9.617,3.824-14.743C294.269,432.153,287.667,430.441,282.542,433.457z"/><path style="fill:#000003;" d="M307.572,416.552c-4.73,3.606-5.641,10.364-2.037,15.095c2.121,2.781,5.328,4.241,8.574,4.241c2.276,0,4.571-0.718,6.521-2.205c11.75-8.957,22.96-18.929,33.32-29.64c12.611-13.047,23.883-27.128,33.498-41.852c3.254-4.98,1.854-11.654-3.128-14.907c-4.979-3.253-11.653-1.852-14.906,3.128c-8.872,13.584-19.287,26.591-30.951,38.659C328.858,399.003,318.464,408.249,307.572,416.552z"/><path style="fill:#000003;" d="M216.491,166.959c-6.597-6.596-15.391-10.228-24.765-10.228s-18.168,3.633-24.765,10.229c-6.597,6.597-10.228,15.39-10.228,24.765c0.001,9.373,3.634,18.168,10.23,24.765L206.475,256l-39.562,39.561c-6.596,6.597-10.228,15.391-10.228,24.766c0,9.375,3.633,18.17,10.227,24.764c6.597,6.596,15.391,10.228,24.765,10.227c9.375,0,18.17-3.633,24.765-10.227l39.561-39.561l39.511,39.511c6.599,6.597,15.394,10.228,24.768,10.228c9.373,0,18.167-3.632,24.764-10.226c13.654-13.655,13.654-35.875-0.003-49.531L305.531,256l39.562-39.561c6.596-6.596,10.228-15.39,10.228-24.764c0.001-9.374-3.633-18.17-10.227-24.765c-6.596-6.596-15.39-10.229-24.765-10.229c-9.373,0-18.168,3.632-24.766,10.228l-39.56,39.561L216.491,166.959z M310.793,182.143c2.529-2.529,5.915-3.92,9.536-3.92c3.62,0,7.005,1.392,9.534,3.92c2.528,2.527,3.919,5.913,3.919,9.532c0,3.62-1.393,7.006-3.919,9.534l-47.178,47.176c-2.019,2.019-3.155,4.759-3.155,7.616c0,2.856,1.135,5.596,3.155,7.616l47.128,47.127c5.257,5.258,5.259,13.812,0.002,19.067c-2.527,2.527-5.913,3.918-9.534,3.918c-3.62,0.001-7.008-1.392-9.536-3.92l-47.128-47.127c-4.205-4.206-11.024-4.206-15.232,0l-47.176,47.176c-2.527,2.527-5.913,3.918-9.534,3.919c-3.62,0-7.006-1.391-9.534-3.919c-2.528-2.527-3.919-5.912-3.919-9.532c0-3.621,1.393-7.006,3.919-9.534l47.178-47.176c2.02-2.02,3.156-4.759,3.156-7.616c0-2.856-1.135-5.596-3.155-7.616l-47.127-47.128c-2.529-2.529-3.921-5.915-3.922-9.534c0-3.619,1.391-7.005,3.92-9.532c2.528-2.528,5.913-3.92,9.534-3.92c3.62,0,7.007,1.393,9.536,3.92l47.123,47.127c2.02,2.02,4.76,3.155,7.617,3.155c2.855,0,5.595-1.135,7.614-3.155L310.793,182.143z"/></g></svg>
+
+                  </span>
                 </div>
 
+              <br>
+
+              <div class="space-y-3 py-3">
 
                 <label>
-                  <span class="py-2 text-2xl font-mono">Add an address to the white list </span>
+                  <span class=" text-2xl font-mono">Add an address to white list </span>
                 </label>
                 <div class="relative">
-                  <input id="AddAddressToWhiteList" name="AddAddressToWhiteList" #AddAddressToWhiteList type="text" placeholder="0x0000000000000..." class="w-96 pr-16 input input-primary input-bordered">
-                  <button (click)="addAddressToWhiteList(AddAddressToWhiteList.value)" class="absolute top-0 right-0 rounded-l-none btn btn-accent"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
+                  <input id="AddAddressToWhiteList" name="AddAddressToWhiteList" #AddAddressToWhiteList type="text" placeholder="0 x 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" class="w-4/6 mb-3 pr-16 input input-primary input-bordered">
+                  <button (click)="addAddressToWhiteList(AddAddressToWhiteList.value)" class="absolute ml-3 rounded-l-none btn btn-info"><svg version="1.1" id="Layer_1" width="1.4em" height="1.4em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><path style="fill:#005A95;" d="M216.303,254.699c-104.616,0-191.005,78.035-204.136,179.073c-0.88,6.775,1.202,13.599,5.714,18.729 c4.512,5.13,11.015,8.06,17.847,8.06h361.149c6.826,0,13.319-2.943,17.827-8.068c4.508-5.126,6.613-11.953,5.734-18.722 C407.308,332.734,320.919,254.699,216.303,254.699z"/><path style="fill:#31AAEF;" d="M216.303,254.699c-104.616,0-191.004,78.035-204.135,179.073c-0.88,6.775,1.202,13.599,5.714,18.729 c4.512,5.13,11.015,8.06,17.847,8.06h180.574L216.303,254.699L216.303,254.699z"/><path style="fill:#003C61;" d="M313.597,279.138c-28.977-15.573-62.094-24.439-97.294-24.439s-68.317,8.866-97.294,24.439 c22.858,33.968,57.935,55.735,97.294,55.735S290.739,313.105,313.597,279.138z"/><ellipse style="fill:#FFDBAC;" cx="216.3" cy="148.763" rx="124.718" ry="148.763"/><path style="fill:#FFEED9;" d="M216.303,0c-68.882,0-124.72,66.603-124.72,148.762s55.838,148.762,124.719,148.762V0H216.303z"/><circle style="fill:#FF9800;" cx="403.393" cy="415.358" r="96.639"/><path style="fill:#F7DC4D;" d="M306.749,415.358c0,53.375,43.268,96.643,96.643,96.643V318.715	C350.017,318.715,306.749,361.983,306.749,415.358z"/><path style="fill:#003C61;" d="M441.742,398.644h-21.636v-21.636c0-9.23-7.483-16.714-16.714-16.714	c-9.23,0-16.714,7.483-16.714,16.714v21.636h-21.638c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638	v21.636c0,9.23,7.483,16.714,16.714,16.714c9.23,0,16.714-7.483,16.714-16.714v-21.636h21.636c9.23,0,16.714-7.483,16.714-16.714	C458.456,406.128,450.974,398.644,441.742,398.644z"/><path style="fill:#005A95;" d="M403.392,360.294c-9.23,0-16.714,7.483-16.714,16.714v21.636h-21.638	c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638v21.636c0,9.23,7.483,16.714,16.714,16.714V360.294z"/></svg></button>
                 </div>
 
+                <div>
+                  <span class="text-green-600 font-mono" *ngIf="addressAdded">
+                    Address added successfully
+                    <svg class="inline-block ml-3" width="1.4em" height="1.4em" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><circle style="fill:#25AE88;" cx="25" cy="25" r="25"/><polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="38,15 22,33 12,25 "/></svg>
+
+                  </span>
+                </div>
+
+              </div>
+
+              <div class="space-y-3 py-3">
+
                 <label>
-                  <span class="py-2 text-2xl font-mono">Add an address to the white list </span>
+                  <span class=" text-2xl font-mono">Remove address from white list </span>
                 </label>
                 <div class="relative">
-                  <input id="RemoveAddressFromWhiteList" name="RemoveAddressFromWhiteList" #RemoveAddressFromWhiteList type="text" placeholder="0x0000000000000..." class="w-96 pr-16 input input-primary input-bordered">
-                  <button (click)="removeAddressFromWhiteList(RemoveAddressFromWhiteList.value)" class="absolute top-0 right-0 rounded-l-none btn btn-accent"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
+                  <input id="RemoveAddressFromWhiteList" name="RemoveAddressFromWhiteList" #RemoveAddressFromWhiteList type="text" placeholder="0 x 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" class="w-4/6 mb-3 pr-16 input input-primary input-bordered">
+                  <button (click)="removeAddressFromWhiteList(RemoveAddressFromWhiteList.value)" class="absolute ml-3 rounded-l-none btn btn-error"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" width="1.4em" hight="1.4em" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><path style="fill:#FFB74A;" d="M216.303,254.699c-104.616,0-191.005,78.035-204.136,179.073c-0.88,6.775,1.202,13.599,5.714,18.729c4.512,5.13,11.015,8.06,17.847,8.06h361.149c6.826,0,13.319-2.943,17.827-8.068c4.508-5.126,6.613-11.953,5.734-18.722C407.308,332.734,320.919,254.699,216.303,254.699z"/><path style="fill:#FFC56E;" d="M216.303,254.699c-104.616,0-191.004,78.035-204.135,179.073c-0.88,6.775,1.202,13.599,5.714,18.729c4.512,5.13,11.015,8.06,17.847,8.06h180.574L216.303,254.699L216.303,254.699z"/><path style="fill:#DE9F40;" d="M313.597,279.138c-28.977-15.573-62.094-24.439-97.294-24.439s-68.317,8.866-97.294,24.439c22.858,33.968,57.935,55.735,97.294,55.735S290.739,313.105,313.597,279.138z"/><ellipse style="fill:#FFDBAC;" cx="216.3" cy="148.763" rx="124.718" ry="148.763"/><path style="fill:#FFEED9;" d="M216.303,0c-68.882,0-124.72,66.603-124.72,148.762s55.838,148.762,124.719,148.762V0H216.303z"/><circle style="fill:#146691;" cx="403.393" cy="415.358" r="96.639"/><path style="fill:#1A85BD;" d="M306.749,415.358c0,53.375,43.268,96.643,96.643,96.643V318.715C350.017,318.715,306.749,361.983,306.749,415.358z"/><path style="fill:#5BBBED;" d="M441.742,398.644h-21.636h-33.427h-21.638c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638h33.427h21.636c9.23,0,16.714-7.483,16.714-16.714C458.456,406.128,450.974,398.644,441.742,398.644z"/><path style="fill:#80C8ED;" d="M403.392,432.072v-33.427h-16.714h-21.638c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638H403.392z"/></svg></button>
+                </div>
+
+                <div>
+                  <span class="text-yellow-600 font-mono" *ngIf="addressRemoved">
+                    Address removed successfully
+                    <svg class="inline-block ml-3" width="1.4em" hight="1.4em" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><circle style="fill:#25AE88;" cx="25" cy="25" r="25"/><polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="38,15 22,33 12,25 "/></svg>
+
+                  </span>
+                </div>
+
+              </div>
+
+              <br>
+                <hr>
+
+            </div>
+
+
+            <div class="space-y-3" *ngIf="baseContract?.type == 2 && !baseContract?.bought">
+                <label>
+                  <span class="text-2xl font-mono">Verify an adress if it's already BLACK LISTED </span>
+                </label>
+                <div class="relative">
+                  <input id="blackWalletAddress" name="blackWalletAddress" #blackWalletAddress type="text" placeholder="0 x 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" class="w-4/6  mb-3 pr-16 input input-primary input-bordered">
+                  <button (click)="verifyAddressBlackList(blackWalletAddress.value)" class="absolute ml-3 rounded-l-none btn btn-active	 btn-success"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
+                </div>
+
+                <div>
+                  <span class="text-black font-bold" *ngIf="addressVerified==true">
+                    This address is black listed
+                    <svg class="inline-block ml-3" width="1.4em" height="1.4em" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 41.345 41.345" style="enable-background:new 0 0 41.345 41.345;" xml:space="preserve"><g><path style="fill:#010002;" d="M2.909,21.534v19.811h31.387c2.286,0,4.139-1.853,4.139-4.14v-19.81H7.048C4.762,17.395,2.909,19.249,2.909,21.534z M20.671,24.099c1.906,0,3.45,1.544,3.45,3.449c0,1.267-0.688,2.361-1.704,2.962v2.472c0,1.143-0.782,2.069-1.746,2.069h-1.746V30.51c-1.015-0.601-1.704-1.695-1.704-2.962C17.222,25.643,18.767,24.099,20.671,24.099z"/><path style="fill:#010002;" d="M29.967,7.565c1.143,0,2.07-0.925,2.07-2.069V2.069C32.037,0.924,31.11,0,29.967,0H11.859C10.716,0,9.79,0.925,9.79,2.069v9.7c0,1.144,0.926,2.069,2.069,2.069h2.07v-9.7h13.969v3.427C27.898,7.565,29.967,7.565,29.967,7.565z"/></g></svg>
+
+                  </span>
+
+                  <span class="text-green-600 font-mono" *ngIf="addressVerified==false">
+                    This address is not on the black list
+
+                  </span>
+                </div>
+
+                <br>
+                <div class="space-y-3 py-3">
+
+                  <label>
+                    <span class="text-2xl font-mono">Add an address to black list </span>
+                  </label>
+                  <div class="relative">
+                    <input id="AddAddressToBlackList" name="AddAddressToBlackList" #AddAddressToBlackList type="text" placeholder="0 x 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" class="w-4/6  mb-3 pr-16 input input-primary input-bordered">
+                    <button (click)="addAddressToBlackList(AddAddressToBlackList.value)" class="absolute ml-3 rounded-l-none btn btn-info"><svg version="1.1" id="Layer_1" width="1.4em" height="1.4em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><path style="fill:#005A95;" d="M216.303,254.699c-104.616,0-191.005,78.035-204.136,179.073c-0.88,6.775,1.202,13.599,5.714,18.729 c4.512,5.13,11.015,8.06,17.847,8.06h361.149c6.826,0,13.319-2.943,17.827-8.068c4.508-5.126,6.613-11.953,5.734-18.722 C407.308,332.734,320.919,254.699,216.303,254.699z"/><path style="fill:#31AAEF;" d="M216.303,254.699c-104.616,0-191.004,78.035-204.135,179.073c-0.88,6.775,1.202,13.599,5.714,18.729 c4.512,5.13,11.015,8.06,17.847,8.06h180.574L216.303,254.699L216.303,254.699z"/><path style="fill:#003C61;" d="M313.597,279.138c-28.977-15.573-62.094-24.439-97.294-24.439s-68.317,8.866-97.294,24.439 c22.858,33.968,57.935,55.735,97.294,55.735S290.739,313.105,313.597,279.138z"/><ellipse style="fill:#FFDBAC;" cx="216.3" cy="148.763" rx="124.718" ry="148.763"/><path style="fill:#FFEED9;" d="M216.303,0c-68.882,0-124.72,66.603-124.72,148.762s55.838,148.762,124.719,148.762V0H216.303z"/><circle style="fill:#FF9800;" cx="403.393" cy="415.358" r="96.639"/><path style="fill:#F7DC4D;" d="M306.749,415.358c0,53.375,43.268,96.643,96.643,96.643V318.715	C350.017,318.715,306.749,361.983,306.749,415.358z"/><path style="fill:#003C61;" d="M441.742,398.644h-21.636v-21.636c0-9.23-7.483-16.714-16.714-16.714	c-9.23,0-16.714,7.483-16.714,16.714v21.636h-21.638c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638	v21.636c0,9.23,7.483,16.714,16.714,16.714c9.23,0,16.714-7.483,16.714-16.714v-21.636h21.636c9.23,0,16.714-7.483,16.714-16.714	C458.456,406.128,450.974,398.644,441.742,398.644z"/><path style="fill:#005A95;" d="M403.392,360.294c-9.23,0-16.714,7.483-16.714,16.714v21.636h-21.638	c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638v21.636c0,9.23,7.483,16.714,16.714,16.714V360.294z"/></svg></button>
+                  </div>
+
+                  <div>
+                    <span class="text-green-600 font-mono" *ngIf="addressAdded">
+                      Address added successfully
+                      <svg class="inline-block ml-3" width="1.4em" height="1.4em" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><circle style="fill:#25AE88;" cx="25" cy="25" r="25"/><polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="38,15 22,33 12,25 "/></svg>
+
+                    </span>
+                  </div>
+
+                </div>
+
+                <div class="space-y-3 py-3">
+
+                  <label>
+                    <span class="text-2xl font-mono">Remove address from black list </span>
+                  </label>
+                  <div class="relative">
+                    <input id="RemoveAddressFromBlackList" name="RemoveAddressFromBlackList" #RemoveAddressFromBlackList type="text" placeholder="0 x 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" class="w-4/6 mb-3 pr-16 input input-primary input-bordered">
+                    <button (click)="removeAddressFromBlackList(RemoveAddressFromBlackList.value)" class="absolute ml-3 rounded-l-none btn btn-error"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" width="1.4em" hight="1.4em" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><path style="fill:#FFB74A;" d="M216.303,254.699c-104.616,0-191.005,78.035-204.136,179.073c-0.88,6.775,1.202,13.599,5.714,18.729c4.512,5.13,11.015,8.06,17.847,8.06h361.149c6.826,0,13.319-2.943,17.827-8.068c4.508-5.126,6.613-11.953,5.734-18.722C407.308,332.734,320.919,254.699,216.303,254.699z"/><path style="fill:#FFC56E;" d="M216.303,254.699c-104.616,0-191.004,78.035-204.135,179.073c-0.88,6.775,1.202,13.599,5.714,18.729c4.512,5.13,11.015,8.06,17.847,8.06h180.574L216.303,254.699L216.303,254.699z"/><path style="fill:#DE9F40;" d="M313.597,279.138c-28.977-15.573-62.094-24.439-97.294-24.439s-68.317,8.866-97.294,24.439c22.858,33.968,57.935,55.735,97.294,55.735S290.739,313.105,313.597,279.138z"/><ellipse style="fill:#FFDBAC;" cx="216.3" cy="148.763" rx="124.718" ry="148.763"/><path style="fill:#FFEED9;" d="M216.303,0c-68.882,0-124.72,66.603-124.72,148.762s55.838,148.762,124.719,148.762V0H216.303z"/><circle style="fill:#146691;" cx="403.393" cy="415.358" r="96.639"/><path style="fill:#1A85BD;" d="M306.749,415.358c0,53.375,43.268,96.643,96.643,96.643V318.715C350.017,318.715,306.749,361.983,306.749,415.358z"/><path style="fill:#5BBBED;" d="M441.742,398.644h-21.636h-33.427h-21.638c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638h33.427h21.636c9.23,0,16.714-7.483,16.714-16.714C458.456,406.128,450.974,398.644,441.742,398.644z"/><path style="fill:#80C8ED;" d="M403.392,432.072v-33.427h-16.714h-21.638c-9.23,0-16.714,7.483-16.714,16.714c0,9.23,7.483,16.714,16.714,16.714h21.638H403.392z"/></svg>
+                    </button>
+                  </div>
+
+                  <div>
+                    <span class="text-yellow-600 font-mono" *ngIf="addressRemoved">
+                      Address removed successfully
+                      <svg  class="inline-block ml-3" width="1.4em" hight="1.4em"  version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><circle style="fill:#25AE88;" cx="25" cy="25" r="25"/><polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="38,15 22,33 12,25 "/></svg>
+
+                    </span>
+                  </div>
+
                 </div>
 
                 <hr>
 
-              </div>
-
-
-
-              <div *ngIf="baseContract?.type == 2">
-                <label>
-                  <span class="py-2 text-2xl font-mono">Verify an adress if it's already BLACK LISTED </span>
-                </label>
-                <div class="relative">
-                  <input id="blackWalletAddress" name="blackWalletAddress" #blackWalletAddress type="text" placeholder="0x0000000000000..." class="w-96 pr-16 input input-primary input-bordered">
-                  <button (click)="verifyAddressBlackList(blackWalletAddress.value)" class="absolute top-0 right-0 rounded-l-none btn btn-accent"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
-                </div>
-
-                <label>
-                  <span class="py-2 text-2xl font-mono">Add an address to the white list </span>
-                </label>
-                <div class="relative">
-                  <input id="AddAddressToBlackList" name="AddAddressToBlackList" #AddAddressToBlackList type="text" placeholder="0x0000000000000..." class="w-96 pr-16 input input-primary input-bordered">
-                  <button (click)="addAddressToBlackList(AddAddressToBlackList.value)" class="absolute top-0 right-0 rounded-l-none btn btn-accent"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
-                </div>
-
-                <label>
-                  <span class="py-2 text-2xl font-mono">Add an address to the Black list </span>
-                </label>
-                <div class="relative">
-                  <input id="RemoveAddressFromBlackList" name="RemoveAddressFromBlackList" #RemoveAddressFromBlackList type="text" placeholder="0x0000000000000..." class="w-96 pr-16 input input-primary input-bordered">
-                  <button (click)="removeAddressFromBlackList(RemoveAddressFromBlackList.value)" class="absolute top-0 right-0 rounded-l-none btn btn-accent"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1.4em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z"/></g></svg></button>
-                </div>
-
-                <hr>
-
-              </div>
+            </div>
 
 
 
           <div *ngIf="!baseContract?.bought && !baseContract?.paused && baseContract?.activated">
-            <button (click)="buyProperty()" class="btn btn-primary">Own this property now <svg class="inline-block w-5 h-5 ml-2 stroke-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/></g></svg></button>
+            <button (click)="buyProperty()" class="btn btn-primary">
+              Own this property now
+              <svg class="ml-3" width="2em" height="2em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve"><polygon style="fill:#F64B4A;" points="420.311,222.757 420.311,503.176 93.713,503.176 93.713,230.325 260.796,63.242 "/><polygon style="fill:#82DCC7;" points="22.282,247.543 260.799,9.027 491.743,239.972 491.743,294.19 260.799,63.244 22.282,301.761 "/><polygon style="fill:#E84242;" points="420.315,222.757 420.315,267.377 260.8,107.862 93.717,274.945 93.717,230.325 260.8,63.242 "/><path d="M227.483,285.397h67.232c4.93,0,8.924-3.996,8.924-8.924c0-4.928-3.994-8.924-8.924-8.924h-29.789v-17.904c0-4.928-3.994-8.924-8.924-8.924c-4.93,0-8.924,3.996-8.924,8.924v17.904h-19.595c-10.541,0-19.117,8.575-19.117,19.117v26.564c0,10.541,8.575,19.117,19.117,19.117h57.039c0.7,0,1.268,0.57,1.268,1.268v26.564c0,0.7-0.57,1.268-1.268,1.268h-67.232c-4.93,0-8.924,3.996-8.924,8.924c0,4.928,3.994,8.924,8.924,8.924h29.787v17.904c0,4.928,3.994,8.924,8.924,8.924c4.93,0,8.924-3.996,8.924-8.924v-17.904h19.596c10.541,0,19.117-8.575,19.117-19.117v-26.564c0-10.541-8.575-19.117-19.117-19.117h-57.039c-0.7,0-1.268-0.57-1.268-1.268v-26.564C226.214,285.966,226.784,285.397,227.483,285.397z"/><path d="M419.3,258.349c-4.93,0-8.924,3.996-8.924,8.924v226.879h-42.15c-4.93,0-8.924,3.996-8.924,8.924s3.994,8.924,8.924,8.924H419.3c4.93,0,8.924-3.996,8.924-8.924V267.273C428.224,262.344,424.228,258.349,419.3,258.349z"/><path d="M497.042,233.557L266.097,2.614c-3.486-3.485-9.136-3.485-12.621,0l-144.67,144.669c-3.485,3.485-3.485,9.136,0,12.62c3.486,3.485,9.136,3.484,12.621,0L259.786,21.544l222.021,222.021v28.977L266.097,56.831c-1.674-1.674-3.943-2.614-6.311-2.614c-2.368,0-4.636,0.94-6.311,2.614L30.193,280.114v-28.977l68.034-68.032c3.485-3.485,3.485-9.136,0-12.62c-3.489-3.486-9.138-3.484-12.621,0l-70.647,70.647c-1.673,1.673-2.613,3.943-2.613,6.31v54.218c0,3.61,2.174,6.863,5.509,8.245c1.104,0.457,2.263,0.679,3.413,0.679c2.323,0,4.605-0.907,6.313-2.614l56.197-56.197v251.305c0,4.928,3.994,8.924,8.924,8.924h246.969c4.93,0,8.924-3.996,8.924-8.924c0-4.928-3.994-8.924-8.924-8.924H101.625v-260.23L259.786,75.762L484.42,300.396c2.553,2.552,6.391,3.316,9.726,1.935s5.509-4.636,5.509-8.245v-54.218C499.655,237.501,498.715,235.232,497.042,233.557z"/></svg>
+            </button>
           </div>
 
           <div class="space-y-3" *ngIf="baseContract?.bought && !baseContract?.paused && baseContract?.activated" >
@@ -172,11 +251,21 @@
                 </div>
 
 
+            </div>
+              <div class="space-y-3" *ngIf="baseContract?.type==1 || baseContract?.type==2">
 
-              <div *ngIf="baseContract?.type==1 || baseContract?.type==2">
-                <input id="newPropertyPrice" name="newPropertyPrice" #newPropertyPrice type="number" placeholder="price with ETH" class="w-96 ml-3 pr-16 input input-primary input-bordered">
-                <input id="blackWalletAddress" name="blackWalletAddress" #blackWalletAddress type="number" placeholder="price with ETH" class="w-96 ml-3 pr-16 input input-primary input-bordered">
-                <input id="blackWalletAddress" name="blackWalletAddress" #blackWalletAddress type="number" placeholder="price with ETH" class="w-96 ml-3 pr-16 input input-primary input-bordered">
+
+                  <div>
+                    <input id="newPropertyPrice" name="newPropertyPrice" #newPropertyPrice type="number" placeholder="price with ETH" class="w-96 ml-3 pr-16 input input-primary input-bordered">
+                  </div>
+
+                  <div>
+                    <input id="blackWalletAddress" name="blackWalletAddress" #blackWalletAddress type="number" placeholder="price with ETH" class="w-96 ml-3 pr-16 input input-primary input-bordered">
+                  </div>
+
+                  <div>
+                    <input id="blackWalletAddress" name="blackWalletAddress" #blackWalletAddress type="number" placeholder="price with ETH" class="w-96 ml-3 pr-16 input input-primary input-bordered">
+                  </div>
 
                 <button class="btn btn-primary ml-3">
                   Flip property now
@@ -184,9 +273,9 @@
                 </button>
               </div>
 
-            </div>
-
           </div>
+
+
 
           <hr>
 

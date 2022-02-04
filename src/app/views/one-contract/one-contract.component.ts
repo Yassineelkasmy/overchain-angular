@@ -267,40 +267,51 @@ export class OneContractComponent implements OnInit {
   }
 
 
+  addressVerified !: boolean;
+  addressAdded !: boolean;
+  addressRemoved !: boolean;
   // START WHITE LIST CONTRACT
-  verifyAddressWhiteList(walletAddress:string){
+  async verifyAddressWhiteList(walletAddress:string){
 
-    this.whiteListContractService.verifyWhiteAddress(this.contractAddress,walletAddress).then( (Res) => console.log(Res));
-
+    await this.whiteListContractService.verifyWhiteAddress(this.contractAddress,walletAddress).then(
+      (res)=> this.addressVerified=res
+    )
   }
 
-  addAddressToWhiteList(address : string){
-    console.log(address);
-
+  async addAddressToWhiteList(walletAddress : string){
+    await this.whiteListContractService.addAddressToWhiteList(this.contractAddress,walletAddress).then(
+      (res) => this.addressAdded = res
+    )
   }
 
-  removeAddressFromWhiteList(address : string){
-    console.log(address);
-
+  async removeAddressFromWhiteList(walletAddress : string){
+    await this.whiteListContractService.removeAddressFromWhiteList(this.contractAddress,walletAddress).then(
+      (res) => this.addressRemoved = res
+    )
   }
 
   // END WHITE LIST CONTRACT
 
   // START BLACK LIST CONTRACT
-  verifyAddressBlackList(walletAddress:string){
+  async verifyAddressBlackList(walletAddress:string){
 
-    this.blackListContractService.verifyBlackAddress(this.contractAddress,walletAddress).then( (Res) => console.log(Res));
-
+    await this.blackListContractService.verifyBlackAddress(this.contractAddress,walletAddress).then(
+      (res)=> this.addressVerified=res
+    )
   }
 
-  addAddressToBlackList(address : string){
-    console.log(address);
-
+  async addAddressToBlackList(walletAddress : string){
+    console.log(walletAddress);
+     await this.blackListContractService.addAddressToBlackList(this.contractAddress,walletAddress).then(
+      (res) => this.addressAdded = res
+    )
   }
 
-  removeAddressFromBlackList(address : string){
-    console.log(address);
-
+  async removeAddressFromBlackList(walletAddress : string){
+    console.log(walletAddress);
+     await this.blackListContractService.removeAddressFromBlackList(this.contractAddress,walletAddress).then(
+      (res) => this.addressRemoved = res
+    )
   }
 
 

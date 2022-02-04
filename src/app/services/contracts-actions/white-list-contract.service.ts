@@ -107,57 +107,54 @@ export class WhiteListContractService {
 
 
 
-  async verifyWhiteAddress(_contractAddress : string,_walletAddress : String) {
+  async verifyWhiteAddress(_contractAddress : string,_walletAddress : String) : Promise<boolean> {
 
     this.provider = await this.web3Modal.connect(); // set provider
     this.web3js = new Web3(this.provider); // create web3 instance
     this.accounts = await this.web3js.eth.getAccounts();
 
-    console.log("white addressa "+_contractAddress);
-    console.log("walleta "+_walletAddress);
-
-
     let contract =await new this.web3js.eth.Contract(WhiteListContractAbi,_contractAddress);
     let result ;
 
-    await contract.methods.verifyAddress(_walletAddress).call(
-      {from : this.accounts[0],
-        gas: '6721975',
-        gasPrice: '20000000'
-      }
-    ).then(
-      (res) => console.log(res)
+    await contract.methods.verifyAddress(_walletAddress).call().then(
+      (res) => result = res
     )
 
-    // const getProp=this.Contract.methods.sayHi().call(
-    //   {
-    //     from:this.account,
-    //     gas: '6721975',
-    //     gasPrice: '20000000',
-    //     to: "0x0850326c39132d99fECE20ab5F7B36b486E184A3" // contract address
-    //   }
-    // )
-
-    //  const getProp=await contract.methods.(_walletAddress).call({
-    //   from: this.accounts[0],
-    //   gasPrice: 1000,
-    //   gas: 100000
-    //  })
-    //  .then(console.log);
-
-    // await contract.methods.verifyAddress('0xE4778CbF741018484D3d5063Fb74373d31DF97BA').call(
-    //   {
-    //     gas: '6721975',
-    //     gasPrice: '20000000',
-    //     to: _contractAddress,
-    //   }
-    //   ).then(
-    //     (resp) => console.log(resp)
-
-    //     );
-
-    //return result;
+    return result;
   }
+
+  async addAddressToWhiteList(_contractAddress : string, _whiteAddresse : String) : Promise<boolean>{
+    this.provider = await this.web3Modal.connect(); // set provider
+    this.web3js = new Web3(this.provider); // create web3 instance
+    this.accounts = await this.web3js.eth.getAccounts();
+
+    let contract =await new this.web3js.eth.Contract(WhiteListContractAbi,_contractAddress);
+    let result;
+
+    await contract.methods.addAddressToWhiteList(_whiteAddresse).send({
+      from : this.accounts[0]
+    }).then(
+      (res) => result = res
+    )
+    return result;
+    }
+
+
+  async removeAddressFromWhiteList(_contractAddress : string, _whiteAddresseToRemove : String):Promise<boolean>{
+    this.provider = await this.web3Modal.connect(); // set provider
+    this.web3js = new Web3(this.provider); // create web3 instance
+    this.accounts = await this.web3js.eth.getAccounts();
+
+    let contract =await new this.web3js.eth.Contract(WhiteListContractAbi,_contractAddress);
+    let result : boolean = false;
+
+    await contract.methods.removeAddressFromWhiteList(_whiteAddresseToRemove).send({
+      from : this.accounts[0]
+    }).then(
+        (res) => result = res
+      )
+      return result;
+    }
 
 
   async buyWhiteListContract(_contractAddress : string):Promise<void>{

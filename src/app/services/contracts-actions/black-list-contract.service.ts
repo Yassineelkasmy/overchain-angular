@@ -105,27 +105,55 @@ export class BlackListContractService {
 
   }
 
-  result : any ;
-  async verifyBlackAddress(_contractAddress: string, _walletAddress: string)  {
-
+  async verifyBlackAddress(_contractAddress: string, walletAddress: string) : Promise<boolean>{
     this.provider = await this.web3Modal.connect(); // set provider
     this.web3js = new Web3(this.provider); // create web3 instance
     this.accounts = await this.web3js.eth.getAccounts();
 
-    console.log("black addressa "+_contractAddress);
-    console.log("walleta "+_walletAddress);
+    let contract =await new this.web3js.eth.Contract(BlackListContractAbi,_contractAddress);
+    let result ;
 
+    await contract.methods.verifyAddress(walletAddress).call().then(
+      (res) => result = res
+    )
+
+    return result;
+  }
+
+  async addAddressToBlackList(_contractAddress : string, _blackAddresse : String):Promise<boolean>{
+    this.provider = await this.web3Modal.connect(); // set provider
+    this.web3js = new Web3(this.provider); // create web3 instance
+    this.accounts = await this.web3js.eth.getAccounts();
 
     let contract =await new this.web3js.eth.Contract(BlackListContractAbi,_contractAddress);
+    let result;
 
-    await contract.methods.verifyAddress(_walletAddress).call(
-      { from : this.accounts[0]}
-    ).then(
-      (Resp) => {this.result = Resp}
-      );
+    await contract.methods.addAddressToBlackList(_blackAddresse).send({
+        from : this.accounts[0]
+      }).then(
+          (res) => result = res
+        )
+
+      return result;
+    }
 
 
-  }
+    async removeAddressFromBlackList(_contractAddress : string, _blackAddresseToRemove : String):Promise<boolean> {
+      this.provider = await this.web3Modal.connect(); // set provider
+      this.web3js = new Web3(this.provider); // create web3 instance
+      this.accounts = await this.web3js.eth.getAccounts();
+
+
+      let contract =await new this.web3js.eth.Contract(BlackListContractAbi,_contractAddress);
+      let result :boolean = false;
+      await contract.methods.removeAddressFromBlackList(_blackAddresseToRemove).send({
+          from : this.accounts[0]
+        }).then(
+          ()=> result=true
+          )
+
+      return result;
+    }
 
   // BUY  :
 

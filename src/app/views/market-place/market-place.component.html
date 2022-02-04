@@ -48,6 +48,7 @@
 
           <h3 class="pt-2 pl-2 text-2xl">Title : </h3>
           <p class="pt-2 pl-2">{{deployedContract.title}}</p>
+
           <h3 class="pt-2 pl-2 text-2xl">Property Description : </h3>
           <p class="pt-2 pl-2">{{deployedContract.description}}</p>
 
@@ -56,6 +57,14 @@
 
           <h3 class="pt-2 pl-2 text-2xl">Contract address : </h3>
           <p class="pt-2 pl-2">{{deployedContract.contractAddress}}</p>
+
+          <span class="text-sm font-bold py-5" *ngIf="deployedContract?.type=='WHITELISTED'">
+            This contract contains white listed addresses !
+          </span>
+
+          <span class="text-sm font-bold py-5" *ngIf="deployedContract?.type=='BLACKLISTED'">
+            This contract contains black listed addresses !
+          </span>
 
           <div class="absolute bottom-2 right-2 card-actions ">
 

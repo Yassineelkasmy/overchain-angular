@@ -46,16 +46,9 @@ export class ContractItemComponent implements OnInit {
 
   deployContract(contract : Contract){
 
-        // console.log(contract)
-
-        this.convertUsePrice(contract.price)
-
-        // console.log(this.convertedEthValue)
-        // console.log(contract.sellerWallet)
-        // console.log(contract.propertyId);
+       this.convertUsePrice(contract.price)
 
 
-        //this.adminContractService.deployBaseContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id);
 
         switch(contract.type.toString()) {
           case  'BASIC': {
@@ -73,40 +66,12 @@ export class ContractItemComponent implements OnInit {
 
           case 'BLACKLISTED' :{
               this.adminContractService.deployBlackListContract(contract.sellerWallet, this.convertedEthValue, contract.propertyId,contract.id,contract.blackListWallets);
-            console.log(contract.type);
 
            break;
           }
 
        }
 
-    // if(contract.type === SmartContractType.Basic){
-    //   console.log(contract.type);
-    //     console.log(contract)
-
-    //     this.convertUsePrice(contract.price)
-
-    //     console.log(this.convertedEthValue)
-    //     console.log(contract.sellerWallet)
-    //     console.log(contract.propertyId);
-
-
-    //     this.adminContractService.deployBaseContract(contract.sellerWallet,this.convertedEthValue,contract.propertyId)
-    // }
-    // if(contract.type === SmartContractType.BlackListed){
-    //   console.log(contract.type);
-    //   console.log(contract)
-    //   this.convertUsePrice(contract.price)
-    //   console.log(this.convertedEthValue)
-    // }
-    // if((contract.type === SmartContractType.WhiteListed)){
-    //   console.log(contract.type);
-    //   console.log(contract)
-
-    //   this.convertUsePrice(contract.price)
-
-    //   console.log(this.convertedEthValue)
-    // }
   }
 
   convertUsePrice(ethPrice : number){
