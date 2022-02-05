@@ -198,4 +198,69 @@ export class WhiteListContractService {
       }
 
 
+      async pauseWhiteListContract(_contractAddress: string):Promise<void>{
+        this.provider = await this.web3Modal.connect(); // set provider
+        this.web3js = new Web3(this.provider); // create web3 instance
+        this.accounts = await this.web3js.eth.getAccounts();
+
+      let contract =await new this.web3js.eth.Contract(WhiteListContractAbi,_contractAddress);
+
+      await contract.methods.pauseContract().send(
+          {
+            from : this.accounts[0],
+          }
+        ).then(
+          console.log
+
+        );
+      }
+
+      async unPauseWhiteListContract(_contractAddress: string):Promise<void>{
+        this.provider = await this.web3Modal.connect(); // set provider
+        this.web3js = new Web3(this.provider); // create web3 instance
+        this.accounts = await this.web3js.eth.getAccounts();
+
+      let contract =await new this.web3js.eth.Contract(WhiteListContractAbi,_contractAddress);
+
+      await contract.methods.unPauseContract().send(
+        {
+          from : this.accounts[0],
+        }
+      ).then(
+        console.log
+      )
+    }
+
+    async inActiveWhiteListContract(_contractAddress : string ):Promise<void>{
+      this.provider = await this.web3Modal.connect(); // set provider
+      this.web3js = new Web3(this.provider); // create web3 instance
+      this.accounts = await this.web3js.eth.getAccounts();
+
+    let contract =await new this.web3js.eth.Contract(WhiteListContractAbi,_contractAddress);
+
+    await contract.methods.deActivate().send(
+      {
+        from : this.accounts[0],
+
+      }
+    ).then(
+      console.log
+
+    );
+  }
+
+  async reSaleWhiteListProperty(_contractAddress:String,_price:number,_whiteAddresses: string []):Promise<void>{
+    this.provider = await this.web3Modal.connect(); // set provider
+    this.web3js = new Web3(this.provider); // create web3 instance
+    this.accounts = await this.web3js.eth.getAccounts();
+
+    let contract = await new this.web3js.eth.Contract(WhiteListContractAbi,_contractAddress);
+    await contract.methods.reSale(Web3.utils.toWei(String(_price),"ether"),_whiteAddresses).send({
+      from: this.accounts[0],
+    }).then(
+      console.log
+    )
+  }
+
+
 }

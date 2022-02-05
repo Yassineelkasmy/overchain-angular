@@ -1,7 +1,8 @@
 
 <app-navbar></app-navbar>
 
-<div class=" text-purple-700 text-center px-64 py-36 w-full bg-gray-50">
+<div data-aos="fade-up"
+data-aos-duration="3000" class=" text-purple-700 text-center px-64 py-36 w-full bg-gray-50">
 
   <h1 class="text-5xl font-extrabold"> OUR TRUSTED DEPLOYED CONTRACTS</h1>
 
@@ -14,6 +15,12 @@
       That's why, Overchain is the best option to buy your next property comfortably and trustfully
       ``
   </p>
+
+  <div data-aos="fade-up"
+  data-aos-duration="3000">
+    <svg class="mx-auto mt-10 transform translate-y-4 hover:translate-y-0 duration-500 ease-in-out" width="20em" height="20em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><path style="fill:#C7E9F4;" d="M415.209,484.79H96.781c-9.795,0-17.736-7.941-17.736-17.736v-449.3c0-9.795,7.941-17.736,17.736-17.736h200.821c4.703,0,9.214,1.868,12.54,5.194l117.608,117.594c3.327,3.326,5.195,7.838,5.195,12.541v331.705C432.945,476.85,425.004,484.79,415.209,484.79z"/><path style="fill:#80D0E1;" d="M427.749,122.807L310.141,5.214c-3.326-3.326-7.837-5.194-12.54-5.194h-41.606v484.771h159.214c9.795,0,17.736-7.941,17.736-17.736V135.35C432.945,130.645,431.075,126.135,427.749,122.807z"/><g><path style="fill:#6A82A1;" d="M228.949,153.089h-57.346c-9.795,0-17.736-7.941-17.736-17.736s7.941-17.736,17.736-17.736h57.346c9.795,0,17.736,7.941,17.736,17.736C246.685,145.148,238.744,153.089,228.949,153.089z"/><path style="fill:#6A82A1;" d="M340.385,216.617H171.603c-9.795,0-17.736-7.941-17.736-17.736s7.941-17.736,17.736-17.736h168.782c9.795,0,17.736,7.941,17.736,17.736C358.121,208.676,350.181,216.617,340.385,216.617z"/><path style="fill:#6A82A1;" d="M340.385,280.144H171.603c-9.795,0-17.736-7.941-17.736-17.736c0-9.795,7.941-17.736,17.736-17.736h168.782c9.795,0,17.736,7.941,17.736,17.736C358.121,272.203,350.181,280.144,340.385,280.144z"/></g><path style="fill:#FFDA79;" d="M285.857,506.79l-29.862-29.861l-29.862,29.861c-11.132,11.134-30.276,3.243-30.276-12.541V358.482c0-23.436,35.471-23.461,35.471,0c0,32.598,49.334,32.598,49.334,0c0-23.436,35.471-23.461,35.471,0v135.767C316.132,510.076,296.954,517.885,285.857,506.79z"/><g><path style="fill:#FFD155;" d="M280.661,358.482c0,16.299-12.333,24.448-24.667,24.448v93.998l29.862,29.861c11.098,11.095,30.276,3.286,30.276-12.541V358.482C316.132,335.046,280.661,335.021,280.661,358.482z"/><path style="fill:#FFD155;" d="M255.995,418.62c-33.161,0-60.138-26.977-60.138-60.138c0.019-33.177,26.996-60.149,60.138-60.149s60.12,26.973,60.138,60.128c0,0.004,0,0.006,0,0.009v0.012C316.132,391.641,289.155,418.62,255.995,418.62z"/></g><path style="fill:#FFC72D;" d="M255.995,298.332V418.62c33.161,0,60.138-26.977,60.138-60.138v-0.012c0-0.004,0-0.006,0-0.009C316.115,325.306,289.137,298.332,255.995,298.332z"/><path style="fill:#51B3DA;" d="M415.204,153.089H297.606c-9.795,0-17.736-7.941-17.736-17.736V17.755c0-15.74,19.112-23.706,30.276-12.541l117.598,117.598C438.879,133.945,430.99,153.089,415.204,153.089z"/><g><path style="fill:#2C3E50;" d="M340.385,181.145h-84.39v35.471h84.39c9.795,0,17.736-7.941,17.736-17.736S350.181,181.145,340.385,181.145z"/><path style="fill:#2C3E50;" d="M340.385,244.673h-84.39v35.471h84.39c9.795,0,17.736-7.941,17.736-17.736C358.121,252.614,350.181,244.673,340.385,244.673z"/></g></svg>
+  </div>
+
 
 </div>
 
@@ -35,28 +42,30 @@
 	<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mt-6">
 		<span class="text-sm font-semibold">Deployed contracts</span>
 	</div>
-	<div class="grid 2xl:grid-cols-3 xl:grid-cols-3  sm:grid-cols-1 grid-cols-1 gap-x-6 gap-y-12 w-full mt-6">
+	<div class="grid 2xl:grid-cols-3 xl:grid-cols-3  sm:grid-cols-1 grid-cols-1 gap-x-6 gap-y-24 w-full mt-6">
 		<!-- Contracts Start -->
-		<div *ngFor="let deployedContract of deployedContracts">
+		<div data-aos="fade-down"
+    data-aos-easing="linear"
+    data-aos-duration="1500" *ngFor="let deployedContract of deployedContracts">
       <span class="text-xs font-medium text-gray-600">Property infos</span>
 
-      <div class="card min-h-full shadow-2xl lg:card-side bg-primary text-primary-content">
+      <div class="card min-h-full transform hover:translate-y-2 hover:shadow-xl transition duration-300 lg:card-side bg-primary text-primary-content">
         <div class="card-body">
 
-          <h3 class="pt-2 pl-2 text-2xl">Property code : </h3>
-          <p class="pt-2 pl-2">{{deployedContract.propertyCode}}</p>
+          <h3 class="pt-2 pl-2 text-2xl font-serif">Property code : </h3>
+          <p class="pt-2 pl-2 font-mono">{{deployedContract.propertyCode}}</p>
 
-          <h3 class="pt-2 pl-2 text-2xl">Title : </h3>
-          <p class="pt-2 pl-2">{{deployedContract.title}}</p>
+          <h3 class="pt-2 pl-2 text-2xl font-serif">Title : </h3>
+          <p class="pt-2 pl-2 font-mono">{{deployedContract.title}}</p>
 
-          <h3 class="pt-2 pl-2 text-2xl">Property Description : </h3>
-          <p class="pt-2 pl-2">{{deployedContract.description}}</p>
+          <h3 class="pt-2 pl-2 text-2xl font-serif">Property Description : </h3>
+          <p class="pt-2 pl-2 font-mono">{{deployedContract.description}}</p>
 
-          <h3 class="pt-2 pl-2 text-2xl">Address : </h3>
-          <a class="pt-2 pl-2" href="https://www.google.com/maps/place/{{deployedContract.propertyAddress}}">{{deployedContract.propertyAddress}}</a>
+          <h3 class="pt-2 pl-2 text-2xl font-serif">Address : </h3>
+          <a class="pt-2 pl-2 font-mono" href="https://www.google.com/maps/place/{{deployedContract.propertyAddress}}">{{deployedContract.propertyAddress}}</a>
 
-          <h3 class="pt-2 pl-2 text-2xl">Contract address : </h3>
-          <p class="pt-2 pl-2">{{deployedContract.contractAddress}}</p>
+          <h3 class="pt-2 pl-2 text-2xl font-serif">Contract address : </h3>
+          <p class="pt-2 pl-2 font-mono">{{deployedContract.contractAddress}}</p>
 
           <span class="text-sm font-bold py-5" *ngIf="deployedContract?.type=='WHITELISTED'">
             This contract contains white listed addresses !

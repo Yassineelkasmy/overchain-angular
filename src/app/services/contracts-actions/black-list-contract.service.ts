@@ -195,4 +195,71 @@ export class BlackListContractService {
           }
           )
       }
+
+
+      async pauseBlackListContract(_contractAddress: string):Promise<void>{
+        this.provider = await this.web3Modal.connect(); // set provider
+        this.web3js = new Web3(this.provider); // create web3 instance
+        this.accounts = await this.web3js.eth.getAccounts();
+
+        let contract =await new this.web3js.eth.Contract(BlackListContractAbi,_contractAddress);
+
+        await contract.methods.pauseContract().send(
+            {
+              from : this.accounts[0],
+            }
+          ).then(
+            console.log
+
+          );
+        }
+
+      async unPauseBlackListContract(_contractAddress: string):Promise<void>{
+        this.provider = await this.web3Modal.connect(); // set provider
+        this.web3js = new Web3(this.provider); // create web3 instance
+        this.accounts = await this.web3js.eth.getAccounts();
+
+      let contract =await new this.web3js.eth.Contract(BlackListContractAbi,_contractAddress);
+
+      await contract.methods.unPauseContract().send(
+          {
+            from : this.accounts[0],
+          }
+        ).then(
+          console.log
+        )
+      }
+
+      async inActiveBlackListContract(_contractAddress : string ):Promise<void>{
+        this.provider = await this.web3Modal.connect(); // set provider
+        this.web3js = new Web3(this.provider); // create web3 instance
+        this.accounts = await this.web3js.eth.getAccounts();
+
+      let contract =await new this.web3js.eth.Contract(BlackListContractAbi,_contractAddress);
+
+      await contract.methods.deActivate().send(
+        {
+          from : this.accounts[0],
+
+        }
+      ).then(
+        console.log
+
+      );
+    }
+
+
+    async reSaleBlackListProperty(_contractAddress:String,_price:number,_blackAddresses: string []) {
+      this.provider = await this.web3Modal.connect(); // set provider
+      this.web3js = new Web3(this.provider); // create web3 instance
+      this.accounts = await this.web3js.eth.getAccounts();
+
+      let contract = await new this.web3js.eth.Contract(BlackListContractAbi,_contractAddress);
+      await contract.methods.reSale(Web3.utils.toWei(String(_price),"ether"),_blackAddresses).send({
+        from: this.accounts[0],
+      }).then(
+        console.log
+      )
+    }
+
 }

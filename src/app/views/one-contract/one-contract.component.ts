@@ -149,11 +149,7 @@ export class OneContractComponent implements OnInit {
   }
 
   reSaleBaseProperty(reSalePropertyPrice : any){
-    console.log(reSalePropertyPrice);
-
     reSalePropertyPrice = reSalePropertyPrice / this.ethConvertedValue ;
-    console.log(reSalePropertyPrice);
-
 
     switch(this.contractType) {
       case 'BASIC': {
@@ -165,14 +161,19 @@ export class OneContractComponent implements OnInit {
 
         case 'WHITELISTED' :{
           console.log(this.contractType);
-          // this.whiteListContractService.reSaleWhiteListProperty(this.contractAddress,newPrice);
 
-         break;
-      }
+          console.log(this.addressesList);
 
-      case 'BLACKLISTED' :{
-        console.log(this.contractType);
-        // this.blackListContractService.reSaleBlackListProperty(this.contractAddress,newPrice);
+          this.whiteListContractService.reSaleWhiteListProperty(this.contractAddress,reSalePropertyPrice,this.addressesList);
+
+          break;
+        }
+
+        case 'BLACKLISTED' :{
+          console.log(this.contractType);
+
+          console.log(this.addressesList);
+          this.blackListContractService.reSaleBlackListProperty(this.contractAddress,reSalePropertyPrice,this.addressesList);
 
        break;
       }
@@ -196,14 +197,14 @@ export class OneContractComponent implements OnInit {
 
         case 'WHITELISTED' :{
           console.log(this.contractType);
-          // this.whiteListContractService.pauseWhiteListContract(this.contractAddress);
+          this.whiteListContractService.pauseWhiteListContract(this.contractAddress);
 
          break;
       }
 
       case 'BLACKLISTED' :{
         console.log(this.contractType);
-          // this.blackListContractService.pauseBlackListContract(this.contractAddress);
+          this.blackListContractService.pauseBlackListContract(this.contractAddress);
 
        break;
       }
@@ -223,14 +224,14 @@ export class OneContractComponent implements OnInit {
 
         case 'WHITELISTED' :{
           console.log(this.contractType);
-          // this.whiteListContractService.unPauseWhiteListContract(this.contractAddress);
+          this.whiteListContractService.unPauseWhiteListContract(this.contractAddress);
 
          break;
       }
 
       case 'BLACKLISTED' :{
         console.log(this.contractType);
-          // this.blackListContractService.unPauseBlackListContract(this.contractAddress);
+          this.blackListContractService.unPauseBlackListContract(this.contractAddress);
 
        break;
       }
@@ -251,14 +252,14 @@ export class OneContractComponent implements OnInit {
 
         case 'WHITELISTED' :{
           console.log(this.contractType);
-          // this.whiteListContractService.inActiveWhiteListContract(this.contractAddress);
+          this.whiteListContractService.inActiveWhiteListContract(this.contractAddress);
 
          break;
       }
 
       case 'BLACKLISTED' :{
         console.log(this.contractType);
-          // this.blackListContractService.inActiveBlackListContract(this.contractAddress);
+          this.blackListContractService.inActiveBlackListContract(this.contractAddress);
 
        break;
       }
@@ -322,7 +323,47 @@ export class OneContractComponent implements OnInit {
 
 
 
-  convertUsePrice(newPrice){
-    this.convertedEthValue = newPrice / this.ethConvertedValue
- }
+    convertUsePrice(newPrice){
+      this.convertedEthValue = newPrice / this.ethConvertedValue
+  }
+
+  addressesList: string [] = [];
+
+  addWalletToList(addressWallet : string){
+
+    console.log("addressa "+addressWallet);
+
+    switch(this.contractType) {
+      case 'WHITELISTED' :
+        this.addressesList.push(addressWallet);
+        console.log("white addresses");
+
+        console.log(this.addressesList);
+        break;
+      case 'BLACKLISTED' :
+        this.addressesList.push(addressWallet);
+        console.log("black addresses");
+
+        console.log(this.addressesList);
+        break ;
+    }
+
+
+
+  }
+
+  removeWalletFromList(walletAddr:string) {
+
+    switch(this.contractType) {
+      case 'WHITELISTED' :
+
+        this.addressesList = this.addressesList.filter((addr)=> addr != walletAddr);
+        break;
+      case 'BLACKLISTED' :
+
+        this.addressesList = this.addressesList.filter((addr)=> addr != walletAddr);
+        break ;
+    }
+
+  }
 }
