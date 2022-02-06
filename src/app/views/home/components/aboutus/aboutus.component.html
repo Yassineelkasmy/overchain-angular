@@ -1,7 +1,8 @@
 <div data-aos="fade-up"
 data-aos-anchor-placement="top-bottom" class="w-full bg-white px-20 py-20 grid sm:grid-cols-1 md:grid-cols-2">
     <div data-aos="fade-right"
-    data-aos-anchor-placement="top-bottom" *ngIf="reversed">
+    data-aos-easing="linear"
+    data-aos-duration="1500" *ngIf="reversed">
         <img class="w-4/5 h-auto" src="{{ image }}" alt="">
     </div>
     <div data-aos="fade-up"
@@ -15,8 +16,9 @@ data-aos-anchor-placement="top-bottom" class="w-full bg-white px-20 py-20 grid s
             {{ text }}
         </p>
     </div>
-    <div data-aos="fade-up"
-     data-aos-anchor-placement="top-bottom" *ngIf="!reversed">
+    <div data-aos="fade-left"
+    data-aos-easing="linear"
+    data-aos-duration="1500" *ngIf="!reversed">
         <img class="w-4/5 h-auto ml-20" src="{{ image }}" alt="">
     </div>
 </div>

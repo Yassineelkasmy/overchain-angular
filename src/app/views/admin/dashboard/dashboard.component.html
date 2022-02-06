@@ -1,5 +1,6 @@
 <div class="w-full flex justify-between p-4 bg-gray-900">
-    <label for="my-drawer" class="btn btn-primary drawer-button">:::</label>
+    <label for="my-drawer"><svg cursor="pointer" width="2.5em" height="2.5em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 495 495" style="enable-background:new 0 0 495 495;" xml:space="preserve"><g><path style="fill:#FFDA44;" d="M207.5,247.5c0-22.056,17.944-40,40-40V0C111.028,0,0,111.028,0,247.5S111.028,495,247.5,495V287.5C225.444,287.5,207.5,269.556,207.5,247.5z M137.5,287.5c-22.056,0-40-17.944-40-40s17.944-40,40-40s40,17.944,40,40159.556,287.5,137.5,287.5z"/><path style="fill:#FFCD00;" d="M247.5,0v207.5c22.056,0,40,17.944,40,40s-17.944,40-40,40V495C383.972,495,495,383.972,495,247.5S383.972,0,247.5,0z M357.5,287.5c-22.056,0-40-17.944-40-40s17.944-40,40-40s40,17.944,40,40S379.556,287.5,357.5,287.5z"/><path style="fill:#2488FF;" d="M317.5,247.5c0,22.056,17.944,40,40,40v-80C335.444,207.5,317.5,225.444,317.5,247.5z"/><path style="fill:#005ECE;" d="M357.5,207.5v80c22.056,0,40-17.944,40-40S379.556,207.5,357.5,207.5z"/><path style="fill:#2488FF;" d="M207.5,247.5c0,22.056,17.944,40,40,40v-80C225.444,207.5,207.5,225.444,207.5,247.5z"/><path style="fill:#005ECE;" d="M287.5,247.5c0-22.056-17.944-40-40-40v80C269.556,287.5,287.5,269.556,287.5,247.5z"/><path style="fill:#2488FF;" d="M97.5,247.5c0,22.056,17.944,40,40,40v-80C115.444,207.5,97.5,225.444,97.5,247.5z"/><path style="fill:#005ECE;" d="M137.5,207.5v80c22.056,0,40-17.944,40-40S159.556,207.5,137.5,207.5z"/></g></svg>
+    </label>
     <p class="font-semibold text-white uppercase my-auto">{{ accountService.currentAuthUser?.email }}</p>
 </div>
 
@@ -7,19 +8,33 @@
     <input id="my-drawer" type="checkbox" class="drawer-toggle">
     <div class="drawer-content">
         <router-outlet></router-outlet>
-
     </div>
     <div class="drawer-side">
         <label for="my-drawer" class="drawer-overlay h-full"></label>
         <ul class="menu p-4 overflow-y-auto w-56 bg-base-100 text-base-content">
             <li>
-                <a routerLink="/admin/dashboard/users">Users</a>
+              <a routerLink="/admin/dashboard">
+                Home
+                <svg class="ml-2" with="1.4em" height="1.4em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 496.157 496.157" style="enable-background:new 0 0 496.157 496.157;" xml:space="preserve"><path style="fill:#A3D5E0;" d="M248.077,0C111.072,0,0,111.063,0,248.083c0,137.004,111.071,248.074,248.076,248.074c137.012,0,248.081-111.07,248.081-248.074C496.158,111.063,385.088,0,248.077,0z"/><path style="fill:#E5AA17;" d="M248.079,97.743c0,0-151.866,126.003-151.866,138.848v120.816c0,12.845,10.412,23.265,23.262,23.265h81.613v-72.129c0-16.777,13.599-30.372,30.374-30.372h34.167c16.771,0,30.374,13.595,30.374,30.372v72.129h83.215c12.845,0,23.259-10.42,23.259-23.265V236.592C402.476,223.746,248.079,97.743,248.079,97.743z"/><g><path style="fill:#C69422;" d="M436.402,229.347L259.496,76.509c-6.683-5.772-16.773-5.038-22.544,1.641c-5.771,6.687-5.034,16.778,1.648,22.546l176.905,152.837c6.682,5.769,16.772,5.03,22.541-1.648C443.818,245.202,443.082,235.115,436.402,229.347z"/><path style="fill:#C69422;" d="M261.795,78.149c-5.769-6.679-15.857-7.413-22.538-1.641L62.346,229.347c-6.68,5.769-7.416,15.856-1.646,22.539c5.769,6.679,15.859,7.417,22.54,1.648l176.909-152.837C266.831,94.927,267.568,84.837,261.795,78.149z"/></g></svg>
+              </a>
             </li>
             <li>
-                <a routerLink="/admin/dashboard/properties">Properties</a>
+              <a routerLink="/admin/dashboard/users">
+                Users
+                <svg class="ml-2 inline-block" with="1.4em" height="1.4em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 354.856 354.856" style="enable-background:new 0 0 354.856 354.856;" xml:space="preserve"><g><path style="fill:#333E48;" d="M307.943,199.173c16.571-15.084,26.979-36.832,26.979-61.008c0-45.55-36.925-82.474-82.474-82.474c-33.914,0-63.045,20.476-75.713,49.737c15.541,17.534,24.992,40.582,24.992,65.8c0,21.149-6.804,41.654-19.089,58.524c11.606,10.24,21.178,22.617,28.169,36.35h144.049C348.867,237.946,331.568,213.976,307.943,199.173z"/><path style="fill:#61B4E4;" d="M0,299.166h204.811c-5.986-28.155-23.285-52.126-46.912-66.929c16.573-15.084,26.979-36.832,26.979-61.009c0-45.549-36.924-82.474-82.474-82.474c-45.545,0-82.471,36.925-82.471,82.474c0,24.177,10.404,45.925,26.978,61.009C23.284,247.04,5.986,271.01,0,299.166z"/></g></svg>
+              </a>
             </li>
             <li>
-                <a routerLink="/admin/dashboard/contracts">Contracts</a>
+              <a routerLink="/admin/dashboard/properties">
+                Properties
+                <svg class="ml-2 inline-block" with="1.4em" height="1.4em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><polygon style="fill:#25B6D2;" points="59.52,512 59.52,212.4 256,70.912 452.48,212.4 452.48,512 "/><path style="fill:#FFFFFF;" d="M243.776,441.376v-27.04c-19.056-0.848-37.584-5.968-48.384-12.24l8.544-33.312c11.952,6.544,28.752,12.528,47.248,12.528c16.224,0,27.328-6.272,27.328-17.664c0-10.816-9.104-17.648-30.176-24.768c-30.464-10.256-51.248-24.48-51.248-52.096c0-25.04,17.664-44.688,48.112-50.672v-27.04h27.904v25.056c19.056,0.848,31.872,4.832,41.264,9.392l-8.256,32.16c-7.408-3.12-20.496-9.664-40.992-9.664c-18.512,0-24.48,7.968-24.48,15.936c0,9.408,9.952,15.376,34.16,24.48c33.872,11.968,47.552,27.632,47.552,53.232c0,25.344-17.936,46.976-50.672,52.672v29.024h-27.904V441.376z"/><polygon style="fill:#2C3E50;" points="256,0 20.016,168.784 20.016,207.184 256,38.4 491.984,207.184 491.984,168.784 "/></svg>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/admin/dashboard/contracts">
+                Contracts
+                <svg class="ml-2 inline-block" with="1.4em" height="1.4em" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><rect x="16" style="fill:#C9E3F7;" width="409.6" height="512"/><g><rect x="220.8" style="fill:#78B9EB;" width="204.8" height="512"/><rect x="92.8" y="102.4" style="fill:#78B9EB;" width="256" height="38.4"/><rect x="92.8" y="179.2" style="fill:#78B9EB;" width="256" height="38.4"/><rect x="92.8" y="256" style="fill:#78B9EB;" width="243.2" height="38.4"/></g><g><rect x="220.8" y="102.4" style="fill:#3C5D76;" width="128" height="38.4"/><rect x="220.8" y="179.2" style="fill:#3C5D76;" width="128" height="38.4"/><rect x="220.8" y="256" style="fill:#3C5D76;" width="115.2" height="38.4"/><polygon style="fill:#3C5D76;" points="496,139.794 468.846,112.64 206.692,374.798 201.843,406.798 233.843,401.949 	"/></g></svg>
+              </a>
             </li>
             <li>
                 <a>Log out</a>

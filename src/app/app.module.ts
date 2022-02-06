@@ -43,11 +43,11 @@ import { PropertiesComponent } from './views/admin/dashboard/properties/properti
 import { PropertyItemComponent } from './components/property-item/property-item.component';
 import { ContractsComponent } from './views/admin/dashboard/contracts/contracts.component';
 import { ContractItemComponent } from './components/contract-item/contract-item.component';
-import { ContractDeployComponent } from './views/admin/dashboard/contract-deploy/contract-deploy.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MarketPlaceComponent } from './views/market-place/market-place.component';
 import { OneContractComponent } from './views/one-contract/one-contract.component';
 import { FormsModule } from '@angular/forms';
+import { HomeDashboardComponent } from './views/admin/dashboard/home-dashboard/home-dashboard.component';
 
 
 @NgModule({
@@ -80,9 +80,9 @@ import { FormsModule } from '@angular/forms';
     PropertyItemComponent,
     ContractsComponent,
     ContractItemComponent,
-    ContractDeployComponent,
     MarketPlaceComponent,
     OneContractComponent,
+    HomeDashboardComponent,
   ],
   imports: [
     BrowserModule,
