@@ -17,7 +17,7 @@ export class MarketPlaceService {
   getDeployedContracts() : Observable<DeployedContracts[]>{
 
 
-    return this.http.get<DeployedContracts[]>("http://localhost:3000/onSale/properties");
+    return this.http.get<DeployedContracts[]>("http://localhost:3001/onSale/properties");
   }
 
 
