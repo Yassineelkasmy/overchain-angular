@@ -106,9 +106,9 @@ export class AdminService {
     return this.httpClient.post<Contract>(this.basePath + "/deploycontract" , request);
   }
 
-  getDeployedContracts() : Observable<DeployedContracts[]>{
-                                                    //   Public API !
-    return this.httpClient.get<DeployedContracts[]>("http://localhost:3000/onSale/properties");
-  }
+  // getDeployedContracts() : Observable<DeployedContracts[]>{
+  //                                                   //   Public API !
+  //   return this.httpClient.get<DeployedContracts[]>("http://localhost:300/onSale/properties");
+  // }
 
 }

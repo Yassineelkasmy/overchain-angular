@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DeployedContracts } from 'src/app/dto/DeployedContracts';
-import { AdminService } from 'src/app/services/admin.service';
 import { MarketPlaceService } from 'src/app/services/market-place.service';
 import { StatsService } from 'src/app/services/stats.service';
 
@@ -13,7 +12,6 @@ export class MarketPlaceComponent implements OnInit {
 
   constructor(
     public marketPlaceService: MarketPlaceService,
-    public adminService : AdminService,
     public statsService : StatsService
   ) { }
 
@@ -34,7 +32,7 @@ export class MarketPlaceComponent implements OnInit {
 
 
   public getDeployedContracts() {
-    this.adminService.getDeployedContracts().subscribe(
+    this.marketPlaceService.getDeployedContracts().subscribe(
       {
         next : (contracts) => {
           contracts.forEach(contract => {

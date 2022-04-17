@@ -24,7 +24,7 @@ export class RegisterPropertyComponent implements OnInit {
     this.verifyForm = new FormGroup({
       "code": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
       "title": new FormControl(null, [Validators.minLength(3), Validators.maxLength(20), Validators.required]),
-      "description": new FormControl(null, [Validators.minLength(20), Validators.maxLength(100), Validators.required]),
+      "description": new FormControl(null, [Validators.minLength(20), Validators.required]),
       "address": new FormControl(null, [Validators.minLength(10) ,Validators.maxLength(100), Validators.required]),
     });
   }
@@ -38,9 +38,9 @@ export class RegisterPropertyComponent implements OnInit {
 
   verifyForm: FormGroup;
   isLoading:boolean = false;
-  
+
   newPorperty:boolean = false;
-  
+
   addOptional() {
     if(this.totalOptionals <= this.maxOptionals){
     this.totalOptionals++;
@@ -54,11 +54,11 @@ export class RegisterPropertyComponent implements OnInit {
 
   get canSubmit() : boolean {
 
-    return this.verifyForm.valid && 
+    return this.verifyForm.valid &&
     this.uploadService.minPropertyVerificationFiles == this.uploadService.propertyVerificationFilesCount;
   }
 
-  
+
 
   removeOptional() {
     this.totalOptionals--;

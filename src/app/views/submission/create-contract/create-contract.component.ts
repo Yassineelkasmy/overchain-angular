@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { data } from 'autoprefixer';
 import { SubmitContractRequest } from 'src/app/dto/submit-contract.request';
 import { SmartContractType } from 'src/app/enums/SmartContractType';
@@ -31,8 +32,8 @@ export class CreateContractComponent implements OnInit {
   constructor(
     public metamaskService : MetamaskService,
     public statsService : StatsService,
-    public registrationService: RegistrationService
-
+    public registrationService: RegistrationService,
+    public router : Router
     ) {
     this.contractForm = new FormGroup({
       "wallet": new FormControl(null, [Validators.minLength(10) ,Validators.maxLength(100), Validators.required]),
@@ -128,7 +129,7 @@ export class CreateContractComponent implements OnInit {
     }
 
     this.registrationService.submitConrtact(submitContractRequest, this.smartContractType)
-    .subscribe((data)=> console.log(data))
+    .subscribe((data)=>{ console.log(data); this.router.navigate["/submission/registerproperty"]; alert("Contract under verification now ! It will be listed in the marketplace as soon as possible :) ")})
   }
 
 
